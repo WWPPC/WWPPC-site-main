@@ -3,7 +3,7 @@
 vite.config.ts.timestamp*
 
 # Builds and stuff
-build/
+dist/
 *.cache
 *.tsbuildinfo
 
