@@ -1,10 +1,11 @@
 {
-    "name": "wwppc-client",
+    "name": "wwppc-site-main",
     "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "preinstall": "git submodule init && git submodule update && cd WWPPC-site-common && npm install && npm run build",
         "build": "run-p type-check \"build-only {@}\" --",
         "preview": "vite preview",
         "build-only": "vite build",
@@ -12,10 +13,8 @@
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
     },
     "dependencies": {
-        "@hsorby/vue3-katex": "^0.6.0-rc.7",
-        "katex": "^0.16.9",
+        "wwppc-site-common": "file:./WWPPC-site-common/",
         "pinia": "^2.1.7",
-        "recaptcha-v3": "^1.10.0",
         "socket.io-client": "^4.7.4",
         "vue": "^3.4.15",
         "vue-router": "^4.3.0"

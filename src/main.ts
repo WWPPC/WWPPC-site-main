@@ -1,13 +1,13 @@
+import 'wwppc-site-common';
+import 'wwppc-site-common/style.css'
+
 import './assets/main.css';
-import 'katex/dist/katex.min.css';
 
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import { createPinia } from 'pinia';
 
 import App from '@/App.vue';
-
-import recaptcha from './scripts/recaptcha';
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -87,5 +87,3 @@ router.afterEach(() => {
 });
 app.use(router);
 app.mount('#root');
-
-recaptcha.loaded().then(() => console.log('reCAPTCHA loaded'));
