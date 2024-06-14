@@ -1,6 +1,5 @@
 {
     "name": "wwppc-site-main",
-    "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -15,7 +14,6 @@
     "dependencies": {
         "wwppc-site-common": "file:./WWPPC-site-common/",
         "pinia": "^2.1.7",
-        "socket.io-client": "^4.7.4",
         "vue": "^3.4.15",
         "vue-router": "^4.3.0"
     },
