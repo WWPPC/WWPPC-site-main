@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '@/components/panels/PanelManager';
+import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '@/components/common/UserDisp.vue';
 import ContestTimer from '@/components/contest/ContestTimer.vue';
 import { useRoute } from 'vue-router';
@@ -12,8 +12,8 @@ import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
 import PagePanelArchiveProblem from './archive/PagePanelArchiveProblem.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '@/scripts/ContestManager';
-import { useConnectionEnforcer } from '@/scripts/ConnectionEnforcer';
-import { useServerConnection } from '@/scripts/ServerConnection';
+import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import { useServerConnection } from '#/scripts/ServerConnection';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);

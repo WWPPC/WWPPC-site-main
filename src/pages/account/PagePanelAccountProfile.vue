@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import WaitCover from '@/components/common/WaitCover.vue';
-import { AnimateInContainer, PairedGridContainer, TitledCollapsible, TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { UITextArea, UITextBox, UIDropdown, globalModal, ModalMode, UICopyButton } from '@/components/ui-defaults/UIDefaults';
-import UIButton from '@/components/ui-defaults/inputs/UIButton.vue';
-import { useAccountManager, gradeMaps, experienceMaps, languageMaps } from '@/scripts/AccountManager';
-import { AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '@/scripts/ServerConnection';
-import { onMounted, ref, watch } from 'vue';
-import recaptcha from '@/scripts/recaptcha';
+import WaitCover from '#/common/WaitCover.vue';
+import { AnimateInContainer, PairedGridContainer, TitledCollapsible, TitledCutCornerContainer } from '#/containers';
+import { InputButton, InputTextArea, InputTextBox, InputDropdown, InputCopyButton } from '#/inputs';
 import AccountProfileTeamUser from '@/components/account/profile/AccountProfileTeamUser.vue';
+import { onMounted, ref, watch } from 'vue';
+import { globalModal, ModalMode } from '#/modal';
+import { AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
+import { useAccountManager, gradeMaps, experienceMaps, languageMaps } from '#/scripts/AccountManager';
+import recaptcha from '#/scripts/recaptcha';
 
 const modal = globalModal();
 const accountManager = useAccountManager();
@@ -226,25 +226,25 @@ onMounted(clearDangerButtons);
             <form action="javascript:void(0)" @submit=writeData>
                 <PairedGridContainer width=100%>
                     <span>Display Name:</span>
-                    <UITextBox v-model=accountManager.displayName maxlength="32" width="var(--fwidth)" title="Name used in profile, contests, etc." required></UITextBox>
+                    <InputTextBox v-model=accountManager.displayName maxlength="32" width="var(--fwidth)" title="Name used in profile, contests, etc." required></InputTextBox>
                     <span>Name:</span>
                     <span class="nowrap">
-                        <UITextBox v-model=accountManager.firstName maxlength="32" width="var(--hwidth)" title="First name" required></UITextBox>
-                        <UITextBox v-model=accountManager.lastName maxlength="32" width="var(--hwidth)" title="Last name" required></UITextBox>
+                        <InputTextBox v-model=accountManager.firstName maxlength="32" width="var(--hwidth)" title="First name" required></InputTextBox>
+                        <InputTextBox v-model=accountManager.lastName maxlength="32" width="var(--hwidth)" title="Last name" required></InputTextBox>
                     </span>
                     <span>School:</span>
-                    <UITextBox v-model=accountManager.school maxlength="64" width="var(--fwidth)" title="Your school name" required></UITextBox>
+                    <InputTextBox v-model=accountManager.school maxlength="64" width="var(--fwidth)" title="Your school name" required></InputTextBox>
                     <span>Grade/Experience:</span>
                     <span class="nowrap">
-                        <UIDropdown v-model=gradeInput width="var(--hwidth)" :items="gradeMaps" title="Your current grade level" required></UIDropdown>
-                        <UIDropdown v-model=experienceInput width="var(--hwidth)" :items="experienceMaps" title="Your experience level with competitive programming" required></UIDropdown>
+                        <InputDropdown v-model=gradeInput width="var(--hwidth)" :items="gradeMaps" title="Your current grade level" required></InputDropdown>
+                        <InputDropdown v-model=experienceInput width="var(--hwidth)" :items="experienceMaps" title="Your experience level with competitive programming" required></InputDropdown>
                     </span>
                     <span>Known Languages:<br>(Use CTRL/SHIFT)</span>
-                    <UIDropdown v-model=languagesInput width="var(--fwidth)" :items="languageMaps" title="What programming languages have you used in contest?" height="80px" multiple></UIDropdown>
+                    <InputDropdown v-model=languagesInput width="var(--fwidth)" :items="languageMaps" title="What programming languages have you used in contest?" height="80px" multiple></InputDropdown>
                     <span>Biography<br>({{ remainingBioCharacters }} chars):</span>
-                    <UITextArea v-model=accountManager.bio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="2048" placeholder="Describe yourself in a few short sentences!" resize="vertical"></UITextArea>
+                    <InputTextArea v-model=accountManager.bio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="2048" placeholder="Describe yourself in a few short sentences!" resize="vertical"></InputTextArea>
                 </PairedGridContainer>
-                <UIButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedChanges text="Save" color="yellow" glitch-on-mount></UIButton>
+                <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedChanges text="Save" color="yellow" glitch-on-mount></InputButton>
             </form>
             <WaitCover text="Please wait..." :show="(showWriteDataWait || loading) && $route.query.ignore_server === undefined"></WaitCover>
         </TitledCutCornerContainer>
@@ -255,8 +255,8 @@ onMounted(clearDangerButtons);
                 <div class="profileTeamSection">
                     <h3>Join a team!</h3>
                     <span class="nowrap">
-                        <UITextBox v-model=joinTeamCode title="Ask team creator for join code!" placeholder="Join code" maxlength="6"></UITextBox>
-                        <UIButton text="Join" :disabled="joinTeamCode.length != 6" @click=joinTeam></UIButton>
+                        <InputTextBox v-model=joinTeamCode title="Ask team creator for join code!" placeholder="Join code" maxlength="6"></InputTextBox>
+                        <InputButton text="Join" :disabled="joinTeamCode.length != 6" @click=joinTeam></InputButton>
                     </span>
                     <br>
                     <i>Joining will sync your registrations to the team</i>
@@ -272,23 +272,23 @@ onMounted(clearDangerButtons);
                     <form action="javascript:void(0)" @submit=writeTeamData>
                         <PairedGridContainer width="100%">
                             <span>Team Name:</span>
-                            <UITextBox v-model=accountManager.teamName maxlength="32" width="var(--fwidth)" title="Collective team name" placeholder="Team Name"></UITextBox>
+                            <InputTextBox v-model=accountManager.teamName maxlength="32" width="var(--fwidth)" title="Collective team name" placeholder="Team Name"></InputTextBox>
                             <span>Biography<br>({{ remainingBioCharacters2 }} chars):</span>
-                            <UITextArea v-model=accountManager.teamBio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" placeholder="Describe your team in a few short sentences!" resize="vertical"></UITextArea>
+                            <InputTextArea v-model=accountManager.teamBio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" placeholder="Describe your team in a few short sentences!" resize="vertical"></InputTextArea>
                         </PairedGridContainer>
-                        <UIButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedTeamChanges text="Save" color="yellow" glitch-on-mount></UIButton>
+                        <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedTeamChanges text="Save" color="yellow" glitch-on-mount></InputButton>
                     </form>
                 </div>
             </div>
             <div class="profileTeamSection">
                 <span class="nowrap">
                     <span>Join Code:</span>
-                    <UITextBox v-model=joinCodeNotEditable :type=teamCodeType disabled @mouseenter="onCodeMouseEnter" @mouseleave="onCodeMouseLeave"></UITextBox>
-                    <UICopyButton :value="joinCodeNotEditable ?? ''"></UICopyButton>
+                    <InputTextBox v-model=joinCodeNotEditable :type=teamCodeType disabled @mouseenter="onCodeMouseEnter" @mouseleave="onCodeMouseLeave"></InputTextBox>
+                    <InputCopyButton :value="joinCodeNotEditable ?? ''"></InputCopyButton>
                 </span>
             </div>
             <div class="profileTeamSection" v-if="accountManager.team !== accountManager.username">
-                <UIButton text="Leave Team" color="red" glitch-on-mount @click=leaveTeam></UIButton>
+                <InputButton text="Leave Team" color="red" glitch-on-mount @click=leaveTeam></InputButton>
             </div>
             <WaitCover text="Please wait..." :show="(showWriteTeamDataWait || loading) && $route.query.ignore_server === undefined"></WaitCover>
         </TitledCutCornerContainer>
@@ -297,18 +297,18 @@ onMounted(clearDangerButtons);
         <TitledCutCornerContainer title="Account" hover-animation="lift">
             <PairedGridContainer>
                 <span>Username:</span>
-                <UITextBox v-model=usernameNotEditable width="var(--fwidth)" title="Your unique username (you cannot edit this)" disabled></UITextBox>
+                <InputTextBox v-model=usernameNotEditable width="var(--fwidth)" title="Your unique username (you cannot edit this)" disabled></InputTextBox>
                 <span>Email:</span>
-                <UITextBox v-model=emailNotEditable width="var(--fwidth)" title="Email used to update you on contests, password changes, etc. (you cannot edit this)" disabled></UITextBox>
+                <InputTextBox v-model=emailNotEditable width="var(--fwidth)" title="Email used to update you on contests, password changes, etc. (you cannot edit this)" disabled></InputTextBox>
             </PairedGridContainer>
             <br>
             <TitledCollapsible title="Danger buttons" font-size="var(--font-medium)" border-color="red" @click="clearDangerButtons" start-collapsed>
                 <!-- useless form -->
                 <form class="profileDangerButtons" action="javascript:void(0)">
                     <div style="text-align: right; align-content: center; font-size: var(--font-18);">Enter password:</div>
-                    <UITextBox type="password" v-model=currentPasswordInput placeholder="Current password"></UITextBox>
-                    <UIButton text="CHANGE PASSWORD" color="red" @click="changePassword" :disabled="currentPasswordInput.length == 0"></UIButton>
-                    <UIButton text="DELETE ACCOUNT" color="red" @click="deleteAccount" :disabled="currentPasswordInput.length == 0"></UIButton>
+                    <InputTextBox type="password" v-model=currentPasswordInput placeholder="Current password"></InputTextBox>
+                    <InputButton text="CHANGE PASSWORD" color="red" @click="changePassword" :disabled="currentPasswordInput.length == 0"></InputButton>
+                    <InputButton text="DELETE ACCOUNT" color="red" @click="deleteAccount" :disabled="currentPasswordInput.length == 0"></InputButton>
                 </form>
             </TitledCollapsible>
         </TitledCutCornerContainer>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import ArchiveListContest from '@/components/archive/archiveList/ArchiveListContest.vue';
 import ArchiveListRound from '@/components/archive/archiveList/ArchiveListRound.vue';
-import { AngledTitledContainer, AnimateInContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal } from '@/components/ui-defaults/UIDefaults';
-import { useUpsolveManager } from '@/scripts/UpsolveManager';
-import type { UpsolveContest, UpsolveRound } from '@/scripts/UpsolveManager';
+import { AngledTitledContainer, AnimateInContainer } from '#/containers';
+import LoadingCover from '#/common/LoadingCover.vue';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import LoadingCover from '@/components/common/LoadingCover.vue';
-import { useServerConnection } from '@/scripts/ServerConnection';
+import { globalModal } from '#/modal';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { useUpsolveManager } from '@/scripts/UpsolveManager';
+import type { UpsolveContest, UpsolveRound } from '@/scripts/UpsolveManager';
 
 const modal = globalModal();
 const route = useRoute();

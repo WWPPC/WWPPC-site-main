@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { type UpsolveContest } from '@/scripts/UpsolveManager';
-import { autoGlitchTextTransition } from '@/components/ui-defaults/TextTransitions';
-import { AnimateInContainer, CutCornerContainer } from '@/components/ui-defaults/UIContainers';
+import { autoGlitchTextTransition } from '#/text';
+import { AnimateInContainer, CutCornerContainer } from '#/containers';
 import ArchiveListRound from './ArchiveListRound.vue';
 import { useRouter } from 'vue-router';
+import { type UpsolveContest } from '@/scripts/UpsolveManager';
 
 const props = defineProps<{
     data: UpsolveContest

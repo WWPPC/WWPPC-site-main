@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { AnimateInContainer, TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal, UIButton, UIDropdown } from '@/components/ui-defaults/UIDefaults';
-import { useAccountManager } from '@/scripts/AccountManager';
-import { useContestManager } from '@/scripts/ContestManager';
-import recaptcha from '@/scripts/recaptcha';
+import { AnimateInContainer, TitledCutCornerContainer } from '#/containers';
+import { InputButton, InputDropdown } from '#/inputs';
+import WaitCover from '#/common/WaitCover.vue';
 import { onMounted, ref, watch } from 'vue';
-import { getTeamOpMessage, TeamOpResult } from '@/scripts/ServerConnection';
-import WaitCover from '@/components/common/WaitCover.vue';
+import { globalModal } from '#/modal';
+import { getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
+import { useAccountManager } from '#/scripts/AccountManager';
+import { useContestManager } from '@/scripts/ContestManager';
+import recaptcha from '#/scripts/recaptcha';
 
 const accountManager = useAccountManager();
 const contestManager = useContestManager();
@@ -62,7 +63,7 @@ const attemptUnregister = async (registration: string) => {
                     <div class="registrationBlock">
                         <div class="registrationStatusDotUpcoming"></div>
                         {{ reg }}
-                        <UIButton class="registrationUnregister" text="Unregister" color="red" @click="attemptUnregister(reg)" glitch-on-mount></UIButton>
+                        <InputButton class="registrationUnregister" text="Unregister" color="red" @click="attemptUnregister(reg)" glitch-on-mount></InputButton>
                     </div>
                 </AnimateInContainer>
             </div>
@@ -83,8 +84,8 @@ const attemptUnregister = async (registration: string) => {
     </AnimateInContainer>
     <AnimateInContainer type="slideUp" :delay=200>
         <TitledCutCornerContainer title="Register" hover-animation="lift">
-            <UIDropdown :items="contestList" v-model="registrationSelected" width="200px"></UIDropdown>
-            <UIButton text="Register" :disabled="registrationSelected == ''" @click="attemptRegister"></UIButton>
+            <InputDropdown :items="contestList" v-model="registrationSelected" width="200px"></InputDropdown>
+            <InputButton text="Register" :disabled="registrationSelected == ''" @click="attemptRegister"></InputButton>
             <br>
             <span>Registering will also register your entire team!</span>
             <WaitCover text="Please wait..." :show="showRegisterWait"></WaitCover>

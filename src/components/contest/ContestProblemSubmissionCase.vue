@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type ContestScore, ContestScoreState } from '@/scripts/ContestManager';
-import { globalModal } from '../ui-defaults/UIDefaults';
+import { globalModal } from '#/modal';
 
 const props = defineProps<{
     case: ContestScore

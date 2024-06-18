@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { ContestRound } from '@/scripts/ContestManager';
 import ContestProblemListProblem from './ContestProblemListProblem.vue';
-import { CutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import AnimateInContainer from '@/components/ui-defaults/containers/AnimateInContainer.vue';
+import { AnimateInContainer, CutCornerContainer } from '#/containers';
 import { ref, onMounted } from 'vue';
-import { glitchTextTransition } from '@/components/ui-defaults/TextTransitions';
+import { glitchTextTransition } from '#/text';
 
 const props = defineProps<{
     data: ContestRound

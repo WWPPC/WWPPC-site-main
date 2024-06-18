@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { autoGlitchTextTransition } from '@/components/ui-defaults/TextTransitions';
-import { AnimateInContainer, TitledCollapsible } from '@/components/ui-defaults/UIContainers';
-import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '@/scripts/UpsolveManager';
+import { autoGlitchTextTransition } from '#/text';
+import { AnimateInContainer, TitledCollapsible } from '#/containers';
+import LoadingBar from '#/common/LoadingBar.vue';
 import ContestProblemListProblem from '@/components/contest/problemList/ContestProblemListProblem.vue';
 import { onMounted, ref, watch } from 'vue';
+import { globalModal } from '#/modal';
+import { useServerConnection } from '#/scripts/ServerConnection';
 import { type ContestProblem, ContestProblemCompletionState } from '@/scripts/ContestManager';
-import { globalModal, UILoadingBar } from '@/components/ui-defaults/UIDefaults';
-import { useServerConnection } from '@/scripts/ServerConnection';
+import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '@/scripts/UpsolveManager';
 
 const props = defineProps<{
     data: UpsolveRound
@@ -63,7 +64,7 @@ if (!props.minimized) {
             <ContestProblemListProblem :data="problem" archive></ContestProblemListProblem>
         </AnimateInContainer>
         <div class="centered" v-if="problems == null" style="margin: 8px 0px;">
-            <UILoadingBar width="max(50%, 100px)" height="16px"></UILoadingBar>
+            <LoadingBar width="max(50%, 100px)" height="16px"></LoadingBar>
         </div>
     </TitledCollapsible>
 </template>

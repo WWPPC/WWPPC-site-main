@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal, UICopyButton, UITextArea, UIFileUpload } from '@/components/ui-defaults/UIDefaults';
+import { TitledCutCornerContainer } from '#/containers';
+import { InputCopyButton, InputTextArea, InputFileUpload } from '#/inputs';
 import { ref } from 'vue';
+import { globalModal } from '#/modal';
 
 const modal = globalModal();
 
@@ -28,11 +29,11 @@ const upload = (event: any) => {
         <TitledCutCornerContainer title="Image" reversed>
             <img :src="dataurl" class="uploadImg">
             <br>
-            <UIFileUpload accept="image/png,image/jpeg" @change=upload></UIFileUpload>
+            <InputFileUpload accept="image/png,image/jpeg" @change=upload></InputFileUpload>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Data URL">
-            <UITextArea v-model="dataurl" resize="vertical" class="big" disabled></UITextArea>
-            <UICopyButton :value="dataurl"></UICopyButton>
+            <InputTextArea v-model="dataurl" resize="vertical" class="big" disabled></InputTextArea>
+            <InputCopyButton :value="dataurl"></InputCopyButton>
         </TitledCutCornerContainer>
     </div>
 </template>

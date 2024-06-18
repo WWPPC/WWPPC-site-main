@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelView, PanelNavLargeLogo, PanelRightList } from '@/components/panels/PanelManager';
-import PagePanelAccountProfile from './account/PagePanelAccountProfile.vue';
+import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelView, PanelNavLargeLogo, PanelRightList } from '#/panels';
 import PagePanelAccountWrapper from './account/PagePanelAccountWrapper.vue';
-import { useServerConnection } from '@/scripts/ServerConnection';
-import { useRoute } from 'vue-router';
-import { useConnectionEnforcer } from '@/scripts/ConnectionEnforcer';
+import PagePanelAccountProfile from './account/PagePanelAccountProfile.vue';
 import PagePanelAccountRegistrations from './account/PagePanelAccountRegistrations.vue';
+import { useRoute } from 'vue-router';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 
 const route = useRoute();
 

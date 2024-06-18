@@ -1,5 +1,5 @@
-import 'wwppc-site-common';
-import 'wwppc-site-common/style.css'
+import '#/index';
+import '#/assets/common.css'
 
 import './assets/main.css';
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { UITextArea } from '@/components/ui-defaults/UIDefaults';
+import { TitledCutCornerContainer } from '#/containers';
+import { InputTextArea } from '#/inputs';
 import { onMounted, ref, watch } from 'vue';
-import latexify from '@/scripts/katexify';
+import latexify from '#/scripts/katexify';
 
 const html = ref('');
 const rendered = ref('');
@@ -18,7 +18,7 @@ watch(html, () => {
 <template>
     <div class="columns">
         <TitledCutCornerContainer title="LaTeX/HTML" reversed>
-            <UITextArea v-model="html" resize="none" class="big"></UITextArea>
+            <InputTextArea v-model="html" resize="none" class="big"></InputTextArea>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Rendered">
             <div v-html="rendered" class="render"></div>

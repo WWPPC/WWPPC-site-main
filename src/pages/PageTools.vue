@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelView, PanelNavLargeLogo } from '@/components/panels/PanelManager';
+import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelView, PanelNavLargeLogo } from '#/panels';
 import { useRouter } from 'vue-router';
 import PagePanelToolsEditor from './tools/PagePanelToolsEditor.vue';
 import PagePanelToolsDataurl from './tools/PagePanelToolsDataurl.vue';

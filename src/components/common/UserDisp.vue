@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { InputButton } from '#/inputs';
+import { glitchTextTransition } from '#/text';
 import { onMounted, ref, watch } from 'vue';
-import { UIButton } from '@/components/ui-defaults/UIDefaults';
-import { useServerConnection } from '@/scripts/ServerConnection';
-import { glitchTextTransition } from '@/components/ui-defaults/TextTransitions';
 import { useRouter, useRoute } from 'vue-router';
-import { useAccountManager } from '@/scripts/AccountManager';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { useAccountManager } from '#/scripts/AccountManager';
 
 const serverConnection = useServerConnection();
 const accountManager = useAccountManager();
@@ -54,7 +54,7 @@ serverConnection.ondisconnect(() => {
             <img :src=accountManager.profileImage class="userDispProfileImg" v-if="serverConnection.loggedIn || ignoreServer">
             <div class="userDispUserName">{{ name }}</div>
         </div>
-        <UIButton :text=buttonText width="calc(100% - 16px)" font="20px" @click=buttonAction></UIButton>
+        <InputButton :text=buttonText width="calc(100% - 16px)" font="20px" @click=buttonAction></InputButton>
     </div>
 </template>
 

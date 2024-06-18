@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { setTitlePanel } from '@/scripts/title';
-import { DoubleCutCornerContainer, TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal, UIButton, UIDropdown, UIFileUpload, UIIconButton } from '@/components/ui-defaults/UIDefaults';
-import { completionStateString, type ContestProblem, ContestProblemCompletionState, ContestUpdateSubmissionResult, getUpdateSubmissionMessage, useContestManager } from '@/scripts/ContestManager';
+import { setTitlePanel } from '#/scripts/title';
+import { DoubleCutCornerContainer, TitledCutCornerContainer, AnimateInContainer } from '#/containers';
+import { InputButton, InputFileUpload, InputIconButton } from '#/inputs';
+import InputDropdown from '#/inputs/InputDropdown.vue'; // this is required for spaghetti fix
+import WaitCover from '#/common/WaitCover.vue';
+import ContestProblemStatusCircle from '@/components/contest/ContestProblemStatusCircle.vue';
+import ContestProblemSubmissionCase from '@/components/contest/ContestProblemSubmissionCase.vue';
+import { autoGlitchTextTransition } from '#/text';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { autoGlitchTextTransition } from '@/components/ui-defaults/TextTransitions';
-import WaitCover from '@/components/common/WaitCover.vue';
-import latexify from '@/scripts/katexify';
-import ContestProblemStatusCircle from '@/components/contest/ContestProblemStatusCircle.vue';
-import AnimateInContainer from '@/components/ui-defaults/containers/AnimateInContainer.vue';
-import { useServerConnection } from '@/scripts/ServerConnection';
-import ContestProblemSubmissionCase from '@/components/contest/ContestProblemSubmissionCase.vue';
+import { globalModal } from '#/modal';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { completionStateString, type ContestProblem, ContestProblemCompletionState, ContestUpdateSubmissionResult, getUpdateSubmissionMessage, useContestManager } from '@/scripts/ContestManager';
+import latexify from '#/scripts/katexify';
 
 const route = useRoute();
 const router = useRouter();
@@ -102,9 +103,9 @@ const problemSubtitle1 = autoGlitchTextTransition(() => {
 const problemSubtitle2 = autoGlitchTextTransition(() => `${problem.value.constraints.memory}MB, ${problem.value.constraints.time}ms&emsp;|&emsp;${completionStateString(problem.value.status)}`, 40, 1, 20);
 
 // uploads
-const fileUpload = ref<InstanceType<typeof UIFileUpload>>();
-const languageDropdown = ref<InstanceType<typeof UIDropdown>>();
-const submit = ref<InstanceType<typeof UIButton>>();
+const fileUpload = ref<InstanceType<typeof InputFileUpload>>();
+const languageDropdown = ref<InstanceType<typeof InputDropdown>>();
+const submit = ref<InstanceType<typeof InputButton>>();
 const handleUpload = () => {
     const file: File | undefined | null = fileUpload.value?.files?.item(0);
     if (fileUpload.value == undefined || file == undefined) return;
@@ -158,7 +159,7 @@ onMounted(() => {
 
 <template>
     <div style="margin-left: -4px;">
-        <UIIconButton text="Back to Problem List" img="/assets/arrow-left.svg" @click="$router.push('/contest/problemList')" color="lime"></UIIconButton>
+        <InputIconButton text="Back to Problem List" img="/assets/arrow-left.svg" @click="$router.push('/contest/problemList')" color="lime"></InputIconButton>
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">
@@ -183,11 +184,11 @@ onMounted(() => {
                 <form class="problemViewSubmitForm" action="javascript:void(0)">
                     <div class="problemViewSubmitFormInner">
                         <span>Source code:</span>
-                        <UIFileUpload ref="fileUpload" @input=handleUpload accept=".c,.cpp,.py,.java"></UIFileUpload>
+                        <InputFileUpload ref="fileUpload" @input=handleUpload accept=".c,.cpp,.py,.java"></InputFileUpload>
                         <span>Language:</span>
-                        <UIDropdown ref="languageDropdown" :items="serverConnection.serverConfig.acceptedLanguages.map((a) => ({ text: a, value: a }))" required></UIDropdown>
+                        <InputDropdown ref="languageDropdown" :items="serverConnection.serverConfig.acceptedLanguages.map((a) => ({ text: a, value: a }))" required></InputDropdown>
                     </div>
-                    <UIButton ref="submit" text="Upload Submission" type="submit" width="min-content" @click=submitUpload :disabled="languageDropdown?.value == undefined || languageDropdown?.value == '' || fileUpload?.files == null || fileUpload?.files.item(0) == null || contestManager.contest == null || contestManager.contest.rounds[problem.round].startTime > Date.now() || contestManager.contest.rounds[problem.round].endTime <= Date.now()"></UIButton>
+                    <InputButton ref="submit" text="Upload Submission" type="submit" width="min-content" @click=submitUpload :disabled="languageDropdown?.value == undefined || languageDropdown?.value == '' || fileUpload?.files == null || fileUpload?.files.item(0) == null || contestManager.contest == null || contestManager.contest.rounds[problem.round].startTime > Date.now() || contestManager.contest.rounds[problem.round].endTime <= Date.now()"></InputButton>
                 </form>
             </DoubleCutCornerContainer>
             <DoubleCutCornerContainer flipped>

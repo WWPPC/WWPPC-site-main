@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { AngledTitledContainer } from '@/components/ui-defaults/UIContainers';
+import { AnimateInContainer, AngledTitledContainer } from '#/containers';
 import ContestProblemListRound from '@/components/contest/problemList/ContestProblemListRound.vue';
-import AnimateInContainer from '@/components/ui-defaults/containers/AnimateInContainer.vue';
 import { useContestManager } from '@/scripts/ContestManager';
-import WaitCover from '@/components/common/WaitCover.vue';
+import WaitCover from '#/common/WaitCover.vue';
 
 const contestManager = useContestManager();
 </script>

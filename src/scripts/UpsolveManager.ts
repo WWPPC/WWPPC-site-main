@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { reactive } from 'vue';
 
 import { ContestUpdateSubmissionResult } from './ContestManager';
-import { apiFetch, socket, useServerConnection } from './ServerConnection';
+import { apiFetch, socket, useServerConnection } from '#/scripts/ServerConnection';
 
 import { ContestProblemCompletionState } from './ContestManager';
 import type { ContestScore } from './ContestManager';

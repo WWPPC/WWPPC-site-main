@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { globalModal } from '@/components/ui-defaults/UIDefaults';
 import { ContestProblemCompletionState, completionStateString } from '@/scripts/ContestManager';
+import { globalModal } from '#/modal';
+
 const props = defineProps<{
     status: ContestProblemCompletionState
 }>();

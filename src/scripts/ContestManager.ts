@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { reactive, watch } from 'vue';
 
-import { apiFetch, socket, useServerConnection } from './ServerConnection';
+import { apiFetch, socket, useServerConnection } from '#/scripts/ServerConnection';
 
 export interface Contest {
     readonly id: string

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AnimateInContainer, DoubleCutCornerContainer } from '@/components/ui-defaults/UIContainers';
+import { AnimateInContainer, DoubleCutCornerContainer } from '#/containers';
 import HomeAboutCreditsCardIcon from './HomeAboutCreditsCardIcon.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';

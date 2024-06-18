@@ -2,7 +2,8 @@
 import { nextContest, useContestManager } from '@/scripts/ContestManager';
 import { useRoute } from 'vue-router';
 import { onMounted, ref, watch } from 'vue';
-import { GlitchText, UITimer } from '@/components/ui-defaults/UIDefaults';
+import { GlitchText } from '#/text';
+import TimerDisplay from '#/common/TimerDisplay.vue';
 
 const props = defineProps<{
     big?: boolean
@@ -80,7 +81,7 @@ watch(nextTime, () => emit('next', nextTime.value.getTime()));
     <Transition>
         <div :class="'timer' + ($props.big ? '2' : '')" v-if="contestManager.contest !== null || route.query.ignore_server !== undefined" v-show="show">
             <GlitchText :text="round" :class="'timerText' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" random on-visible></GlitchText>
-            <UITimer type="min-timer" :to="nextTime" :class="'timerTime' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" :color="color" :flashing="flashColor != ''" :flash-color="flashColor == color ? undefined : flashColor" @zero="updateTime"></UITimer>
+            <TimerDisplay type="min-timer" :to="nextTime" :class="'timerTime' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" :color="color" :flashing="flashColor != ''" :flash-color="flashColor == color ? undefined : flashColor" @zero="updateTime"></TimerDisplay>
         </div>
     </Transition>
 </template>

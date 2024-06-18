@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { GlitchText, UILoadingSpinner } from '@/components/ui-defaults/UIDefaults';
-import { useAccountManager } from '@/scripts/AccountManager';
-import { useContestManager } from '@/scripts/ContestManager';
+import { GlitchText } from '#/text';
 import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAccountManager } from '#/scripts/AccountManager';
+import { useContestManager } from '@/scripts/ContestManager';
 
 const accountManager = useAccountManager();
 const contestManager = useContestManager();

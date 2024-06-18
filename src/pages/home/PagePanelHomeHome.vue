@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ScrollIndicator from '@/components/common/ScrollIndicator.vue';
-import { AnimateInContainer, CenteredContainer, DoubleCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { GlowText, GlitchText, UIDivider, UILinkButton, UIIconButton } from '@/components/ui-defaults/UIDefaults';
+import ScrollIndicator from '#/common/ScrollIndicator.vue';
+import { AnimateInContainer, CenteredContainer, DoubleCutCornerContainer } from '#/containers';
+import { GlowText, GlitchText } from '#/text';
 import HomeSponsorLogo from '@/components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '@/components/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/ContestManager';

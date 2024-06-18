@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { PanelView, PanelHeader, PanelNavLargeLogo, PanelMain, PanelBody, PanelRightList, PanelNavList } from '@/components/panels/PanelManager';
+import { PanelView, PanelHeader, PanelNavLargeLogo, PanelMain, PanelBody, PanelRightList, PanelNavList } from '#/panels';
 import UserDisp from '@/components/common/UserDisp.vue';
-import { useConnectionEnforcer } from '@/scripts/ConnectionEnforcer';
-import LoadingCover from '@/components/common/LoadingCover.vue';
-import NotFound from '@/pages/NotFound.vue';
-import OnScreenHook from '@/components/ui-defaults/OnScreenHook.vue';
-import { AnimateInContainer, CutCornerContainer, PairedGridContainer, TitledCutCornerContainer, TitledDoubleCutCornerContainer } from '@/components/ui-defaults/UIContainers';
+import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import LoadingCover from '#/common/LoadingCover.vue';
+import NotFound from '#/common/NotFound.vue';
+import OnScreenHook from '#/common/OnScreenHook.vue';
+import { AnimateInContainer, CutCornerContainer, PairedGridContainer, TitledCutCornerContainer, TitledDoubleCutCornerContainer } from '#/containers';
 import { useRoute } from 'vue-router';
-import { experienceMaps, gradeMaps, languageMaps, type TeamData, useAccountManager, type AccountData } from '@/scripts/AccountManager';
+import { experienceMaps, gradeMaps, languageMaps, type TeamData, useAccountManager, type AccountData } from '#/scripts/AccountManager';
 import { nextTick, onMounted, ref, watch } from 'vue';
-import { UIDropdown, UITextBox, UITextArea } from '@/components/ui-defaults/UIDefaults';
-import { useServerConnection } from '@/scripts/ServerConnection';
-import { autoGlitchTextTransition } from '@/components/ui-defaults/TextTransitions';
-import { setTitlePanel } from '@/scripts/title';
+import { InputDropdown, InputTextBox, InputTextArea } from '#/inputs';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { autoGlitchTextTransition } from '#/text';
+import { setTitlePanel } from '#/scripts/title';
 import AccountProfileTeamUser from '@/components/account/profile/AccountProfileTeamUser.vue';
 
 const route = useRoute();
@@ -85,15 +85,15 @@ const largeHeader = ref(true);
                             <TitledCutCornerContainer title="Profile" hover-animation="lift" align="center" height="100%" style="grid-row: span 2;" flipped>
                                 <PairedGridContainer style="font-size: var(--font-small);">
                                     <span>Name:</span>
-                                    <UITextBox :value="userData?.firstName + ' ' + userData?.lastName" width="var(--fwidth)" disabled></UITextBox>
+                                    <InputTextBox :value="userData?.firstName + ' ' + userData?.lastName" width="var(--fwidth)" disabled></InputTextBox>
                                     <span>School:</span>
-                                    <UITextBox :value="userData?.school" width="var(--fwidth)" disabled></UITextBox>
+                                    <InputTextBox :value="userData?.school" width="var(--fwidth)" disabled></InputTextBox>
                                     <span>Grade Level:</span>
-                                    <UIDropdown v-model="grade" width="var(--fwidth)" :items="gradeMaps" disabled></UIDropdown>
+                                    <InputDropdown v-model="grade" width="var(--fwidth)" :items="gradeMaps" disabled></InputDropdown>
                                     <span>Experience Level:</span>
-                                    <UIDropdown v-model="experience" width="var(--fwidth)" :items="experienceMaps" disabled></UIDropdown>
+                                    <InputDropdown v-model="experience" width="var(--fwidth)" :items="experienceMaps" disabled></InputDropdown>
                                     <span>Known Languages:</span>
-                                    <UIDropdown v-model="languages" width="var(--fwidth)" height="6em" :items="languageMaps" multiple disabled></UIDropdown>
+                                    <InputDropdown v-model="languages" width="var(--fwidth)" height="6em" :items="languageMaps" multiple disabled></InputDropdown>
                                 </PairedGridContainer>
                             </TitledCutCornerContainer>
                             <TitledDoubleCutCornerContainer title="Biography" hover-animation="lift" align="center" height="100%" flipped>
@@ -109,9 +109,9 @@ const largeHeader = ref(true);
                                     <div>
                                         <PairedGridContainer width="100%">
                                             <span>Team Name:</span>
-                                            <UITextBox :value="teamData?.teamName" width="var(--fwidth)" disabled></UITextBox>
+                                            <InputTextBox :value="teamData?.teamName" width="var(--fwidth)" disabled></InputTextBox>
                                             <span>Biography:</span>
-                                            <UITextArea :value="teamData?.teamBio" width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" resize="vertical" disabled></UITextArea>
+                                            <InputTextArea :value="teamData?.teamBio" width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" resize="vertical" disabled></InputTextArea>
                                         </PairedGridContainer>
                                     </div>
                                 </div>

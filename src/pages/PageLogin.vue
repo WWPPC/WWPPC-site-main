@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { PanelBody, PanelHeader, PanelMain, PanelView, PanelNavLargeLogo } from '@/components/panels/PanelManager';
-import { UIButton, UIDropdown, UITextBox, globalModal } from '@/components/ui-defaults/UIDefaults';
+import { PanelBody, PanelHeader, PanelMain, PanelView, PanelNavLargeLogo } from '#/panels';
+import { InputButton, InputDropdown, InputTextBox } from '#/inputs';
+import { PairedGridContainer } from '#/containers';
+import LoadingCover from '#/common/LoadingCover.vue';
+import WaitCover from '#/common/WaitCover.vue';
 import { ref, watch } from 'vue';
-import { useServerConnection, AccountOpResult, getAccountOpMessage } from '@/scripts/ServerConnection';
 import { useRoute, useRouter } from 'vue-router';
-import LoadingCover from '@/components/common/LoadingCover.vue';
-import WaitCover from '@/components/common/WaitCover.vue';
-import { PairedGridContainer } from '@/components/ui-defaults/UIContainers';
-import { languageMaps, experienceMaps, gradeMaps, useAccountManager, validateCredentials } from '@/scripts/AccountManager';
-import recaptcha from '@/scripts/recaptcha';
-import { useConnectionEnforcer } from '@/scripts/ConnectionEnforcer';
+import { globalModal } from '#/modal';
+import { useServerConnection, AccountOpResult, getAccountOpMessage } from '#/scripts/ServerConnection';
+import { languageMaps, experienceMaps, gradeMaps, useAccountManager, validateCredentials } from '#/scripts/AccountManager';
+import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import recaptcha from '#/scripts/recaptcha';
 
 const router = useRouter();
 const route = useRoute();
@@ -133,11 +134,11 @@ watch(usernameInput, () => {
                                     <img src="/logo.svg" class="loginLogoFloater">
                                     <h1 class="loginVerticalHeader">Log In</h1>
                                     <form class="loginVertical" action="javascript:void(0)">
-                                        <UITextBox v-model="usernameInput" placeholder="Username" style="margin-bottom: 8px;" width="208px" title="Username" maxlength="16" autocomplete="username" autocapitalize="off" pattern="[a-z0-9\-_]*" highlight-invalid required></UITextBox>
-                                        <UITextBox v-model="passwordInput" placeholder="Password" type="password" style="margin-bottom: 8px;" width="208px" title="Password" maxlength="1024" autocomplete="current-password" required></UITextBox>
+                                        <InputTextBox v-model="usernameInput" placeholder="Username" style="margin-bottom: 8px;" width="208px" title="Username" maxlength="16" autocomplete="username" autocapitalize="off" pattern="[a-z0-9\-_]*" highlight-invalid required></InputTextBox>
+                                        <InputTextBox v-model="passwordInput" placeholder="Password" type="password" style="margin-bottom: 8px;" width="208px" title="Password" maxlength="1024" autocomplete="current-password" required></InputTextBox>
                                         <span>
-                                            <UIButton text="Log In" type="submit" @click="attemptLogin" width="100px" title="Log in" glitchOnMount :disabled=showLoginWait></UIButton>
-                                            <UIButton text="Sign Up" type="submit" @click="toSignUp" width="100px" title="Continue to create a new account" glitchOnMount :disabled=showLoginWait></UIButton>
+                                            <InputButton text="Log In" type="submit" @click="attemptLogin" width="100px" title="Log in" glitchOnMount :disabled=showLoginWait></InputButton>
+                                            <InputButton text="Sign Up" type="submit" @click="toSignUp" width="100px" title="Continue to create a new account" glitchOnMount :disabled=showLoginWait></InputButton>
                                         </span>
                                         <span class="loginForgotPassword" @click="toRecovery">Forgot password?</span>
                                     </form>
@@ -149,34 +150,34 @@ watch(usernameInput, () => {
                         <div class="fullBlock loginScroll" v-show="page == 1">
                             <div class="centered">
                                 <div class="loginVertical">
-                                    <UIButton @click="page = 0" text="Cancel" style="margin-top: 8px;" width="160px" color="red" title="Go back to login page"></UIButton>
+                                    <InputButton @click="page = 0" text="Cancel" style="margin-top: 8px;" width="160px" color="red" title="Go back to login page"></InputButton>
                                     <h1 class="loginVerticalHeader2">Sign Up</h1>
                                     <form class="loginVertical" action="javascript:void(0)" @submit=attemptSignup>
                                         <span style="margin-bottom: 8px;" class="nowrap">
-                                            <UITextBox :value="usernameInput" width="var(--hwidth)" title="Username" disabled autocomplete="off"></UITextBox>
-                                            <UITextBox :value="passwordInput.replace(/./g, '•')" width="var(--hwidth)" title="Password" disabled autocomplete="off"></UITextBox>
+                                            <InputTextBox :value="usernameInput" width="var(--hwidth)" title="Username" disabled autocomplete="off"></InputTextBox>
+                                            <InputTextBox :value="passwordInput.replace(/./g, '•')" width="var(--hwidth)" title="Password" disabled autocomplete="off"></InputTextBox>
                                         </span>
                                         <span style="margin-bottom: 8px;" class="nowrap">
-                                            <UITextBox v-model="firstNameInput" width="var(--hwidth)" title="First name" placeholder="First name" maxlength="32" autocomplete="given-name" required></UITextBox>
-                                            <UITextBox v-model="lastNameInput" width="var(--hwidth)" title="Last Name" placeholder="Last name" maxlength="32" autocomplete="family-name" required></UITextBox>
+                                            <InputTextBox v-model="firstNameInput" width="var(--hwidth)" title="First name" placeholder="First name" maxlength="32" autocomplete="given-name" required></InputTextBox>
+                                            <InputTextBox v-model="lastNameInput" width="var(--hwidth)" title="Last Name" placeholder="Last name" maxlength="32" autocomplete="family-name" required></InputTextBox>
                                         </span>
-                                        <UITextBox v-model="schoolInput" style="margin-bottom: 8px;" width="var(--fwidth)" title="Your school name" placeholder="School name" maxlength="64" required></UITextBox>
-                                        <UITextBox v-model="emailInput" type="email" name="email" style="margin-bottom: 8px;" width="var(--fwidth)" title="Email" placeholder="Email" maxlength="32" required highlight-invalid></UITextBox>
+                                        <InputTextBox v-model="schoolInput" style="margin-bottom: 8px;" width="var(--fwidth)" title="Your school name" placeholder="School name" maxlength="64" required></InputTextBox>
+                                        <InputTextBox v-model="emailInput" type="email" name="email" style="margin-bottom: 8px;" width="var(--fwidth)" title="Email" placeholder="Email" maxlength="32" required highlight-invalid></InputTextBox>
                                         <PairedGridContainer width="var(--fwidth)" style="margin-bottom: 6px;">
                                             <span>
                                                 Grade Level:
                                             </span>
-                                            <UIDropdown v-model="gradeInput" width="calc(100% - 4px)" :items="gradeMaps" title="Your current grade level" required></UIDropdown>
+                                            <InputDropdown v-model="gradeInput" width="calc(100% - 4px)" :items="gradeMaps" title="Your current grade level" required></InputDropdown>
                                             <span>
                                                 Experience Level:
                                             </span>
-                                            <UIDropdown v-model="experienceInput" width="calc(100% - 4px)" :items="experienceMaps" title="Your experience level with competitive programming" required></UIDropdown>
+                                            <InputDropdown v-model="experienceInput" width="calc(100% - 4px)" :items="experienceMaps" title="Your experience level with competitive programming" required></InputDropdown>
                                             <span>
                                                 Known languages:<br>(use CTRL/SHIFT)
                                             </span>
-                                            <UIDropdown v-model="languageInput" width="calc(100% - 4px)" :items="languageMaps" title="What programming languages have you used in contest?" height="80px" multiple></UIDropdown>
+                                            <InputDropdown v-model="languageInput" width="calc(100% - 4px)" :items="languageMaps" title="What programming languages have you used in contest?" height="80px" multiple></InputDropdown>
                                         </PairedGridContainer>
-                                        <UIButton text="Sign Up" type="submit" width="var(--fwidth)" glitchOnMount :disabled="showLoginWait"></UIButton>
+                                        <InputButton text="Sign Up" type="submit" width="var(--fwidth)" glitchOnMount :disabled="showLoginWait"></InputButton>
                                     </form>
                                 </div>
                             </div>
@@ -186,7 +187,7 @@ watch(usernameInput, () => {
                         <div class="fullBlock loginScroll" v-show="page == 2">
                             <div class="centered">
                                 <div class="loginVertical">
-                                    <UIButton @click="page = 0" text="Cancel" style="margin-top: 8px;" width="160px" color="red" title="Go back to login page"></UIButton>
+                                    <InputButton @click="page = 0" text="Cancel" style="margin-top: 8px;" width="160px" color="red" title="Go back to login page"></InputButton>
                                     <h1 class="loginVerticalHeader2">Account Recovery</h1>
                                     <p style="text-align: center; font-size: var(--font-small);">
                                         Enter your email to reset your password.
@@ -194,9 +195,9 @@ watch(usernameInput, () => {
                                         We will send an account recovery email shortly.
                                     </p>
                                     <form class="loginVertical" action="javascript:void(0)" @submit=attemptRecovery>
-                                        <UITextBox :value="usernameInput" style="margin-top: 8px;" width="var(--fwidth)" title="Username" disabled autocomplete="off"></UITextBox>
-                                        <UITextBox v-model="emailInput" type="email" name="email" style="margin: 8px 0px;" width="var(--fwidth)" title="Email" placeholder="Email" maxlength="32" required highlight-invalid></UITextBox>
-                                        <UIButton text="Reset Password" type="submit" width="var(--fwidth)" glitchOnMount :disabled="attemptedRecovery || showLoginWait"></UIButton>
+                                        <InputTextBox :value="usernameInput" style="margin-top: 8px;" width="var(--fwidth)" title="Username" disabled autocomplete="off"></InputTextBox>
+                                        <InputTextBox v-model="emailInput" type="email" name="email" style="margin: 8px 0px;" width="var(--fwidth)" title="Email" placeholder="Email" maxlength="32" required highlight-invalid></InputTextBox>
+                                        <InputButton text="Reset Password" type="submit" width="var(--fwidth)" glitchOnMount :disabled="attemptedRecovery || showLoginWait"></InputButton>
                                         <span v-if="attemptedRecovery"><i>Reload to try again</i></span>
                                     </form>
                                 </div>

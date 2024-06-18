@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal, UIFileUpload, UINumberBox } from '@/components/ui-defaults/UIDefaults';
+import { TitledCutCornerContainer } from '#/containers';
+import { InputFileUpload, InputNumberBox } from '#/inputs';
 import { ref, watch } from 'vue';
+import { globalModal } from '#/modal';
 
 const modal = globalModal();
 
@@ -51,11 +52,11 @@ watch(scale, draw);
         <TitledCutCornerContainer title="SVG" reversed>
             <img :src="original" class="uploadImg">
             <br>
-            <UIFileUpload accept="image/svg+xml" @change=upload></UIFileUpload>
+            <InputFileUpload accept="image/svg+xml" @change=upload></InputFileUpload>
             <br>
             <label>
                 Scale:
-                <UINumberBox v-model="scale" :default-value="1" :step="0.1"></UINumberBox>
+                <InputNumberBox v-model="scale" :default-value="1" :step="0.1"></InputNumberBox>
             </label>
             <br>
             <span>{{ width }}px x {{ height }}px</span>

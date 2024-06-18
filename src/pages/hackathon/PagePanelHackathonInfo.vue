@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ContactFooter from '@/components/common/ContactFooter.vue';
-import ScrollIndicator from '@/components/common/ScrollIndicator.vue';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible } from '@/components/ui-defaults/UIContainers';
-import { GlitchText, UILinkButton } from '@/components/ui-defaults/UIDefaults';
+import ScrollIndicator from '#/common/ScrollIndicator.vue';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible } from '#/containers';
+import { InputLinkButton } from '#/inputs';
+import { GlitchText } from '#/text';
 </script>
 
 <template>
@@ -29,7 +30,7 @@ import { GlitchText, UILinkButton } from '@/components/ui-defaults/UIDefaults';
                         <span style="font-size: var(--font-20);">
                             <br>
                             <div class="centered" style="margin: 4px;">
-                                <UILinkButton text="Register" color="lime" font-size="var(--font-large)" disabled></UILinkButton>
+                                <InputLinkButton text="Register" color="lime" font-size="var(--font-large)" disabled></InputLinkButton>
                             </div>
                             <i style="font-size: var(--font-16)">Registrations are not open yet, check back later!</i>
                         </span>

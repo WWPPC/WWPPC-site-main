@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { AnimateInContainer } from '@/components/ui-defaults/UIContainers';
-import { globalModal, ModalMode, UIButton, UILoadingSpinner } from '@/components/ui-defaults/UIDefaults';
-import { type AccountData, useAccountManager } from '@/scripts/AccountManager';
-import recaptcha from '@/scripts/recaptcha';
-import { getTeamOpMessage, TeamOpResult } from '@/scripts/ServerConnection';
+import { AnimateInContainer } from '#/containers';
+import { InputButton } from '#/inputs';
+import LoadingSpinner from '#/common/LoadingSpinner.vue';
+import { globalModal, ModalMode } from '#/modal';
 import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
+import { type AccountData, useAccountManager } from '#/scripts/AccountManager';
+import recaptcha from '#/scripts/recaptcha';
 
 const props = defineProps<{
     user: string
@@ -51,12 +53,12 @@ const kick = async () => {
                 <Transition>
                     <div class="cardLoadingWrapper" v-if="data == null">
                         <div class="cardLoading">
-                            <UILoadingSpinner></UILoadingSpinner>
+                            <LoadingSpinner></LoadingSpinner>
                         </div>
                     </div>
                 </Transition>
             </div>
-            <UIButton class="kickButton" text="Kick" color="red" @click="kick()" v-if="$props.allowKick && $props.user !== accountManager.username && $props.user !== $props.team"></UIButton>
+            <InputButton class="kickButton" text="Kick" color="red" @click="kick()" v-if="$props.allowKick && $props.user !== accountManager.username && $props.user !== $props.team"></InputButton>
         </div>
     </AnimateInContainer>
 </template>

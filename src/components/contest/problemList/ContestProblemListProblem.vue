@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { UILinkButton } from '@/components/ui-defaults/UIDefaults';
-import { type ContestProblem } from '@/scripts/ContestManager';
-import { useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
-import { glitchTextTransition } from '@/components/ui-defaults/TextTransitions';
+import { InputLinkButton } from '#/inputs';
 import ContestProblemStatusCircle from '@/components/contest/ContestProblemStatusCircle.vue';
+import { glitchTextTransition } from '#/text';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { type ContestProblem } from '@/scripts/ContestManager';
 
 const props = defineProps<{
     data: ContestProblem
@@ -37,7 +37,7 @@ onMounted(() => {
         <span class="contestProblemListProblemName"><b>{{ nameText }}</b></span>
         <span class="contestProblemListProblemAuthor"><i>{{ authorText }}</i></span>
         <span class="contestProblemListProblemButton">
-            <UILinkButton text="View" width="100px" height="36px" :border="true" @click="router.push(props.archive ? `/contest/archiveView/${props.data.contest}/${props.data.round}/${props.data.number}` : `/contest/problemView/${props.data.round}_${props.data.number}`)"></UILinkButton>
+            <InputLinkButton text="View" width="100px" height="36px" :border="true" @click="router.push(props.archive ? `/contest/archiveView/${props.data.contest}/${props.data.round}/${props.data.number}` : `/contest/problemView/${props.data.round}_${props.data.number}`)"></InputLinkButton>
         </span>
     </div>
 </template>

@@ -12,8 +12,15 @@
         "paths": {
             "@/*": [
                 "./src/*"
+            ],
+            "#/*": [
+                "./WWPPC-site-common/src/*"
             ]
         },
+        "typeRoots": [
+            "node_modules/@types",
+            "./WWPPC-site-common/src"
+        ]
     },
     "allowJS": true
 }

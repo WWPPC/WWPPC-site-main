@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { autoGlitchTextTransition } from '@/components/ui-defaults/TextTransitions';
-import { AnimateInContainer } from '@/components/ui-defaults/UIContainers';
-import UIButton from '@/components/ui-defaults/inputs/UIButton.vue';
-import { useAccountManager } from '@/scripts/AccountManager';
+import { autoGlitchTextTransition } from '#/text';
+import { AnimateInContainer } from '#/containers';
+import { InputButton } from '#/inputs';
 import { ref } from 'vue';
-import { globalModal } from '@/components/ui-defaults/UIDefaults';
-import { useServerConnection } from '@/scripts/ServerConnection';
+import { globalModal } from '#/modal';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { useAccountManager } from '#/scripts/AccountManager';
 
 const modal = globalModal();
 const serverConnection = useServerConnection();
@@ -64,7 +64,7 @@ const changeProfileImage = (event: any) => {
                     </span>
                 </AnimateInContainer>
             </div>
-            <UIButton text="Sign Out" width="100%" @click="accountManager.signout"></UIButton>
+            <InputButton text="Sign Out" width="100%" @click="accountManager.signout"></InputButton>
         </div>
     </div>
     <div class="accountScrollboxWrapper">
