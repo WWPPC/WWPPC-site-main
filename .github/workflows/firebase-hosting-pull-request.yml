@@ -10,7 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-            submodules: recursive
+            repository: WWPPC/WWPPC-site-common
+            path: WWPPC-site-common
+            ssh-key: '${{ secrets.SSH_KEY }}'
+            persist-credentials: true
       - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
