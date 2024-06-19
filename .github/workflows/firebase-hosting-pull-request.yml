@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
             token: '${{ secrets.COMMON_PAT }}'
+            submodules: recursive
       - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
