@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "vite",
         "update-common": "cd WWPPC-site-common && npm run update",
-        "install": "cd WWPPC-site-common && npm install",
+        "preinstall": "cd WWPPC-site-common && npm install",
         "build": "npm run type-check && npm run build-only",
         "preview": "vite preview",
         "build-only": "vite build",
