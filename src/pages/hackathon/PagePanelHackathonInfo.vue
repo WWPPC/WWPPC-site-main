@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ContactFooter from '@/components/common/ContactFooter.vue';
+import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible } from '#/containers';
 import { InputLinkButton } from '#/inputs';
