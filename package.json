@@ -5,7 +5,6 @@
     "scripts": {
         "dev": "vite",
         "update-common": "cd WWPPC-site-common && npm run update",
-        "preinstall": "git submodule init && git submodule update",
         "build": "npm run type-check && npm run build-only",
         "preview": "vite preview",
         "build-only": "vite build",
