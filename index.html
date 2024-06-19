@@ -119,19 +119,30 @@
         </style>
         <script>
             let canLoad = true;
-            document.addEventListener('DOMContentLoaded', (e) => {
-                if (!canLoad) return;
-                if (document.getElementById('root').children.length == 0) window.location.reload();
-                document.getElementById('loadingCover').style.opacity = 0;
-                window.onerror = null;
-                setTimeout(() => {
-                    document.getElementById('loadingCover').remove();
-                }, 200);
-            });
-            window.onerror = (e, filename, lineno, colno, err) => {
-                document.getElementById('loadingerror').innerText += `\n${err.message} (at ${filename} ${lineno}:${colno})`;
+            const loadingCover = document.getElementById('loadingCover');
+            const loadingError = document.getElementById('loadingerror');
+            const errorListener = (err) => {
+                loadingError.innerText += `\n${err.message} (at ${err.filename} ${err.lineno}:${err.colno})`;
+                loadingCover.style.opacity = 1;
                 canLoad = false;
             };
+            document.addEventListener('DOMContentLoaded', async (e) => {
+                loadingCover.style.opacity = 0;
+                loadingCover.style.pointerEvents = 'none';
+                await Promise.all([
+                    new Promise((resolve) => window.addEventListener('load', resolve)),
+                    new Promise((resolve) => setTimeout(resolve, 200))
+                ]);
+                if (!canLoad) {
+                    loadingCover.style.opacity = 1;
+                    loadingCover.style.pointerEvents = '';
+                    return;
+                }
+                loadingCover.remove();
+                window.removeEventListener('error', errorListener);
+                if (document.getElementById('root').children.length == 0) window.location.reload();
+            });
+            window.addEventListener('error', errorListener);
         </script>
     </div>
     <script type="module" src="/src/main.ts"></script>
