@@ -1,5 +1,4 @@
 import '#/index';
-import '#/assets/common.css'
 
 import './assets/main.css';
 

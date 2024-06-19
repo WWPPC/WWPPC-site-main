@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import ScrollIndicator from '@/components/common/ScrollIndicator.vue';
+import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import ContestTimer from '@/components/contest/ContestTimer.vue';
-import { AnimateInContainer, TitledCutCornerContainer } from '@/components/ui-defaults/UIContainers';
-import { GlitchText, UIIconButton } from '@/components/ui-defaults/UIDefaults';
-import UITimeDisplay from '@/components/ui-defaults/UITimeDisplay.vue';
+import { AnimateInContainer, TitledCutCornerContainer } from '#/containers';
+import { InputIconButton } from '#/inputs';
+import { GlitchText } from '#/text';
+import TimeDisplay from '#/common/TimeDisplay.vue';
 import { useContestManager } from '@/scripts/ContestManager';
 import { onMounted, ref, watch } from 'vue';
 
@@ -59,7 +60,7 @@ onMounted(updateRoundTimes);
             <div class="blockScrollContainer">
                 <div class="blockScroll" v-for="t of roundTimes" :key="t.label">
                     <div>{{ t.label }}</div>
-                    <UITimeDisplay :time="t.time" form="short"></UITimeDisplay>
+                    <TimeDisplay :time="t.time" form="short"></TimeDisplay>
                 </div>
             </div>
         </div>
@@ -104,7 +105,7 @@ onMounted(updateRoundTimes);
                     </p>
                     <div class="centered">
                         <a href="https://discord.wwppc.tech" target="_blank" style="text-decoration: none; text-align: center;">
-                            <UIIconButton text="Join Discord" img="/img/discord-logo.svg" color="link" font-size="var(--font-medium)" img-hover-color="#5865F2"></UIIconButton>
+                            <InputIconButton text="Join Discord" img="/img/discord-logo.svg" color="link" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
                         </a>
                     </div>
                 </TitledCutCornerContainer>

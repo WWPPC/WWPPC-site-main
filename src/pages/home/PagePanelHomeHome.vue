@@ -2,9 +2,14 @@
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { AnimateInContainer, CenteredContainer, DoubleCutCornerContainer } from '#/containers';
 import { GlowText, GlitchText } from '#/text';
+import { InputLinkButton, InputIconButton } from '#/inputs';
+import LineDivider from '#/common/LineDivider.vue';
 import HomeSponsorLogo from '@/components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '@/components/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 </script>
 
 <template>
@@ -18,7 +23,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                             <div style="flex-grow: 1;">
                                 <GlitchText text="WWPHacks" font-size="var(--font-subtitle)" color="lime" glow shadow :steps=3 :delay=10 random></GlitchText>
                                 <GlitchText text="??/??/????" font-size="var(--font-subsubtitle)" color="red" glow :steps=1 :delay=Infinity></GlitchText>
-                                <UIDivider color="#AAA"></UIDivider>
+                                <LineDivider color="#AAA"></LineDivider>
                                 <p>
                                     WWPHacks is a hackathon - a collaborative programming competition where teams work against the clock to build innovative solutions to real-world problems.
                                 </p>
@@ -27,7 +32,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                                 <GlowText text="" font-size="var(--font-28)" color="lime" glow flashing></GlowText>
                                 <div class="centered" style="margin-top: 0.5em;">
                                     <AnimateInContainer type="fade" :delay=400>
-                                        <UILinkButton text="Contest Page" @click="$router.push('/hackathon');" font-size="var(--font-large)" color="lime"></UILinkButton>
+                                        <InputLinkButton text="Contest Page" @click="router.push('/hackathon');" font-size="var(--font-large)" color="lime"></InputLinkButton>
                                     </AnimateInContainer>
                                 </div>
                             </div>
@@ -42,7 +47,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                             <div style="flex-grow: 1;">
                                 <GlitchText text="WWPIT" font-size="var(--font-subtitle)" color="lime" glow shadow :steps=3 :delay=10 random></GlitchText>
                                 <GlitchText text="06/02/2024" font-size="var(--font-subsubtitle)" color="red" glow random flashing :delay=10 start-glitched></GlitchText>
-                                <UIDivider color="#AAA"></UIDivider>
+                                <LineDivider color="#AAA"></LineDivider>
                                 <p>
                                     WWPIT is a round-based informatics tournament with multiple divisions targeting competitive programmers of all skill levels.
                                 </p>
@@ -53,7 +58,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                                 <GlitchText text="Contest started!" font-size="var(--font-28)" color="lime" glow flashing flash-color="red" random v-else></GlitchText>
                                 <div class="centered" style="margin-top: 0.5em;">
                                     <AnimateInContainer type="fade" :delay=400>
-                                        <UILinkButton text="Contest Page" @click="$router.push('/contest');" font-size="var(--font-large)" color="lime"></UILinkButton>
+                                        <InputLinkButton text="Contest Page" @click="router.push('/contest');" font-size="var(--font-large)" color="lime"></InputLinkButton>
                                     </AnimateInContainer>
                                 </div>
                             </div>
@@ -107,7 +112,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                         <span style="color: lime;">WWPHacks</span>:
                         WWPHacks <i>(not an acronym)</i>
                     </p>
-                    <UIDivider></UIDivider>
+                    <LineDivider></LineDivider>
                     <p style="text-wrap: balance; font-size: var(--font-16);">
                         <i>WWPPC is not affiliated with or endorsed by the West Windsor-Plainsboro Regional School District</i>
                     </p>
@@ -117,11 +122,11 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <div style="text-align: center;">
                         <a href="https://discord.wwppc.tech" target="_blank" class="centered" style="text-decoration: none;">
-                            <UIIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></UIIconButton>
+                            <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
                         </a>
                         <div style="height: 0.5em;"></div>
                         <a href="https://github.com/WWPPC" target="_blank" class="centered" style="text-decoration: none;">
-                            <UIIconButton text="GitHub" img="/img/github-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#F05032"></UIIconButton>
+                            <InputIconButton text="GitHub" img="/img/github-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#F05032"></InputIconButton>
                         </a>
                     </div>
                 </DoubleCutCornerContainer>
@@ -148,7 +153,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                 <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" height="10vh"></HomeSponsorLogo>
             </div>
         </div>
-        <UIDivider color="#AAA"></UIDivider>
+        <LineDivider color="#AAA"></LineDivider>
         <div class="sponsors">
             <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" height="5.5vh"></HomeSponsorLogo>
             <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" height="12vh"></HomeSponsorLogo>

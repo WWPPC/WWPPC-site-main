@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import ContactFooter from '@/components/common/ContactFooter.vue';
-import ScrollIndicator from '@/components/common/ScrollIndicator.vue';
-import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '@/components/multipane/Multipane';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '@/components/ui-defaults/UIContainers';
-import { GlitchText, GlowText, UILinkButton, UIIconButton, UITimer } from '@/components/ui-defaults/UIDefaults';
-import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
+import ScrollIndicator from '#/common/ScrollIndicator.vue';
+import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
+import { InputLinkButton, InputIconButton } from '#/inputs';
+import { GlitchText, GlowText } from '#/text';
+import TimerDisplay from '#/common/TimerDisplay.vue';
 import { useRouter } from 'vue-router';
+import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
 
 const router = useRouter();
 </script>
@@ -31,7 +33,7 @@ const router = useRouter();
                         <GlitchText text="06/02/2024" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
                     <div class="centered" v-if="Date.now() < nextContest.getTime()">
-                        <UITimer :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></UITimer>
+                        <TimerDisplay :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
                     </div>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
@@ -40,7 +42,7 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-if="Date.now() < nextContest.getTime()">
                         <GlitchText text="Registrations open!" font-size="var(--font-28)" color="lime" glow flashing random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <UILinkButton text="Register" color="lime" font-size="var(--font-large)" @click="router.push('/account/registrations')"></UILinkButton>
+                            <InputLinkButton text="Register" color="lime" font-size="var(--font-large)" @click="router.push('/account/registrations')"></InputLinkButton>
                         </div>
                         <p style="text-align: center; font-size: var(--font-small);">
                             <i>Scroll down to see contest schedule</i>
@@ -49,7 +51,7 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-else-if="Date.now() > nextContestEnd.getTime()">
                         <GlitchText text="Contest ended!" font-size="var(--font-28)" color="red" glow random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <UILinkButton text="Archive" color="lime" font-size="var(--font-large)" @click="router.push('/contest/archive')"></UILinkButton>
+                            <InputLinkButton text="Archive" color="lime" font-size="var(--font-large)" @click="router.push('/contest/archive')"></InputLinkButton>
                         </div>
                         <p style="text-align: center">
                             Thanks to all who participated! We hope to see you in the WWPIT Fall 2024!
@@ -58,7 +60,7 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-else>
                         <GlitchText text="Contest started!" font-size="var(--font-28)" color="lime" glow flashing flash-color="red" random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <UILinkButton text="Contest" color="lime" font-size="var(--font-large)" @click="router.push('/contest/contest')"></UILinkButton>
+                            <InputLinkButton text="Contest" color="lime" font-size="var(--font-large)" @click="router.push('/contest/contest')"></InputLinkButton>
                         </div>
                         <p style="text-align: center">
                             The contest has started!
@@ -269,7 +271,7 @@ const router = useRouter();
                             </p>
                             <div class="centered">
                                 <a href="https://discord.wwppc.tech" target="_blank" style="text-decoration: none;">
-                                    <UIIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></UIIconButton>
+                                    <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
                                 </a>
                             </div>
                             <p>
@@ -335,7 +337,7 @@ const router = useRouter();
                             </p>
                             <div class="centered">
                                 <a href="https://discord.wwppc.tech" target="_blank" style="text-decoration: none;">
-                                    <UIIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></UIIconButton>
+                                    <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
                                 </a>
                             </div>
                             <p>

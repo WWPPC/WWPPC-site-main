@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { GlitchText } from '#/text';
+import LoadingSpinner from '#/common/LoadingSpinner.vue';
 import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAccountManager } from '#/scripts/AccountManager';
@@ -36,7 +37,7 @@ onMounted(update);
         </div>
         <div v-if="contestManager.scoreboard == null" style="display: flex; flex-direction: column; align-items: center;">
             <div style="width: 10vw; height: 10vw">
-                <UILoadingSpinner></UILoadingSpinner>
+                <LoadingSpinner></LoadingSpinner>
             </div>
             <p style="margin-top: 2vw;">
                 Please wait...

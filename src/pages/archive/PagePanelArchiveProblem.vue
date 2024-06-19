@@ -165,7 +165,7 @@ onMounted(() => {
 
 <template>
     <div style="margin-left: -4px;">
-        <InputIconButton :text="`Back to ${route.params.archiveContest}`" img="/assets/arrow-left.svg" @click="$router.push('/contest/archive/' + route.params.archiveContest)" color="lime"></InputIconButton>
+        <InputIconButton :text="`Back to ${route.params.archiveContest}`" img="/assets/arrow-left.svg" @click="router.push('/contest/archive/' + route.params.archiveContest)" color="lime"></InputIconButton>
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">

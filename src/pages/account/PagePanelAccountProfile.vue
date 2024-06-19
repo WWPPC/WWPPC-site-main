@@ -8,7 +8,9 @@ import { globalModal, ModalMode } from '#/modal';
 import { AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
 import { useAccountManager, gradeMaps, experienceMaps, languageMaps } from '#/scripts/AccountManager';
 import recaptcha from '#/scripts/recaptcha';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const modal = globalModal();
 const accountManager = useAccountManager();
 
@@ -246,7 +248,7 @@ onMounted(clearDangerButtons);
                 </PairedGridContainer>
                 <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedChanges text="Save" color="yellow" glitch-on-mount></InputButton>
             </form>
-            <WaitCover text="Please wait..." :show="(showWriteDataWait || loading) && $route.query.ignore_server === undefined"></WaitCover>
+            <WaitCover text="Please wait..." :show="(showWriteDataWait || loading) && route.query.ignore_server === undefined"></WaitCover>
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <AnimateInContainer type="slideUp" :delay=200>
@@ -290,7 +292,7 @@ onMounted(clearDangerButtons);
             <div class="profileTeamSection" v-if="accountManager.team !== accountManager.username">
                 <InputButton text="Leave Team" color="red" glitch-on-mount @click=leaveTeam></InputButton>
             </div>
-            <WaitCover text="Please wait..." :show="(showWriteTeamDataWait || loading) && $route.query.ignore_server === undefined"></WaitCover>
+            <WaitCover text="Please wait..." :show="(showWriteTeamDataWait || loading) && route.query.ignore_server === undefined"></WaitCover>
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <AnimateInContainer type="slideUp" :delay=300>

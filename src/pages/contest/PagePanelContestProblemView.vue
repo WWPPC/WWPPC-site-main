@@ -159,7 +159,7 @@ onMounted(() => {
 
 <template>
     <div style="margin-left: -4px;">
-        <InputIconButton text="Back to Problem List" img="/assets/arrow-left.svg" @click="$router.push('/contest/problemList')" color="lime"></InputIconButton>
+        <InputIconButton text="Back to Problem List" img="/assets/arrow-left.svg" @click="router.push('/contest/problemList')" color="lime"></InputIconButton>
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">
