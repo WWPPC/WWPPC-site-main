@@ -4,6 +4,8 @@ import '#/assets/common.css';
 import '#/assets/fonts.css';
 import './assets/main.css';
 
+import '#/serviceWorker';
+
 setTheme('lime', 'red', 'yellow');
 // setTheme('#FF0', '#00F', '#F90');
 

@@ -72,7 +72,7 @@ watch(() => route.query.super_secret_scanlines, () => {
     left: -50%;
     width: 300%;
     height: 400%;
-    background-image: url(/assets/noise.png);
+    background-image: url('~@/assets/noise.png');
     background-size: auto;
     opacity: 0.2;
     animation: super-secret-grain 8s steps(10) infinite;

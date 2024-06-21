@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import '@/scripts/app';
 import { FullscreenModal, globalModal } from '#/modal';
 import NotFound from '#/common/NotFound.vue';
 import PageHome from '@/pages/PageHome.vue';

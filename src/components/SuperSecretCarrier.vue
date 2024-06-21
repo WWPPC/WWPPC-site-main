@@ -28,10 +28,10 @@ const jumping2 = () => {
 <template>
     <div class="superSecretCarrier" v-if="props.show || randomShow || showAnyways">
         <div class="launcherWrapper">
-            <img src="/assets/battlecow/red-launcher.png" :class="'launcher ' + (j1 ? 'jumping' : '')" @click="jumping1()">
+            <img src="@/assets/battlecow/red-launcher.png" :class="'launcher ' + (j1 ? 'jumping' : '')" @click="jumping1()">
         </div>
         <div class="carrierWrapper">
-            <img src="/assets/battlecow/blue-carrier.png" :class="'carrier ' + (j2 ? 'jumping' : '')" @click="jumping2()">
+            <img src="@/assets/battlecow/blue-carrier.png" :class="'carrier ' + (j2 ? 'jumping' : '')" @click="jumping2()">
         </div>
     </div>
 </template>
