@@ -16,12 +16,12 @@ export default defineConfig({
             }
         }),
         vueJsx(),
-        multiPublicDir(['public', 'src/WWPPC-site-common/public'])
+        multiPublicDir(['public', 'WWPPC-site-common/public'])
     ],
     resolve: {
         alias: {
             '@': resolve(__dirname, 'src/'),
-            '#': resolve(__dirname, 'src/WWPPC-site-common/src/'),
+            '#': resolve(__dirname, 'WWPPC-site-common/src/'),
         }
     },
     build: {

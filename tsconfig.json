@@ -14,12 +14,12 @@
                 "./src/*"
             ],
             "#/*": [
-                "./src/WWPPC-site-common/src/*"
+                "./WWPPC-site-common/src/*"
             ]
         },
         "typeRoots": [
             "node_modules/@types",
-            "./src/WWPPC-site-common/src"
+            "./WWPPC-site-common/src"
         ]
     },
     "allowJS": true
