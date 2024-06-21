@@ -13,19 +13,13 @@
             "@/*": [
                 "./src/*"
             ],
-            "@p/*": [
-                "./public/*"
-            ],
             "#/*": [
-                "./WWPPC-site-common/src/*"
-            ],
-            "#p/*": [
-                "./WWPPC-site-common/public/*"
+                "./src/WWPPC-site-common/src/*"
             ]
         },
         "typeRoots": [
             "node_modules/@types",
-            "./WWPPC-site-common/src"
+            "./src/WWPPC-site-common/src"
         ]
     },
     "allowJS": true
