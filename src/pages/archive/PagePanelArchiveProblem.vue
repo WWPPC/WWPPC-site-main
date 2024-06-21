@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { setTitlePanel } from '#/scripts/title';
-import { DoubleCutCornerContainer, TitledCutCornerContainer } from '#/containers';
+import { AnimateInContainer, DoubleCutCornerContainer, TitledCutCornerContainer } from '#/containers';
 import { InputButton, InputFileUpload, InputIconButton } from '#/inputs';
 import InputDropdown from '#/inputs/InputDropdown.vue'; // this is required for spaghetti fix
 import WaitCover from '#/common/WaitCover.vue';

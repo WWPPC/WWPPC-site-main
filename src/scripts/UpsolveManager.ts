@@ -45,7 +45,7 @@ const state = reactive<{
 export const useUpsolveManager = defineStore('upsolveManager', {
     state: () => state,
     actions: {
-        async getContests(): Promise<UpsolveContest[] | Error> {
+        async getContestList(): Promise<string[] | Error> {
             return await apiFetch('GET', '/upsolveContestList');
         },
         async getContestData(contest: string): Promise<UpsolveContest | Error> {

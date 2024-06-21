@@ -16,7 +16,7 @@ const router = useRouter();
 const serverConnection = useServerConnection();
 const upsolveManager = useUpsolveManager();
 
-const contestList = ref<UpsolveContest[] | null>();
+const contestList = ref<string[] | null>();
 const contest = ref<UpsolveContest | null>();
 const round = ref<UpsolveRound | null>();
 const load = async () => {
@@ -42,7 +42,7 @@ const load = async () => {
         round.value = null;
         contestList.value = null;
     } else {
-        const data = await upsolveManager.getContests();
+        const data = await upsolveManager.getContestList();
         if (data instanceof Error) {
             modal.showModal({ title: data.message, content: 'Could not load contest list', color: 'red' });
             return;
@@ -62,27 +62,32 @@ watch(() => serverConnection.loggedIn, load);
     <div class="archiveListWrapperWrapper centered">
         <div class="archiveListWrapper">
             <Transition>
-                <AngledTitledContainer v-if="contestList != null" title="Contest Archive" class="archiveList">
-                    <!-- add search bar? -->
-                    <AnimateInContainer type="slideUp" v-for="(contest, index) of contestList" :key="contest.id" :delay="index * 200">
-                        <ArchiveListContest :data="contest"></ArchiveListContest>
-                        <!-- future: lazy loading contests? load when become visible -->
-                    </AnimateInContainer>
-                </AngledTitledContainer>
+                <div v-if="contestList != null" class="archiveList">
+                    <AngledTitledContainer title="Contest Archive" width="100%" height="100%">
+                        <!-- add search bar -->
+                        <AnimateInContainer type="slideUp" v-for="(contest, index) of contestList" :key="contest" :delay="index * 200">
+                            <ArchiveListContest :id="contest"></ArchiveListContest>
+                        </AnimateInContainer>
+                    </AngledTitledContainer>
+                </div>
             </Transition>
             <Transition>
-                <AngledTitledContainer v-if="contest != null" :title="contest.id" class="archiveList">
-                    <AnimateInContainer type="fade" v-for="(round, index) of contest.rounds" :key="round.number" :delay="index * 100">
-                        <ArchiveListRound :data="round"></ArchiveListRound>
-                    </AnimateInContainer>
-                </AngledTitledContainer>
+                <div v-if="contest != null" class="archiveList">
+                    <AngledTitledContainer :title="contest.id" width="100%" height="100%">
+                        <AnimateInContainer type="fade" v-for="(round, index) of contest.rounds" :key="round.number" :delay="index * 100">
+                            <ArchiveListRound :data="round"></ArchiveListRound>
+                        </AnimateInContainer>
+                    </AngledTitledContainer>
+                </div>
             </Transition>
             <Transition>
-                <AngledTitledContainer v-if="round != null" :title="`${round.contest} Round ${round.number + 1}`" class="archiveList">
-                    <AnimateInContainer type="fade">
-                        <ArchiveListRound :data="round"></ArchiveListRound>
-                    </AnimateInContainer>
-                </AngledTitledContainer>
+                <div v-if="round != null" class="archiveList">
+                    <AngledTitledContainer :title="`${round.contest} Round ${round.number + 1}`" width="100%" height="100%">
+                        <AnimateInContainer type="fade">
+                            <ArchiveListRound :data="round"></ArchiveListRound>
+                        </AnimateInContainer>
+                    </AngledTitledContainer>
+                </div>
             </Transition>
         </div>
     </div>
