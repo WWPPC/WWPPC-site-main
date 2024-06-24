@@ -207,7 +207,7 @@ p {
 
 .homeGeneralInfoColumns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
     flex-grow: 1;
     justify-items: stretch;
     row-gap: 24px;
