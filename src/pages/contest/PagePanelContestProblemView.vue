@@ -264,7 +264,7 @@ onMounted(() => {
 .problemViewSubtitle {
     display: grid;
     grid-template-columns: 1fr min-content;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: min-content min-content;
     box-sizing: border-box;
     width: calc(100% - 16px);
     padding: 8px 12px;

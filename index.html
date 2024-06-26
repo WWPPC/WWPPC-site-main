@@ -35,7 +35,7 @@
     <div style="position: absolute; top: 0px; left: 0px; font-size: 20px;">
         If you're seeing this, the page didn't load correctly. Try <a href="">reloading</a>!
     </div>
-    <nav>
+    <nav style="color: white !important;">
         <a href="/home">Home</a>
         <a href="/hackathon">WWPHacks</a>
         <a href="/contest">WWPIT</a>
@@ -46,7 +46,7 @@
         <div id="loadingCoverBar"></div>
         <noscript id="noscript">JavaScript was disabled!<br>Please enable it and <a href="" style="color: white">reload</a>!</noscript>
         <div id="loadingErrorsContainer">
-            <div id="loadingerror"></div>
+            <div id="loadingError"></div>
         </div>
         <style>
             body {
@@ -96,7 +96,7 @@
                 text-align: center;
             }
 
-            #loadingerror {
+            #loadingError {
                 color: red;
             }
 
@@ -113,19 +113,11 @@
                     background-position: 250% 0, 250% 0;
                 }
             }
-
-            #copyrightNotice2 {
-                position: fixed;
-                bottom: calc(10vh);
-                left: 50vw;
-                font-size: 2vh;
-                transform: translateX(-50%);
-            }
         </style>
         <script>
             let canLoad = true;
             const loadingCover = document.getElementById('loadingCover');
-            const loadingError = document.getElementById('loadingerror');
+            const loadingError = document.getElementById('loadingError');
             const errorListener = (err) => {
                 loadingError.innerText += `\n${err.message} (at ${err.filename} ${err.lineno}:${err.colno})`;
                 loadingCover.style.opacity = 1;
