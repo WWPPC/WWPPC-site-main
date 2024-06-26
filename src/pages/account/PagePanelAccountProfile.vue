@@ -82,10 +82,12 @@ const joinTeam = async () => {
     showWriteTeamDataWait.value = false;
 };
 const leaveTeam = async () => {
+    const confirmation = await modal.showModal({ title: 'Leave team?', content: 'You are about to leave the team. Are you sure?', mode: ModalMode.CONFIRM, color: 'yellow' }).result;
+    if (!confirmation) return;
     showWriteTeamDataWait.value = true;
     if (accountManager.username == accountManager.team) return;
     const res = await accountManager.leaveTeam();
-    if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Could not join team', content: getTeamOpMessage(res), color: 'red' });
+    if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Could not leave team', content: getTeamOpMessage(res), color: 'red' });
     await accountManager.updateOwnUserData();
     showWriteTeamDataWait.value = false;
 };

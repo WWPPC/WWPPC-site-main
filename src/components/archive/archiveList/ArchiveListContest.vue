@@ -3,6 +3,7 @@ import { autoGlitchTextTransition } from '#/text';
 import { AnimateInContainer, CutCornerContainer } from '#/containers';
 import ArchiveListRound from './ArchiveListRound.vue';
 import OnScreenHook from '#/common/OnScreenHook.vue';
+import LoadingBar from '#/common/LoadingBar.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useUpsolveManager, type UpsolveContest } from '@/scripts/UpsolveManager';
@@ -16,8 +17,8 @@ const modal = globalModal();
 const router = useRouter();
 const upsolveManager = useUpsolveManager();
 
-const contest = ref<UpsolveContest>();
-const titleText = autoGlitchTextTransition(() => contest.value?.id ?? '', 40, 1, 10, 2);
+const contest = ref<UpsolveContest | null>(null);
+const titleText = autoGlitchTextTransition(() => contest.value?.id ?? '...', 40, 1, 10, 2);
 
 const navContest = () => {
     router.push('/contest/archive/' + contest.value?.id);
@@ -45,6 +46,9 @@ const load = async () => {
         <AnimateInContainer type="fade" v-for="(round, index) in contest?.rounds" :key="round.number" :delay="index * 100">
             <ArchiveListRound :data="round" minimized></ArchiveListRound>
         </AnimateInContainer>
+        <div class="centered" v-if="contest == null" style="margin: 8px 0px;">
+            <LoadingBar width="max(50%, 100px)" height="16px"></LoadingBar>
+        </div>
     </CutCornerContainer>
 </template>
 

@@ -9,11 +9,9 @@ import PagePanelContestProblemList from './contest/PagePanelContestProblemList.v
 import PagePanelContestProblemView from './contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from './contest/PagePanelContestLeaderboard.vue';
 import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
-import PagePanelArchiveProblem from './archive/PagePanelArchiveProblem.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '@/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
-import { useServerConnection } from '#/scripts/ServerConnection';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -21,7 +19,6 @@ watch(() => route.query.ignore_server, () => {
     ignoreServer.value = route.query.ignore_server !== undefined;
 });
 
-const serverConnection = useServerConnection();
 const connectionEnforcer = useConnectionEnforcer();
 const contestManager = useContestManager();
 
@@ -58,22 +55,22 @@ connectionEnforcer.loginExclude.add('/contest/archive');
                 <PagePanelContestInfo></PagePanelContestInfo>
             </PanelBody>
             <PanelBody name="contest" title="Contest" scroll-snap>
-                <PagePanelContestContest v-if="serverConnection.loggedIn || ignoreServer"></PagePanelContestContest>
+                <PagePanelContestContest></PagePanelContestContest>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
-                <PagePanelContestProblemList v-if="serverConnection.loggedIn || ignoreServer"></PagePanelContestProblemList>
+                <PagePanelContestProblemList></PagePanelContestProblemList>
             </PanelBody>
             <PanelBody name="problemView" title="Problem">
-                <PagePanelContestProblemView v-if="serverConnection.loggedIn || ignoreServer"></PagePanelContestProblemView>
+                <PagePanelContestProblemView></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="leaderboard" title="Leaderboard">
-                <PagePanelContestLeaderboard v-if="serverConnection.loggedIn || ignoreServer"></PagePanelContestLeaderboard>
+                <PagePanelContestLeaderboard></PagePanelContestLeaderboard>
             </PanelBody>
             <PanelBody name="archive" title="Archive">
                 <PagePanelArchiveList></PagePanelArchiveList>
             </PanelBody>
             <PanelBody name="archiveView" title="Archive Problem">
-                <PagePanelArchiveProblem></PagePanelArchiveProblem>
+                <PagePanelContestProblemView isUpsolve></PagePanelContestProblemView>
             </PanelBody>
         </PanelMain>
     </PanelView>

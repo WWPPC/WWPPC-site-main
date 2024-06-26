@@ -72,6 +72,11 @@ export const useUpsolveManager = defineStore('upsolveManager', {
         async getSubmissions(problemId: string): Promise<UpsolveSubmission[] | null> {
             if (state.submissionsCache.has(problemId)) return state.submissionsCache.get(problemId)!;
             return await this.refreshSubmission(problemId);
+        },
+        async getSubmissionCode(problemId: string): Promise<string> {
+            const serverConnection = useServerConnection();
+            if (!serverConnection.loggedIn) return '';
+            return await serverConnection.emitWithAck('getUpsolveSubmissionCode', { id: problemId });
         }
     }
 });

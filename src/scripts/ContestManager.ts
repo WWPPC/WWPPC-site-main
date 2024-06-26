@@ -127,6 +127,11 @@ export const useContestManager = defineStore('contestManager', {
             const serverConnection = useServerConnection();
             if (!serverConnection.loggedIn) return ContestUpdateSubmissionResult.NOT_CONNECTED;
             return await serverConnection.emitWithAck('updateSubmission', { id: problemId, file, lang });
+        },
+        async getSubmissionCode(problemId: string): Promise<string> {
+            const serverConnection = useServerConnection();
+            if (!serverConnection.loggedIn) return '';
+            return await serverConnection.emitWithAck('getSubmissionCode', { id: problemId });
         }
     }
 });

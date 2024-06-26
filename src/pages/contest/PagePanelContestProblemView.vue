@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { setTitlePanel } from '#/scripts/title';
 import { DoubleCutCornerContainer, TitledCutCornerContainer, AnimateInContainer } from '#/containers';
-import { InputButton, InputFileUpload, InputIconButton } from '#/inputs';
+import { InputButton, InputCopyButton, InputFileUpload, InputIconButton } from '#/inputs';
 import InputDropdown from '#/inputs/InputDropdown.vue'; // this is required for spaghetti fix
 import WaitCover from '#/common/WaitCover.vue';
 import ContestProblemStatusCircle from '@/components/contest/ContestProblemStatusCircle.vue';
@@ -12,12 +12,19 @@ import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
 import { useServerConnection } from '#/scripts/ServerConnection';
 import { completionStateString, type ContestProblem, ContestProblemCompletionState, ContestUpdateSubmissionResult, getUpdateSubmissionMessage, useContestManager } from '@/scripts/ContestManager';
+import { useUpsolveManager } from '@/scripts/UpsolveManager';
 import latexify from '#/scripts/katexify';
+
+// despaghettifier
+const props = defineProps<{
+    isUpsolve?: boolean
+}>();
 
 const route = useRoute();
 const router = useRouter();
 const serverConnection = useServerConnection();
 const contestManager = useContestManager();
+const upsolveManager = useUpsolveManager();
 const modal = globalModal();
 
 // placeholder data behind loading cover
@@ -55,6 +62,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     submissions: [],
     status: ContestProblemCompletionState.ERROR,
 });
+let problemId: string | undefined = undefined;
 const loadErrorModal = (title: string, content: string) => {
     modal.showModal({
         title: title,
@@ -66,31 +74,63 @@ const loadErrorModal = (title: string, content: string) => {
 };
 const loadProblem = async () => {
     if (route.query.ignore_server !== undefined) return;
-    await contestManager.waitForContestLoad();
-    if (route.params.problemId !== undefined) {
-        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.exec(route.params.problemId.toString())) {
-            loadErrorModal('Malformed problem ID', 'The supplied problem ID is invalid!');
+    if (!props.isUpsolve) {
+        await contestManager.waitForContestLoad();
+        if (route.params.problemId !== undefined) {
+            if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.exec(route.params.problemId.toString())) {
+                loadErrorModal('Malformed problem ID', 'The supplied problem ID is invalid!');
+                return;
+            }
+            const p = await contestManager.getProblemDataId(route.params.problemId.toString());
+            if (p === null) {
+                loadErrorModal('Problem not found', 'The requested problem does not exist!');
+                return;
+            }
+            problem.value = p;
+        } else if (route.params.problemRound !== undefined && route.params.problemNumber !== undefined) {
+            const p = await contestManager.getProblemData(Number(route.params.problemRound.toString()), Number(route.params.problemNumber.toString()));
+            if (p === null) {
+                loadErrorModal('Problem not found', 'The requested problem does not exist!');
+                return;
+            }
+            problem.value = p;
+        } else if (route.query.ignore_server === undefined) {
+            loadErrorModal('No problem ID', 'No problem ID was supplied!');
+        }
+    } else {
+        if (isNaN(Number(route.params.archiveRound)) || isNaN(Number(route.params.archiveProblem))) {
+            loadErrorModal('Invalid round or problem number', 'The round or problem is not a number.');
             return;
         }
-        const p = await contestManager.getProblemDataId(route.params.problemId.toString());
-        if (p === null) {
-            loadErrorModal('Problem not found', 'The requested problem does not exist!');
+        const p = await upsolveManager.getProblemData(route.params.archiveContest.toString(), Number(route.params.archiveRound), Number(route.params.archiveProblem));
+        if (p instanceof Error) {
+            loadErrorModal(p.message, 'Could not load the problem.');
             return;
         }
-        problem.value = p;
-    } else if (route.params.problemRound !== undefined && route.params.problemNumber !== undefined) {
-        const p = await contestManager.getProblemData(Number(route.params.problemRound.toString()), Number(route.params.problemNumber.toString()));
-        if (p === null) {
-            loadErrorModal('Problem not found', 'The requested problem does not exist!');
-            return;
-        }
-        problem.value = p;
-    } else if (route.query.ignore_server === undefined) {
-        loadErrorModal('No problem ID', 'No problem ID was supplied!');
+        problem.value = {
+            ...p,
+            submissions: [],
+            status: ContestProblemCompletionState.NOT_UPLOADED
+        };
+        problemId = p.id;
+        updateSubmissions();
     }
 };
 onMounted(loadProblem);
 watch(() => contestManager.contest, loadProblem);
+
+const updateSubmissions = () => {
+    setTimeout(async () => {
+        if (problemId == undefined) return;
+        const s = await upsolveManager.getSubmissions(problemId) ?? [];
+        problem.value.submissions = s;
+        problem.value.status = s[0]?.status ?? ContestProblemCompletionState.NOT_UPLOADED;
+    }, 100);
+};
+if (props.isUpsolve) {
+    watch(() => upsolveManager.submissionsUpdated, updateSubmissions);
+    watch(() => serverConnection.loggedIn, updateSubmissions);
+}
 
 watch(() => problem.value.name, () => {
     setTitlePanel(problem.value.name);
@@ -137,7 +177,7 @@ const submitUpload = async () => {
         modal.showModal({ title: 'No file selected', content: 'No file was selected!', color: 'red' });
         return;
     }
-    const status = await contestManager.updateSubmission(problem.value.id, (languageDropdown.value.value as string), await file.text());
+    const status = await (props.isUpsolve ? upsolveManager : contestManager).updateSubmission(problem.value.id, (languageDropdown.value.value as string), await file.text());
     if (status != ContestUpdateSubmissionResult.SUCCESS) {
         modal.showModal({ title: 'Could not submit', content: getUpdateSubmissionMessage(status), color: 'red' })
     } else {
@@ -155,11 +195,19 @@ watch(problem, () => {
 onMounted(() => {
     latexify(problem.value.content).then((html) => problemContent.value = html);
 });
+
+// view submission code
+const showCode = ref(false);
+const submissionCode = ref('');
+const viewCode = async () => {
+    submissionCode.value = await (props.isUpsolve ? upsolveManager : contestManager).getSubmissionCode(problem.value.id);
+    showCode.value = true;
+};
 </script>
 
 <template>
     <div style="margin-left: -4px;">
-        <InputIconButton text="Back to Problem List" img="/assets/arrow-left.svg" @click="router.push('/contest/problemList')" color="lime"></InputIconButton>
+        <InputIconButton :text="`Back to ${props.isUpsolve ? route.params.archiveContest : 'Problem List'}`" img="/assets/arrow-left.svg" @click="router.push(props.isUpsolve ? ('/contest/archive/' + route.params.archiveContest) : '/contest/problemList')" color="lime"></InputIconButton>
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">
@@ -197,7 +245,11 @@ onMounted(() => {
                     <div class="submissionContainer">
                         <label class="submissionTitle" :for="'submissionCheckbox' + index">
                             <ContestProblemStatusCircle :status="submission.status"></ContestProblemStatusCircle>
-                            <span>{{ completionStateString(submission.status) }} ({{ submission.lang }} - {{ new Date(submission.time).toLocaleString() }})</span>
+                            <span style="margin-left: 8px;">{{ completionStateString(submission.status) }} ({{ submission.lang }} - {{ new Date(submission.time).toLocaleString() }})</span>
+                            <button v-if="index == 0" class="submissionOpenCode" @click="viewCode()" title="View submission code">
+                                <!-- omg rare <button> element -->
+                                <img src="../../../WWPPC-site-common/public/assets/open.svg">
+                            </button>
                         </label>
                         <input type="checkbox" class="submissionCheckbox" :id="'submissionCheckbox' + index">
                         <div class="submissionDetailsWrapper">
@@ -214,6 +266,19 @@ onMounted(() => {
             </DoubleCutCornerContainer>
         </div>
     </div>
+    <Transition>
+        <div class="submissionCodeContainerWrapper" v-if="showCode">
+            <div class="submissionCodeContainer">
+                <TitledCutCornerContainer :title="problem.submissions[0]?.lang + ' - ' + new Date(problem.submissions[0]?.time).toLocaleString()" height="100%" vertical-flipped>
+                    <codeblock class="submissionCode">
+                        {{ submissionCode }}
+                    </codeblock>
+                    <InputCopyButton :value="submissionCode" class="submissionCodeCopy"></InputCopyButton>
+                </TitledCutCornerContainer>
+                <InputIconButton text="" img="/assets/close.svg" img-only img-hover-color="red" title="Close" class="submissionCodeClose" @click="showCode = false"></InputIconButton>
+            </div>
+        </div>
+    </Transition>
 </template>
 
 <style scoped>
@@ -244,7 +309,7 @@ onMounted(() => {
 
 .problemViewDouble {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 35vw);
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 35vw);
     grid-template-rows: min-content minmax(200px, min-content) minmax(0, 1fr);
     row-gap: 16px;
     column-gap: 16px;
@@ -339,14 +404,14 @@ onMounted(() => {
 }
 
 .submissionTitle {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 32px 1fr 24px;
+    grid-auto-flow: column;
     align-items: center;
     padding: 4px 4px;
     border: 2px solid white;
     margin: -2px -2px;
     border-radius: 8px;
-    column-gap: 16px;
     background-color: #333;
     transition: 50ms linear background-color;
     cursor: pointer;
@@ -361,6 +426,25 @@ onMounted(() => {
     width: 0px;
     height: 0px;
     visibility: hidden;
+}
+
+.submissionOpenCode {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    transition: 50ms linear background-color;
+    cursor: pointer;
+}
+
+.submissionOpenCode>img {
+    width: 100%;
+}
+
+.submissionOpenCode:hover {
+    background-color: #FFF4;
 }
 
 .submissionDetailsWrapper {
@@ -389,5 +473,61 @@ onMounted(() => {
     padding: 5px 4px;
     min-width: min-content;
     column-gap: 4px;
+}
+
+.submissionCodeContainerWrapper {
+    display: grid;
+    grid-template-rows: 1fr 90% 1fr;
+    grid-template-columns: 1fr 50% 1fr;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.submissionCodeContainer {
+    grid-row: 2;
+    grid-column: 2;
+    position: relative;
+}
+
+.submissionCodeClose {
+    position: absolute;
+    top: 13px;
+    right: 4px;
+}
+
+.submissionCode {
+    height: calc(100% - 12px);
+    margin-bottom: 0px;
+}
+
+.submissionCodeCopy {
+    position: absolute;
+    top: 24px;
+    right: 20px;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: 300ms linear opacity;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.v-enter-active>.submissionCodeContainer,
+.v-leave-active>.submissionCodeContainer {
+    transition: 300ms ease-in-out transform;
+}
+
+.v-enter-from>.submissionCodeContainer,
+.v-leave-to>.submissionCodeContainer {
+    transform: translateY(-100%);
 }
 </style>

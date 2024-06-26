@@ -59,12 +59,12 @@ watch(() => serverConnection.loggedIn, load);
 </script>
 
 <template>
+    <!-- add search button in corner, goes to different box (special search box!!) -->
     <div class="archiveListWrapperWrapper centered">
         <div class="archiveListWrapper">
             <Transition>
                 <div v-if="contestList != null" class="archiveList">
                     <AngledTitledContainer title="Contest Archive" width="100%" height="100%">
-                        <!-- add search bar -->
                         <AnimateInContainer type="slideUp" v-for="(contest, index) of contestList" :key="contest" :delay="index * 200">
                             <ArchiveListContest :id="contest"></ArchiveListContest>
                         </AnimateInContainer>
