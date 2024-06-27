@@ -22,7 +22,7 @@ const router = useRouter();
                         <div class="homeVertical">
                             <div style="flex-grow: 1;">
                                 <GlitchText text="WWPHacks" font-size="var(--font-subtitle)" color="lime" glow shadow :steps=3 :delay=10 random></GlitchText>
-                                <GlitchText text="??/??/????" font-size="var(--font-subsubtitle)" color="red" glow :steps=1 :delay=Infinity></GlitchText>
+                                <GlitchText text="??/??/????" font-size="var(--font-subsubtitle)" color="red" glow :steps=1 :delay=Infinity start-glitched></GlitchText>
                                 <LineDivider color="#AAA"></LineDivider>
                                 <p>
                                     WWPHacks is a hackathon - a collaborative programming competition where teams work against the clock to build innovative solutions to real-world problems.

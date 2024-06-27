@@ -45,7 +45,7 @@ const changeProfileImage = (event: any) => {
         <div class="accountUserDisp">
             <label class="accountUserDispImgContainer">
                 <img class="accountUserDispImg" :src=accountManager.profileImage alt="Profile picture">
-                <img class="accountuserDispImgReplaceOverlay" src="#/assets/upload.svg" title="Upload profile image">
+                <img class="accountuserDispImgReplaceOverlay" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
                 <input type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
             </label>
             <span class="accountUserDisplayName">{{ dispName }}</span>
