@@ -3,7 +3,7 @@ import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelR
 import UserDisp from '@/components/common/UserDisp.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import ContestTimer from '@/components/contest/ContestTimer.vue';
-import { isMobileRef, isWebkitRef } from '#/scripts/userAgent';
+import { isMobile, isWebkit } from '#/scripts/userAgent';
 
 </script>
 
@@ -23,9 +23,9 @@ import { isMobileRef, isWebkitRef } from '#/scripts/userAgent';
         </PanelHeader>
         <PanelMain>
             <PanelBody name="test" title="">
-                Is mobile platform: {{ isMobileRef }}
+                Is mobile platform: {{ isMobile }}
                 <br>
-                Is Webkit browser: {{ isWebkitRef }}
+                Is Webkit browser: {{ isWebkit }}
             </PanelBody>
             <PanelBody name="fonts" title="Fonts">
                 <span style="font-size: var(--font-huge-title);">Huge Title</span>

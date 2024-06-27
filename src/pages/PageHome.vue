@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isDev } from '#/index';
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '@/components/common/UserDisp.vue';
 import PagePanelHomeAbout from '@/pages/home/PagePanelHomeAbout.vue';
@@ -11,6 +12,7 @@ import PagePanelHomeHome from '@/pages/home/PagePanelHomeHome.vue';
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home/home" is-default></PanelNavButton>
+                <PanelNavButton text="WWPPC Math" :for="isDev ? 'http://localhost:5174' : 'https://math.wwppc.tech'" link></PanelNavButton>
                 <PanelNavButton text="WWPHacks" for="/hackathon"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest"></PanelNavButton>
                 <PanelNavButton text="About Us" for="/home/about"></PanelNavButton>

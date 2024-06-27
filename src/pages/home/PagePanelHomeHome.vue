@@ -80,10 +80,10 @@ const router = useRouter();
                     <div class="centered" style="height: 4em;">
                         <img src="/icon2.png">
                     </div>
-                    <p style="text-wrap: balanced;">
-                        WWPPC is a programming competition consisting of WWPHacks and WWPIT, created by members of the WW-P HSS Absolute Coding Club in New Jersey.
+                    <p style="text-wrap: balanced; margin: 0px 8px;">
+                        WWPPC is the host of competitions like WWPIT and WWPHacks, run by students at WW-P High School South.
                     </p>
-                    <p style="text-wrap: balanced; color: lime;">
+                    <p style="text-wrap: balanced; color: lime; margin: 0px 8px;">
                         WWPPC is a 501c3 nonprofit organization.
                     </p>
                 </DoubleCutCornerContainer>
@@ -91,28 +91,30 @@ const router = useRouter();
             <AnimateInContainer type="slideUp" show-on-screen>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <div class="centered" style="height: 2em;">
-                        <img src="/img/mlh-logo.svg">
+                        <a href="https://math.wwppc.tech">
+                            <img src="">
+                        </a>
                     </div>
-                    <p style="text-wrap: balanced;">
-                        WWPHacks has been featured as an offical <a href="https://mlh.io/" target="_blank">Major League Hacking</a> hackathon in 2022.
+                    <p style="text-wrap: balanced; margin: 0px 8px;">
+                        <a href="https://math.wwppc.tech">WWPPC Math</a> - WWPPC's math division - is now hosting WWPMI and WWPMT!
                     </p>
                 </DoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen style="grid-row: span 2;">
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
-                    <p style="text-wrap: balance; font-size: var(--font-20);">
+                    <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPPC</span>:
                         West Windsor-Plainsboro Programming Contests
                     </p>
-                    <p style="text-wrap: balance; font-size: var(--font-20);">
+                    <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPIT</span>:
                         West Windsor-Plainsboro Informatics Tournament
                     </p>
-                    <p style="text-wrap: balance; font-size: var(--font-20);">
+                    <p style="text-wrap: balance; font-size: var(--font-20); margin: 0px 8px;">
                         <span style="color: lime;">WWPHacks</span>:
                         WWPHacks <i>(not an acronym)</i>
                     </p>
-                    <LineDivider></LineDivider>
+                    <LineDivider margin="0px"></LineDivider>
                     <p style="text-wrap: balance; font-size: var(--font-16);">
                         <i>WWPPC is not affiliated with or endorsed by the West Windsor-Plainsboro Regional School District</i>
                     </p>
