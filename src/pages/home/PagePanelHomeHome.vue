@@ -7,9 +7,6 @@ import LineDivider from '#/common/LineDivider.vue';
 import HomeSponsorLogo from '@/components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
 </script>
 
 <template>
@@ -32,7 +29,9 @@ const router = useRouter();
                                 <GlowText text="" font-size="var(--font-28)" color="lime" glow flashing></GlowText>
                                 <div class="centered" style="margin-top: 0.5em;">
                                     <AnimateInContainer type="fade" :delay=400>
-                                        <InputLinkButton text="Contest Page" @click="router.push('/hackathon');" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                        <RouterLink to="/hackathon" no-deco>
+                                            <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                        </RouterLink>
                                     </AnimateInContainer>
                                 </div>
                             </div>
@@ -58,7 +57,9 @@ const router = useRouter();
                                 <GlitchText text="Contest started!" font-size="var(--font-28)" color="lime" glow flashing flash-color="red" random v-else></GlitchText>
                                 <div class="centered" style="margin-top: 0.5em;">
                                     <AnimateInContainer type="fade" :delay=400>
-                                        <InputLinkButton text="Contest Page" @click="router.push('/contest');" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                        <RouterLink to="/contest" no-deco>
+                                            <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                        </RouterLink>
                                     </AnimateInContainer>
                                 </div>
                             </div>
@@ -123,11 +124,11 @@ const router = useRouter();
             <AnimateInContainer type="slideUp" show-on-screen>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <div style="text-align: center;">
-                        <a href="https://discord.wwppc.tech" target="_blank" class="centered" style="text-decoration: none;">
+                        <a href="https://discord.wwppc.tech" target="_blank" class="centered" no-deco>
                             <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
                         </a>
                         <div style="height: 0.5em;"></div>
-                        <a href="https://github.com/WWPPC" target="_blank" class="centered" style="text-decoration: none;">
+                        <a href="https://github.com/WWPPC" target="_blank" class="centered" no-deco>
                             <InputIconButton text="GitHub" img="/img/github-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#F05032"></InputIconButton>
                         </a>
                     </div>
@@ -144,24 +145,24 @@ const router = useRouter();
         <div class="sponsorColumns">
             <div>
                 <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
-                <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" height="12vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
             </div>
             <div>
                 <GlowText text="GOLD" font-size="var(--font-huge)" color="#FD0" shadow></GlowText>
-                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" height="10vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
             </div>
             <div>
                 <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
-                <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" height="10vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" name="ICode Logo" height="10vh"></HomeSponsorLogo>
             </div>
         </div>
         <LineDivider color="#AAA"></LineDivider>
         <div class="sponsors">
-            <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" height="12vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" height="9vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/echo3d-logo.png" url="https://www.echo3d.com/" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/axure-logo.svg" url="https://axure.com/" height="6vh"></HomeSponsorLogo>
+            <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" name="Desmos Logo" height="5.5vh"></HomeSponsorLogo>
+            <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" name="AoPS Logo" height="12vh"></HomeSponsorLogo>
+            <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" name=".xyz Logo" height="9vh"></HomeSponsorLogo>
+            <HomeSponsorLogo src="/img/echo3d-logo.png" url="https://www.echo3d.com/" name="Echo3D Logo" height="5.5vh"></HomeSponsorLogo>
+            <HomeSponsorLogo src="/img/axure-logo.svg" url="https://axure.com/" name="Axure Logo" height="6vh"></HomeSponsorLogo>
         </div>
         <div style="flex-grow: 1;"></div>
         <ContactFooter></ContactFooter>

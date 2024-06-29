@@ -3,15 +3,12 @@ import { InputLinkButton } from '#/inputs';
 import ContestProblemStatusCircle from '@/components/contest/ContestProblemStatusCircle.vue';
 import { glitchTextTransition } from '#/text';
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 import { type ContestProblem } from '@/scripts/ContestManager';
 
 const props = defineProps<{
     data: ContestProblem
     archive?: boolean
 }>();
-
-const router = useRouter();
 
 const nameText = ref<string>('');
 const authorText = ref<string>('');
@@ -37,7 +34,9 @@ onMounted(() => {
         <span class="contestProblemListProblemName"><b>{{ nameText }}</b></span>
         <span class="contestProblemListProblemAuthor"><i>{{ authorText }}</i></span>
         <span class="contestProblemListProblemButton">
-            <InputLinkButton text="View" width="100px" height="36px" :border="true" @click="router.push(props.archive ? `/contest/archiveView/${props.data.contest}/${props.data.round}/${props.data.number}` : `/contest/problemView/${props.data.round}_${props.data.number}`)"></InputLinkButton>
+            <RouterLink :to="props.archive ? `/contest/archiveView/${props.data.contest}/${props.data.round}/${props.data.number}` : `/contest/problemView/${props.data.round}_${props.data.number}`" no-deco>
+                <InputLinkButton text="View" width="100px" height="36px" border></InputLinkButton>
+            </RouterLink>
         </span>
     </div>
 </template>

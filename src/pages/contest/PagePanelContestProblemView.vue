@@ -207,7 +207,9 @@ const viewCode = async () => {
 
 <template>
     <div style="margin-left: -4px;">
-        <InputIconButton :text="`Back to ${props.isUpsolve ? route.params.archiveContest : 'Problem List'}`" img="/assets/arrow-left.svg" @click="router.push(props.isUpsolve ? ('/contest/archive/' + route.params.archiveContest) : '/contest/problemList')" color="lime"></InputIconButton>
+        <RouterLink :to="props.isUpsolve ? ('/contest/archive/' + route.params.archiveContest) : '/contest/problemList'" no-deco>
+            <InputIconButton :text="`Back to ${props.isUpsolve ? route.params.archiveContest : 'Problem List'}`" img="/assets/arrow-left.svg" color="lime"></InputIconButton>
+        </RouterLink>
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
-import UserDisp from '@/components/common/UserDisp.vue';
+import UserDisp from '#/common-components/UserDisp.vue';
 import ContestTimer from '@/components/contest/ContestTimer.vue';
 import { useRoute } from 'vue-router';
 import PagePanelContestInfo from './contest/PagePanelContestInfo.vue';

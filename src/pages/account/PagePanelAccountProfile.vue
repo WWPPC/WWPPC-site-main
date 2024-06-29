@@ -2,7 +2,7 @@
 import WaitCover from '#/common/WaitCover.vue';
 import { AnimateInContainer, PairedGridContainer, TitledCollapsible, TitledCutCornerContainer } from '#/containers';
 import { InputButton, InputTextArea, InputTextBox, InputDropdown, InputCopyButton } from '#/inputs';
-import AccountProfileTeamUser from '@/components/account/profile/AccountProfileTeamUser.vue';
+import AccountTeamUserDisp from '#/common-components/account/AccountTeamUserDisp.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal, ModalMode } from '#/modal';
 import { AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
@@ -271,7 +271,7 @@ onMounted(clearDangerButtons);
                 <h3>Your Team</h3>
                 <div class="profileTeamGrid">
                     <div class="profileTeamList">
-                        <AccountProfileTeamUser v-for="user in accountManager.teamMembers" :key="user" :user="user" :team="accountManager.team" allow-kick></AccountProfileTeamUser>
+                        <AccountTeamUserDisp v-for="user in accountManager.teamMembers" :key="user" :user="user" :team="accountManager.team" allow-kick></AccountTeamUserDisp>
                     </div>
                     <form action="javascript:void(0)" @submit=writeTeamData>
                         <PairedGridContainer width="100%">

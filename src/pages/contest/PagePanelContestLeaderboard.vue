@@ -2,14 +2,11 @@
 import { GlitchText } from '#/text';
 import LoadingSpinner from '#/common/LoadingSpinner.vue';
 import { onMounted, ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
 import { useAccountManager } from '#/scripts/AccountManager';
 import { useContestManager } from '@/scripts/ContestManager';
 
 const accountManager = useAccountManager();
 const contestManager = useContestManager();
-
-const router = useRouter();
 
 const scoreboard = ref<{ username: string, displayName: string, score: number }[]>([]);
 const update = async () => {
@@ -32,7 +29,8 @@ onMounted(update);
     <div class="centered">
         <div class="leaderboard">
             <div class="leaderboardItem" v-for="(item, i) of scoreboard" :key="i">
-                {{ i + 1 }}. <span class="leaderboardLink" @click="router.push('/user/@' + item.username)">{{ item.displayName }}</span> - {{ item.score }} points
+                {{ i + 1 }}.
+                <RouterLink :to="'/user/@' + item.username">{{ item.displayName }}</RouterLink>
             </div>
         </div>
         <div v-if="contestManager.scoreboard == null" style="display: flex; flex-direction: column; align-items: center;">
@@ -68,11 +66,5 @@ onMounted(update);
     font-size: var(--font-large);
     border-radius: 8px;
     padding: 4px 8px;
-}
-
-.leaderboardLink {
-    color: lime;
-    text-decoration: underline;
-    cursor: pointer;
 }
 </style>

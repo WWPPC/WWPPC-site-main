@@ -4,7 +4,6 @@ import { AnimateInContainer, CutCornerContainer } from '#/containers';
 import ArchiveListRound from './ArchiveListRound.vue';
 import OnScreenHook from '#/common/OnScreenHook.vue';
 import LoadingBar from '#/common/LoadingBar.vue';
-import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useUpsolveManager, type UpsolveContest } from '@/scripts/UpsolveManager';
 import { globalModal } from '#/modal';
@@ -14,15 +13,10 @@ const props = defineProps<{
 }>();
 
 const modal = globalModal();
-const router = useRouter();
 const upsolveManager = useUpsolveManager();
 
 const contest = ref<UpsolveContest | null>(null);
 const titleText = autoGlitchTextTransition(() => contest.value?.id ?? '...', 40, 1, 10, 2);
-
-const navContest = () => {
-    router.push('/contest/archive/' + contest.value?.id);
-};
 
 let loaded = false;
 const load = async () => {
@@ -40,9 +34,9 @@ const load = async () => {
 <template>
     <CutCornerContainer style="margin-bottom: 16px;" no-padding no-scroll>
         <OnScreenHook @visible="load()"></OnScreenHook>
-        <div class="archiveContestHeader" @click="navContest()">
+        <RouterLink :to="'/contest/archive/' + contest?.id" class="archiveContestHeader">
             <h2>{{ titleText }}</h2>
-        </div>
+        </RouterLink>
         <AnimateInContainer type="fade" v-for="(round, index) in contest?.rounds" :key="round.number" :delay="index * 100">
             <ArchiveListRound :data="round" minimized></ArchiveListRound>
         </AnimateInContainer>
@@ -54,6 +48,7 @@ const load = async () => {
 
 <style scoped>
 .archiveContestHeader {
+    display: block;
     box-sizing: border-box;
     width: 100%;
     padding: 8px 12px;

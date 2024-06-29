@@ -6,10 +6,7 @@ import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, 
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import { useRouter } from 'vue-router';
 import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
-
-const router = useRouter();
 </script>
 
 <template>
@@ -42,7 +39,9 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-if="Date.now() < nextContest.getTime()">
                         <GlitchText text="Registrations open!" font-size="var(--font-28)" color="lime" glow flashing random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <InputLinkButton text="Register" color="lime" font-size="var(--font-large)" @click="router.push('/account/registrations')"></InputLinkButton>
+                            <RouterLink to="/account/registrations" no-deco>
+                                <InputLinkButton text="Register" color="lime" font-size="var(--font-large)"></InputLinkButton>
+                            </RouterLink>
                         </div>
                         <p style="text-align: center; font-size: var(--font-small);">
                             <i>Scroll down to see contest schedule</i>
@@ -51,7 +50,9 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-else-if="Date.now() > nextContestEnd.getTime()">
                         <GlitchText text="Contest ended!" font-size="var(--font-28)" color="red" glow random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <InputLinkButton text="Archive" color="lime" font-size="var(--font-large)" @click="router.push('/contest/archive')"></InputLinkButton>
+                            <RouterLink to="/contest/archive" no-deco>
+                                <InputLinkButton text="Archive" color="lime" font-size="var(--font-large)"></InputLinkButton>
+                            </RouterLink>
                         </div>
                         <p style="text-align: center">
                             Thanks to all who participated! We hope to see you in the WWPIT Fall 2024!
@@ -60,7 +61,9 @@ const router = useRouter();
                     <CenteredContainer style="font-size: var(--font-20);" v-else>
                         <GlitchText text="Contest started!" font-size="var(--font-28)" color="lime" glow flashing flash-color="red" random></GlitchText>
                         <div class="centered" style="margin: 8px;">
-                            <InputLinkButton text="Contest" color="lime" font-size="var(--font-large)" @click="router.push('/contest/contest')"></InputLinkButton>
+                            <RouterLink to="/contest/contest" no-deco>
+                                <InputLinkButton text="Contest" color="lime" font-size="var(--font-large)"></InputLinkButton>
+                            </RouterLink>
                         </div>
                         <p style="text-align: center">
                             The contest has started!
@@ -86,11 +89,11 @@ const router = useRouter();
                     <div class="centered">
                         <div class="contestWinnerTable">
                             <span>🥇</span>
-                            <span @click="router.push('/user/@ommehta16')">PHS CPT Amogus</span>
+                            <RouterLink to="/user/@ommehta16">PHS CPT Amogus</RouterLink>
                             <span>🥈</span>
-                            <span @click="router.push('/user/@litvinas')">BinaryThree</span>
+                            <RouterLink to="/user/@litvinas">BinaryThree</RouterLink>
                             <span>🥉</span>
-                            <span @click="router.push('/user/@natnuo')">PuppyImpression</span>
+                            <RouterLink to="/user/@natnuo">PuppyImpression</RouterLink>
                         </div>
                     </div>
                 </TitledDoubleCutCornerContainer>
@@ -100,11 +103,11 @@ const router = useRouter();
                     <div class="centered">
                         <div class="contestWinnerTable">
                             <span>🥇</span>
-                            <span @click="router.push('/user/@liympanda')">liympanda</span>
+                            <RouterLink to="/user/@liympanda">liympanda</RouterLink>
                             <span>🥈</span>
-                            <span @click="router.push('/user/@oursaco')">oursaco</span>
+                            <RouterLink to="/user/@oursaco">oursaco</RouterLink>
                             <span>🥉</span>
-                            <span @click="router.push('/user/@tristansun')">tfg</span>
+                            <RouterLink to="/user/@tristansun">tfg</RouterLink>
                         </div>
                     </div>
                 </TitledDoubleCutCornerContainer>
@@ -258,7 +261,7 @@ const router = useRouter();
                                 Teams (including the WWPPC team) will have a chance to test the contest system with a few practice rounds.
                             </p>
                             <p>
-                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <a href="/account/registrations" target="_blank">register</a> for the practice contest <b>1 day</b> before the actual contest!
+                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
                             </p>
                             <p style="font-size: var(--font-16)">
                                 <i>All times are in Eastern Standard Time (daylight savings)</i>

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelView, PanelNavLargeLogo } from '#/panels';
-import { useRouter } from 'vue-router';
 import PagePanelToolsEditor from './tools/PagePanelToolsEditor.vue';
 import PagePanelToolsDataurl from './tools/PagePanelToolsDataurl.vue';
 import PagePanelToolsSvgConverter from './tools/PagePanelToolsSvgConverter.vue';
 
-const router = useRouter();
 </script>
 
 <template>
@@ -24,9 +22,9 @@ const router = useRouter();
                 <h1>WWPPC Tools</h1>
                 <p>You've found the "secret" WWPPC tools! (no, there is no contest admin panel)</p>
                 <ul>
-                    <li @click="router.push('/tools/editor')">Problem Editor</li>
-                    <li @click="router.push('/tools/dataurl')">Image to dataurl</li>
-                    <li @click="router.push('/tools/svgConverter')">SVG to PNG</li>
+                    <li><RouterLink to="/tools/editor">Problem Editor</RouterLink></li>
+                    <li><RouterLink to="/tools/dataurl">Image to dataurl</RouterLink></li>
+                    <li><RouterLink to="/tools/svgConverter">SVG to PNG</RouterLink></li>
                 </ul>
             </PanelBody>
             <PanelBody name="editor" title="Problem Editor">
