@@ -226,7 +226,13 @@ const viewCode = async () => {
                 <div style="text-align: center;">
                     <h3>Submit</h3>
                     <p style="text-align: justify; font-size: var(--font-small);">
-                        You can submit and test anytime, but only the last submission is scored. You cannot submit after a round ends.
+                        <span v-if="props.isUpsolve" style="text-align: center;">
+                            <b>You are submitting in analysis mode.</b>
+                        </span>
+                        <span v-else>
+                            You can submit and test anytime, but only the last submission is scored. You cannot submit after a round ends.
+                        </span>
+                        <br>
                         <i>Java and Python submissions have double the stated time limit.</i>
                     </p>
                 </div>
@@ -238,7 +244,10 @@ const viewCode = async () => {
                         <span>Language:</span>
                         <InputDropdown ref="languageDropdown" :items="serverConnection.serverConfig.acceptedLanguages.map((a) => ({ text: a, value: a }))" required></InputDropdown>
                     </div>
-                    <InputButton ref="submit" text="Upload Submission" type="submit" width="min-content" @click=submitUpload :disabled="languageDropdown?.value == undefined || languageDropdown?.value == '' || fileUpload?.files == null || fileUpload?.files.item(0) == null || contestManager.contest == null || contestManager.contest.rounds[problem.round].startTime > Date.now() || contestManager.contest.rounds[problem.round].endTime <= Date.now()"></InputButton>
+                    <InputButton ref="submit" text="Upload Submission" type="submit" width="min-content" @click=submitUpload :disabled="languageDropdown?.value == undefined || languageDropdown?.value == '' || fileUpload?.files == null || fileUpload?.files.item(0) == null || (!props.isUpsolve && (contestManager.contest == null || contestManager.contest.rounds[problem.round].startTime > Date.now() || contestManager.contest.rounds[problem.round].endTime <= Date.now()))"></InputButton>
+                    <div style="text-align: center; color: yellow;" v-if="!serverConnection.loggedIn">
+                        <i>You must be signed in to submit solutions</i>
+                    </div>
                 </form>
             </DoubleCutCornerContainer>
             <DoubleCutCornerContainer flipped>
@@ -264,7 +273,10 @@ const viewCode = async () => {
                         </div>
                     </div>
                 </AnimateInContainer>
-                <div v-if="problem.submissions.length == 0" style="text-align: center;"><i>You have not submitted any solutions yet.</i></div>
+                <div style="text-align: center; color: yellow;" v-if="!serverConnection.loggedIn">
+                    <i>You must be signed in to submit solutions</i>
+                </div>
+                <div v-else-if="problem.submissions.length == 0" style="text-align: center;"><i>You have not submitted any solutions yet.</i></div>
             </DoubleCutCornerContainer>
         </div>
     </div>
@@ -510,7 +522,7 @@ const viewCode = async () => {
 .submissionCodeCopy {
     position: absolute;
     top: 24px;
-    right: 20px;
+    right: 38px;
 }
 
 .v-enter-active,
