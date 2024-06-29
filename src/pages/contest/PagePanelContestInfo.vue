@@ -16,7 +16,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        WWP Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest in which teams of up to 4 compete in 3 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        The WWP Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 3 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
                         <br><br>
                         The contest will be held online, on this website, between two divisions: Novice and Advanced.
                         <br><br>

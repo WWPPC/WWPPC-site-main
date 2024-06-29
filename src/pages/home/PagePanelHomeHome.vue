@@ -48,7 +48,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                                 <GlitchText text="06/02/2024" font-size="var(--font-subsubtitle)" color="red" glow random flashing :delay=10 start-glitched></GlitchText>
                                 <LineDivider color="#AAA"></LineDivider>
                                 <p>
-                                    WWPIT is a round-based informatics tournament with multiple divisions targeting competitive programmers of all skill levels.
+                                    WWPIT is a round-based informatics tournament with multiple divisions for high school competitive programmers of all skill levels.
                                 </p>
                             </div>
                             <div style="display: flex; flex-direction: column;">

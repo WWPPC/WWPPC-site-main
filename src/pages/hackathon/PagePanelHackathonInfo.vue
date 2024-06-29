@@ -20,7 +20,7 @@ import { GlitchText } from '#/text';
             <AnimateInContainer type="slideUp" show-on-screen :delay=200>
                 <TitledDoubleCutCornerContainer title="2024 Season" height="100%" align="center" hover-animation="lift" flipped>
                     <div class="centered">
-                        <GlitchText text="??/??/????" font-size="min(5vh, calc(50vw / 10))" color="red" glow :steps=1 :delay=Infinity></GlitchText>
+                        <GlitchText text="??/??/????" font-size="var(--font-huge)" color="red" glow :steps=1 :delay=Infinity></GlitchText>
                     </div>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
