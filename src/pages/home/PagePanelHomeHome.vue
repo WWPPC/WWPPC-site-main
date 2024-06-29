@@ -91,14 +91,14 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
-                    <div class="centered" style="height: 2em;">
-                        <a href="https://math.wwppc.tech">
-                            <img src="">
+                    <p style="text-wrap: balanced;">
+                        Check out our math division for <span style="color: lime;">math & informatics tournaments</span>!
+                    </p>
+                    <div style="text-align: center">
+                        <a href="https://wwppc.tech" target="_blank" class="centered" style="text-decoration: none;">
+                            <InputIconButton text="WWPPC Math" img="/icon2-small.png" color="lime" font-size="var(--font-28)" no-mask></InputIconButton>
                         </a>
                     </div>
-                    <p style="text-wrap: balanced; margin: 0px 8px;">
-                        <a href="https://math.wwppc.tech">WWPPC Math</a> - WWPPC's math division - is now hosting WWPMI and WWPMT!
-                    </p>
                 </DoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen style="grid-row: span 2;">
@@ -123,15 +123,13 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
-                    <div style="text-align: center;">
-                        <a href="https://discord.wwppc.tech" target="_blank" class="centered" no-deco>
-                            <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
-                        </a>
-                        <div style="height: 0.5em;"></div>
-                        <a href="https://github.com/WWPPC" target="_blank" class="centered" no-deco>
-                            <InputIconButton text="GitHub" img="/img/github-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#F05032"></InputIconButton>
-                        </a>
-                    </div>
+                    <a href="https://discord.wwppc.tech" target="_blank" class="centered" no-deco>
+                        <InputIconButton text="Join us on Discord!" img="/img/discord-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#5865F2"></InputIconButton>
+                    </a>
+                    <div style="height: 0.5em;"></div>
+                    <a href="https://github.com/WWPPC" target="_blank" class="centered" no-deco>
+                        <InputIconButton text="GitHub" img="/img/github-logo.svg" color="lime" font-size="var(--font-medium)" img-hover-color="#F05032"></InputIconButton>
+                    </a>
                 </DoubleCutCornerContainer>
             </AnimateInContainer>
         </div>
