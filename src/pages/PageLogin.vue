@@ -109,11 +109,6 @@ const attemptRecovery = async () => {
         content: res == AccountOpResult.ALREADY_EXISTS ? 'An email was already sent recently' : res == AccountOpResult.NOT_EXISTS ? 'Account not found' : res == AccountOpResult.INCORRECT_CREDENTIALS ? 'Inputted email does not match account record' : res == AccountOpResult.ERROR ? 'Internal error' : res == AccountOpResult.NOT_CONNECTED ? 'Not connected to server' : 'Unknown error (this is a bug?)'
     });
 };
-
-//definitely not rickroll
-watch(usernameInput, () => {
-    if (usernameInput.value.toLowerCase() == 'rick astley') window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-});
 </script>
 
 <script lang="ts">
@@ -215,6 +210,7 @@ watch(usernameInput, () => {
 
 <style scoped>
 .loginNoScroll {
+    display: grid;
     width: 100%;
     height: 100%;
     margin: -16px 0px;
@@ -223,7 +219,9 @@ watch(usernameInput, () => {
 }
 
 .loginScroll {
-    max-height: 100%;
+    grid-row: 1;
+    grid-column: 1;
+    height: 100%;
     overflow-y: auto;
 }
 
@@ -289,7 +287,7 @@ watch(usernameInput, () => {
 
 .main-enter-from,
 .main-leave-to {
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% - 32px));
 }
 
 .main-enter-to,
@@ -299,11 +297,11 @@ watch(usernameInput, () => {
 
 .second-enter-to,
 .second-leave-from {
-    transform: translateY(calc(-100% - 32px));
+    transform: translateY(0%);
 }
 
 .second-enter-from,
 .second-leave-to {
-    transform: translateY(0%);
+    transform: translateY(calc(100% + 32px));
 }
 </style>
