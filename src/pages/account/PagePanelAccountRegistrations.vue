@@ -19,7 +19,7 @@ const registrationSelected = ref('');
 const updateAvailableContestList = async () => {
     const res = await contestManager.getContestList();
     if (res instanceof Error) {
-        modal.showModal({ title: res.message, content: 'Could not load upcoming contests.', color: 'resd' });
+        modal.showModal({ title: res.message, content: 'Could not load upcoming contests.', color: 'red' });
         return;
     }
     contestList.value = res.filter((v) => {
