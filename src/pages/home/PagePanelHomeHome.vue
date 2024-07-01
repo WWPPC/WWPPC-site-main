@@ -95,7 +95,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                         Check out our math division for <span style="color: lime;">math & informatics tournaments</span>!
                     </p>
                     <div style="text-align: center">
-                        <a href="https://wwppc.tech" target="_blank" class="centered" style="text-decoration: none;">
+                        <a href="https://math.wwppc.tech" target="_blank" class="centered" style="text-decoration: none;">
                             <InputIconButton text="WWPPC Math" img="/icon2-small.png" color="lime" font-size="var(--font-28)" no-mask></InputIconButton>
                         </a>
                     </div>
