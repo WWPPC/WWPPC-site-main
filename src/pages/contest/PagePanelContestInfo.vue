@@ -89,11 +89,37 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                     <div class="centered">
                         <div class="contestWinnerTable">
                             <span>🥇</span>
-                            <RouterLink to="/user/@ommehta16">PHS CPT Amogus</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>PHS CPT Amogus:</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@ommehta16">Om Mehta</RouterLink>,
+                                    <RouterLink to="/user/@square-brackets">Allan Chen</RouterLink>,
+                                    <RouterLink to="/user/@imkindabadimkindabad">Oscar Huang</RouterLink>,
+                                    <RouterLink to="/user/@jonathanji">Jonathan Ji</RouterLink>
+                                    )
+                                </span>
+                            </div>
                             <span>🥈</span>
-                            <RouterLink to="/user/@litvinas">BinaryThree</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>BinaryThree</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@litvinas">Fiodar Ziuzin</RouterLink>,
+                                    <RouterLink to="/user/@trgt26">Junayed Ahammed</RouterLink>
+                                    )
+                                </span>
+                            </div>
                             <span>🥉</span>
-                            <RouterLink to="/user/@natnuo">PuppyImpression</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>PuppyImpression</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@natnuo">Nathan Tao</RouterLink>,
+                                    <RouterLink to="/user/@adabot">Ada Langford</RouterLink>
+                                    )
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </TitledDoubleCutCornerContainer>
@@ -103,11 +129,35 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                     <div class="centered">
                         <div class="contestWinnerTable">
                             <span>🥇</span>
-                            <RouterLink to="/user/@liympanda">liympanda</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>liympanda</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@liympanda">Yiming Li</RouterLink>
+                                    )
+                                </span>
+                            </div>
                             <span>🥈</span>
-                            <RouterLink to="/user/@oursaco">oursaco</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>oursaco</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@oursaco">Thomas Liu</RouterLink>
+                                    )
+                                </span>
+                            </div>
                             <span>🥉</span>
-                            <RouterLink to="/user/@tristansun">tfg</RouterLink>
+                            <div class="contestWinnerBlock">
+                                <span>tfg</span>
+                                <span>
+                                    (
+                                    <RouterLink to="/user/@tristansun">Tristan Sun</RouterLink>,
+                                    <RouterLink to="/user/@axujls">Andrew Xu</RouterLink>,
+                                    <RouterLink to="/user/@colecancode">Cole Miller</RouterLink>,
+                                    <RouterLink to="/user/@pikachu2021">Soham Samanta</RouterLink>
+                                    )
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </TitledDoubleCutCornerContainer>
@@ -157,7 +207,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                         headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100'],
                         data: []
                     }"></HeaderedTable>
-                    <p style="font-size: var(--font-tiny)">
+                    <p style="font-size: var(--font-16)">
                         <i>Note: Currently, we can only guarantee prizes to high school students within the US. International transactions are subject to federal law. Other people may compete but may not be able to recieve prizes.</i>
                         <br>
                         <i>X-Camp Prizes are in the form of X-Camp giftcards</i>
@@ -261,7 +311,8 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                                 Teams (including the WWPPC team) will have a chance to test the contest system with a few practice rounds.
                             </p>
                             <p>
-                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
+                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b>
+                                <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
                             </p>
                             <p style="font-size: var(--font-16)">
                                 <i>All times are in Eastern Standard Time (daylight savings)</i>
@@ -477,6 +528,16 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
     color: lime;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.contestWinnerBlock {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-32);
+}
+
+.contestWinnerBlock>span:nth-child(2) {
+    font-size: var(--font-16);
 }
 
 .winnersBlock {
