@@ -81,7 +81,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo"></a>
         <CenteredContainer>
-            <GlitchText text="S-2024 Winners" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
+            <GlitchText text="WWPIT Spring 2024 Winners" font-size="var(--font-subtitle)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
         </CenteredContainer>
         <div class="contestInfoBlock winnersBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=200>
@@ -90,7 +90,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                         <div class="contestWinnerTable">
                             <span>🥇</span>
                             <div class="contestWinnerBlock">
-                                <span>PHS CPT Amogus:</span>
+                                <span>PHS CPT Amogus</span>
                                 <span>
                                     (
                                     <RouterLink to="/user/@ommehta16">Om Mehta</RouterLink>,
