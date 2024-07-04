@@ -55,11 +55,11 @@ export enum ContestProblemCompletionState {
     UPLOADED = 1,
     /**Submitted but not graded, submissions locked */
     SUBMITTED = 2,
-    /**Submitted, graded, and passed all tests */
+    /**Submitted, graded, and passed all subtasks */
     GRADED_PASS = 3,
-    /**Submitted, graded, and failed all tests */
+    /**Submitted, graded, and failed all subtasks */
     GRADED_FAIL = 4,
-    /**Submitted, graded, and only passed some tests */
+    /**Submitted, graded, passed at least one subtask and failed at least one subtask */
     GRADED_PARTIAL = 5,
     /**Error loading status */
     ERROR = 6
@@ -140,6 +140,7 @@ export const useContestManager = defineStore('contestManager', {
 window.addEventListener('DOMContentLoaded', () => {
     socket.on('contestData', (data: Contest) => {
         state.contest = data;
+        console.log(state.contest);
     });
     socket.on('scoreboard', (data: ScoreboardEntry[]) => {
         state.scoreboard = data;
