@@ -79,7 +79,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             <AnimateInContainer type="slideUp" show-on-screen style="grid-row: span 2;">
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <div class="centered" style="height: 4em;">
-                        <img src="/icon2.png">
+                        <img src="/icon2-small.png">
                     </div>
                     <p style="text-wrap: balanced; margin: 0px 8px;">
                         WWPPC is the host of competitions like WWPIT and WWPHacks, run by students at WW-P High School South.
