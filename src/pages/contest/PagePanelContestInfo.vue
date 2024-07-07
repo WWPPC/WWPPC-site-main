@@ -430,6 +430,13 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                 </TitledCollapsible>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
+                <TitledCollapsible title="Who is eligible for prizes?" startCollapsed>
+                    <p style="font-size: var(--font-20)">
+                        Currently, we can only guarantee prizes to high school students in the United States.
+                    </p>
+                </TitledCollapsible>
+            </AnimateInContainer>
+            <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="Where will it be held?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         WWPIT will be held on this website!
@@ -458,6 +465,13 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                         For those experienced in programming, helpful resources include <a href="https://usaco.guide" target="_blank">USACO Guide</a> and <a href="https://codeforces.com" target="_blank">Codeforces</a>.
                         <br><br>
                         To learn C++, see <a href="https://cplusplus.com/doc/tutorial/" target="_blank">CPlusPlus.com</a>. To learn Python, a more beginner-friendly language, the <a href="https://runestone.academy/ns/books/published/thinkcspy/index.html" target="_blank">thinkcspy textbook</a> is useful.
+                    </p>
+                </TitledCollapsible>
+            </AnimateInContainer>
+            <AnimateInContainer type="slideUp" show-on-screen>
+                <TitledCollapsible title="What is the expected difficulty?" startCollapsed>
+                    <p style="font-size: var(--font-20)">
+                        Expect the first few problems to be roughly <a href="https://projecteuler.net/" target="_blank">Project Euler's</a> 0-10% difficulty (beginner-level coding problems), and the last few problems to be roughly 70-90% difficulty (challenging problems that require advanced math and a lot of coding).
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>

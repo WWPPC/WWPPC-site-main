@@ -20,7 +20,7 @@ import PagePanelToolsSvgConverter from './tools/PagePanelToolsSvgConverter.vue';
         <PanelMain>
             <PanelBody name="index" is-default>
                 <h1>WWPPC Tools</h1>
-                <p>You've found the "secret" WWPPC tools! (no, there is no contest admin panel)</p>
+                <p>You've found the "secret" WWPPC tools!</p>
                 <ul>
                     <li><RouterLink to="/tools/editor">Problem Editor</RouterLink></li>
                     <li><RouterLink to="/tools/dataurl">Image to dataurl</RouterLink></li>
