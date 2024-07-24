@@ -4,7 +4,7 @@ import { AnimateInContainer, CenteredContainer, DoubleCutCornerContainer } from 
 import { GlowText, GlitchText } from '#/text';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import LineDivider from '#/common/LineDivider.vue';
-import HomeSponsorLogo from '@/components/home/home/HomeSponsorLogo.vue';
+import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
 </script>
