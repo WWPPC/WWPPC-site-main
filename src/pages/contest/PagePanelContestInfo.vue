@@ -448,7 +448,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What resources are allowed?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        You can use any resource as long as it was published before the beginning of the contest.
+                        You can use any resource that was published before the beginning of the contest.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
