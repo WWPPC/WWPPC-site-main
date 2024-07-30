@@ -52,15 +52,26 @@ const load = async () => {
         contest.value = null;
     }
 };
-onMounted(load);
-watch(() => route.params, load);
-serverConnection.onconnect(load);
-watch(() => serverConnection.loggedIn, load);
+// onMounted(load);
+// watch(() => route.params, load);
+// serverConnection.onconnect(load);
+// watch(() => serverConnection.loggedIn, load);
 </script>
 
 <template>
+    <div class="centered">
+        <div class="maintenance-box-temp">
+            <img src="/icon.svg" style="height: 20vh;">
+            <h3>Site Maintenance</h3>
+            <p style="text-wrap: balance; font-size: var(--font-small);">The Archive is currently under maintenance as we restructure our contest system. Sorry about that!</p>
+            <span style="text-wrap: nowrap;">-------------------------------------------</span>
+            <span>
+                <img src="/img/spaghetti.png" style="max-height: 30vh;">
+            </span>
+        </div>
+    </div>
     <!-- add search button in corner, goes to different box (special search box!!) -->
-    <div class="archiveListWrapperWrapper centered">
+    <!-- <div class="archiveListWrapperWrapper centered">
         <div class="archiveListWrapper">
             <Transition>
                 <div v-if="contestList != null" class="archiveList">
@@ -91,10 +102,19 @@ watch(() => serverConnection.loggedIn, load);
             </Transition>
         </div>
     </div>
-    <LoadingCover text="Loading..." :show="contestList == null && contest == null && round == null"></LoadingCover>
+    <LoadingCover text="Loading..." :show="contestList == null && contest == null && round == null"></LoadingCover> -->
 </template>
 
 <style scoped>
+.maintenance-box-temp {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 2vh;
+    background-color: #333;
+    border: 4px solid white;
+    width: min-content;
+}
+
 .archiveListWrapperWrapper {
     height: 100%;
     overflow: hidden;
