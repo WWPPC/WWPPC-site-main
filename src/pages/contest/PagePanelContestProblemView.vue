@@ -213,7 +213,7 @@ const viewCode = async () => {
     </div>
     <div class="problemViewPanel">
         <div class="problemViewDouble">
-            <TitledCutCornerContainer :title="problemName" style="grid-row: span 3;" vertical-flipped no-padding>
+            <TitledCutCornerContainer :title="problemName.value" style="grid-row: span 3;" vertical-flipped no-padding>
                 <div class="problemViewSubtitle">
                     <span v-html="problemSubtitle1" style="font-weight: bold; grid-row: 1;"></span>
                     <span v-html="problemSubtitle2" style="grid-row: 2;"></span>
