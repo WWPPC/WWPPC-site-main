@@ -81,7 +81,7 @@ watch(nextTime, () => emit('next', nextTime.value.getTime()));
     <Transition>
         <div :class="'timer' + ($props.big ? '2' : '')" v-if="contestManager.contest !== null || route.query.ignore_server !== undefined" v-show="show">
             <GlitchText :text="round" :class="'timerText' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" random on-visible></GlitchText>
-            <TimerDisplay type="min-timer" :to="nextTime" :class="'timerTime' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" :color="color" :flashing="flashColor != ''" :flash-color="flashColor == color ? undefined : flashColor" @zero="updateTime"></TimerDisplay>
+            <TimerDisplay type="auto-timer" :to="nextTime" :class="'timerTime' + ($props.big ? '2' : '')" :shadow="$props.big" :glow="$props.big" :color="color" :flashing="flashColor != ''" :flash-color="flashColor == color ? undefined : flashColor" @zero="updateTime"></TimerDisplay>
         </div>
     </Transition>
 </template>
