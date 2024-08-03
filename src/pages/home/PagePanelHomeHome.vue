@@ -6,7 +6,7 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import LineDivider from '#/common/LineDivider.vue';
 import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
-import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
+import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
 
 <template>
