@@ -2,12 +2,12 @@
 import { autoGlitchTextTransition } from '#/text';
 import { AnimateInContainer, TitledCollapsible } from '#/containers';
 import LoadingBar from '#/common/LoadingBar.vue';
-import ContestProblemListProblem from '@/components/contest/problemList/ContestProblemListProblem.vue';
+import ContestProblemListProblem from '#/common-components/contest/problemList/ContestProblemListProblem.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
 import { useServerConnection } from '#/scripts/ServerConnection';
-import { type ContestProblem, ContestProblemCompletionState } from '@/scripts/ContestManager';
-import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '@/scripts/UpsolveManager';
+import { type ContestProblem, ContestProblemCompletionState } from '#/scripts/ContestManager';
+import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '#/scripts/UpsolveManager';
 
 const props = defineProps<{
     data: UpsolveRound

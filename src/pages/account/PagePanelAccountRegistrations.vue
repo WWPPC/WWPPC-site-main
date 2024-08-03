@@ -6,7 +6,7 @@ import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
 import { getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
 import { useAccountManager } from '#/scripts/AccountManager';
-import { useContestManager } from '@/scripts/ContestManager';
+import { useContestManager } from '#/scripts/ContestManager';
 import recaptcha from '#/scripts/recaptcha';
 
 const accountManager = useAccountManager();
