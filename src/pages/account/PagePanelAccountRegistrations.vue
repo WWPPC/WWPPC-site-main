@@ -4,8 +4,7 @@ import { InputButton, InputDropdown } from '#/inputs';
 import WaitCover from '#/common/WaitCover.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
-import { getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
-import { useAccountManager } from '#/scripts/AccountManager';
+import { getTeamOpMessage, TeamOpResult, useAccountManager } from '#/scripts/AccountManager';
 import { useContestManager } from '#/scripts/ContestManager';
 import recaptcha from '#/scripts/recaptcha';
 
@@ -134,4 +133,4 @@ const attemptUnregister = async (registration: string) => {
 .registrationBlock:hover>.registrationUnregister {
     opacity: 1;
 }
-</style>
+</style>getTeamOpMessage, TeamOpResult, 
