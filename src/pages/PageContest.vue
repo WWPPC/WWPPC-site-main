@@ -39,7 +39,7 @@ connectionEnforcer.loginExclude.add('/contest/archive');
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
                 <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
-                <div v-if="contestManager.WWPIT?.contest != null || ignoreServer" style="display: flex;">
+                <div v-if="contestManager.contests.WWPIT?.contest != null || ignoreServer" style="display: flex;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
                     <PanelNavButton text="Leaderboard" for="/contest/leaderboard"></PanelNavButton>
