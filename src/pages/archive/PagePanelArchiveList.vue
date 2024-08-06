@@ -7,8 +7,8 @@ import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
 import { useServerConnection } from '#/scripts/ServerConnection';
-import { useUpsolveManager } from '@/scripts/UpsolveManager';
-import type { UpsolveContest, UpsolveRound } from '@/scripts/UpsolveManager';
+import { useUpsolveManager } from '#/scripts/UpsolveManager';
+import type { UpsolveContest, UpsolveRound } from '#/scripts/UpsolveManager';
 
 const modal = globalModal();
 const route = useRoute();

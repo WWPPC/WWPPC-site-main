@@ -7,8 +7,8 @@ import WaitCover from '#/common/WaitCover.vue';
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
-import { useServerConnection, AccountOpResult, getAccountOpMessage } from '#/scripts/ServerConnection';
-import { languageMaps, experienceMaps, gradeMaps, useAccountManager, validateCredentials } from '#/scripts/AccountManager';
+import { useServerConnection } from '#/scripts/ServerConnection';
+import { languageMaps, experienceMaps, gradeMaps, useAccountManager, validateCredentials, getAccountOpMessage, AccountOpResult } from '#/scripts/AccountManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import recaptcha from '#/scripts/recaptcha';
 

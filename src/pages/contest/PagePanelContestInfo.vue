@@ -6,7 +6,7 @@ import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, 
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
+import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
 
 <template>

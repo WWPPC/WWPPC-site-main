@@ -5,8 +5,7 @@ import { InputButton, InputTextArea, InputTextBox, InputDropdown, InputCopyButto
 import AccountTeamUserDisp from '#/common-components/account/AccountTeamUserDisp.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal, ModalMode } from '#/modal';
-import { AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/ServerConnection';
-import { useAccountManager, gradeMaps, experienceMaps, languageMaps } from '#/scripts/AccountManager';
+import { useAccountManager, gradeMaps, experienceMaps, languageMaps, AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/AccountManager';
 import recaptcha from '#/scripts/recaptcha';
 import { useRoute } from 'vue-router';
 
@@ -68,7 +67,7 @@ const writeTeamData = async () => {
     // artificial wait
     await new Promise((resolve) => setTimeout(resolve, 500));
     const res = await accountManager.writeTeamData();
-    if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Write data failed', content: getAccountOpMessage(res), color: 'red' });
+    if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Write data failed', content: getTeamOpMessage(res), color: 'red' });
     showWriteTeamDataWait.value = false;
 };
 const joinTeam = async () => {
@@ -372,4 +371,4 @@ onMounted(clearDangerButtons);
     min-width: 0px;
     margin: 0px 0px;
 }
-</style>
+</style>, AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult, AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult, TeamOpResult

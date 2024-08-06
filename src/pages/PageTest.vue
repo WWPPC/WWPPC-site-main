@@ -2,7 +2,7 @@
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '#/common-components/UserDisp.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
-import ContestTimer from '@/components/contest/ContestTimer.vue';
+import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { isMobile, isWebkit } from '#/scripts/userAgent';
 
 </script>
@@ -18,7 +18,7 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
             </PanelNavList>
             <PanelRightList>
                 <UserDisp></UserDisp>
-                <ContestTimer></ContestTimer>
+                <ContestTimer contest="WWPIT"></ContestTimer>
             </PanelRightList>
         </PanelHeader>
         <PanelMain>

@@ -6,8 +6,7 @@ import WaitCover from '#/common/WaitCover.vue';
 import { nextTick, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
-import { getAccountOpMessage } from '#/scripts/ServerConnection';
-import { useAccountManager, validateCredentials } from '#/scripts/AccountManager';
+import { getAccountOpMessage, useAccountManager, validateCredentials } from '#/scripts/AccountManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import recaptcha from '#/scripts/recaptcha';
 

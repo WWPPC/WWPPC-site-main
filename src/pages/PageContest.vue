@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '#/common-components/UserDisp.vue';
-import ContestTimer from '@/components/contest/ContestTimer.vue';
+import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { useRoute } from 'vue-router';
 import PagePanelContestInfo from './contest/PagePanelContestInfo.vue';
-import PagePanelContestContest from './contest/PagePanelContestContest.vue';
-import PagePanelContestProblemList from './contest/PagePanelContestProblemList.vue';
-import PagePanelContestProblemView from './contest/PagePanelContestProblemView.vue';
-import PagePanelContestLeaderboard from './contest/PagePanelContestLeaderboard.vue';
+import PagePanelContestContest from '#/common-pages/contest/PagePanelContestContest.vue';
+import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
+import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
+import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
 import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
 import { ref, watch } from 'vue';
-import { useContestManager } from '@/scripts/ContestManager';
+import { useContestManager } from '#/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 
 const route = useRoute();
@@ -39,7 +39,7 @@ connectionEnforcer.loginExclude.add('/contest/archive');
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
                 <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
-                <div v-if="contestManager.contest !== null || ignoreServer" style="display: flex;">
+                <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
                     <PanelNavButton text="Leaderboard" for="/contest/leaderboard"></PanelNavButton>
@@ -47,7 +47,7 @@ connectionEnforcer.loginExclude.add('/contest/archive');
             </PanelNavList>
             <PanelRightList>
                 <UserDisp></UserDisp>
-                <ContestTimer></ContestTimer>
+                <ContestTimer contest="WWPIT"></ContestTimer>
             </PanelRightList>
         </PanelHeader>
         <PanelMain>
@@ -55,22 +55,22 @@ connectionEnforcer.loginExclude.add('/contest/archive');
                 <PagePanelContestInfo></PagePanelContestInfo>
             </PanelBody>
             <PanelBody name="contest" title="Contest" scroll-snap>
-                <PagePanelContestContest></PagePanelContestContest>
+                <PagePanelContestContest contest="WWPIT"></PagePanelContestContest>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
-                <PagePanelContestProblemList></PagePanelContestProblemList>
+                <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>
             </PanelBody>
             <PanelBody name="problemView" title="Problem">
-                <PagePanelContestProblemView></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT"></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="leaderboard" title="Leaderboard">
-                <PagePanelContestLeaderboard></PagePanelContestLeaderboard>
+                <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
             </PanelBody>
             <PanelBody name="archive" title="Archive">
                 <PagePanelArchiveList></PagePanelArchiveList>
             </PanelBody>
             <PanelBody name="archiveView" title="Archive Problem">
-                <PagePanelContestProblemView isUpsolve></PagePanelContestProblemView>
+                <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
         </PanelMain>
     </PanelView>

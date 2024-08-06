@@ -6,7 +6,7 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import LineDivider from '#/common/LineDivider.vue';
 import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
-import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
+import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
 
 <template>
@@ -105,7 +105,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPPC</span>:
-                        West Windsor-Plainsboro Programming Contests
+                        West Windsor-Plainsboro Programming Competitions
                     </p>
                     <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPIT</span>:
