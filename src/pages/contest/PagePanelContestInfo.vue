@@ -471,7 +471,7 @@ import { nextContest, nextContestEnd } from '@/scripts/ContestManager';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What is the expected difficulty?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        Expect the first few problems to be roughly <a href="https://projecteuler.net/" target="_blank">Project Euler's</a> 0-10% difficulty (beginner-level coding problems), and the last few problems to be roughly 70-90% difficulty (challenging problems that require advanced math and a lot of coding).
+                        For the Novice division, expect problems within the <a href="https://usaco.org" target="_blank">USACO</a> Bronze-upper USACO Silver division. For the Advanced division, expect problems within the USACO Silver-USACO Platinum division.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
