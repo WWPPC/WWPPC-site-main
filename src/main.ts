@@ -7,7 +7,6 @@ import './assets/main.css';
 import '#/serviceWorker';
 
 setTheme('lime', 'red', 'yellow');
-// setTheme('#FF0', '#00F', '#F90');
 
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
