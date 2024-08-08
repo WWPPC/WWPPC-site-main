@@ -22,7 +22,7 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
             </PanelRightList>
         </PanelHeader>
         <PanelMain>
-            <PanelBody name="test" title="">
+            <PanelBody name="test" title="" is-default>
                 Is mobile platform: {{ isMobile }}
                 <br>
                 Is Webkit browser: {{ isWebkit }}
