@@ -4,8 +4,6 @@ import '#/assets/common.css';
 import '#/assets/fonts.css';
 import './assets/main.css';
 
-import '#/serviceWorker';
-
 setTheme('lime', 'red', 'yellow');
 
 import { createApp } from 'vue';
