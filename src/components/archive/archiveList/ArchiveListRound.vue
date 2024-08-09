@@ -59,7 +59,7 @@ if (!props.minimized) {
 </script>
 
 <template>
-    <TitledCollapsible :title="titleText.value" class="archiveListRoundDropdown" :start-collapsed="$props.minimized" @open="load()">
+    <TitledCollapsible :title="titleText" class="archiveListRoundDropdown" :start-collapsed="$props.minimized" @open="load()">
         <AnimateInContainer type="fade" v-for="(problem, index) of problems" :key="index" :delay="index * 50">
             <ContestProblemListProblem :data="problem" archive></ContestProblemListProblem>
         </AnimateInContainer>
