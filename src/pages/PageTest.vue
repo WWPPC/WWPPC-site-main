@@ -4,7 +4,6 @@ import UserDisp from '#/common-components/UserDisp.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { isMobile, isWebkit } from '#/scripts/userAgent';
-
 </script>
 
 <template>
