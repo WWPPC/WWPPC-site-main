@@ -14,8 +14,9 @@ import { GlitchText } from '#/text';
             <HomeAboutCreditsCard name="Suvanth Erranki" username="susvant" roles="Problemsetter<br>Contest Backend Developer" img="/img/suvanth-erranki.jpg" grade="Rising Junior (HSS)" codeforces="susvant" github="Suvanth-Erranki" discord="812014506724556820" bio="omg susvant! Battlecode 2024 HS 3rd place"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Vikram Karamsetty" username="vikramk" roles="" img="/img/vikram-karamsetty.jpeg" grade="Rising Junior (HSS)" github="VikramKaramsetty" discord="660497297074814976" bio="avid programmer (usaco silver), dedicated roboticist (First Tech Challenge #14481), track runner, problem solver, and engineer!"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Maitian Sha" username="sp" roles="Problemsetter" img="/img/maitian-sha.jpg" grade="Rising Junior (HSS)" codeforces="spuh" aops="452171" github="SampleProvider" discord="706967946198777867" youtube="watch?v=dQw4w9WgXcQ" bio="sp confirmed! Probably qualified for AIME in 6th grade. Also 2x WRO Future Engineers Internationals Top 4 (Team SPARK) and USACO gold. Battlecode 2024 HS 3rd place and made USAJMO as well."></HomeAboutCreditsCard>
-            <HomeAboutCreditsCard name="Advik Vermani" username="avermani10" roles="Outreach Lead" img="/img/advik-vermani.jpg" grade="Rising Senior (HSS)" discord="891834348263862293" bio="Coding enjoyer (USACO Silver) and cybersecurity enthuiast. Also loves music and playing the viola, soccer (actually a Chelsea fan), travelling, chess, and spending time with friends."></HomeAboutCreditsCard>
-        </div>
+        </div><br><br>
+        <h2>Problem Testers:</h2>
+        <h3>William Yuan</h3>
         <ContactFooter></ContactFooter>
     </div>
 </template>
