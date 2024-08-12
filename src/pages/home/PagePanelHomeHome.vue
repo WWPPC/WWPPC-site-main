@@ -4,7 +4,6 @@ import { AnimateInContainer, CenteredContainer, DoubleCutCornerContainer } from 
 import { GlowText, GlitchText } from '#/text';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import LineDivider from '#/common/LineDivider.vue';
-import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
@@ -133,36 +132,6 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 </DoubleCutCornerContainer>
             </AnimateInContainer>
         </div>
-        <ScrollIndicator anchor="a[name=pageHomeScrollTo2]"></ScrollIndicator>
-    </div>
-    <div class="fullBlock homeBlock">
-        <div class="centered">
-            <a name="pageHomeScrollTo2"></a>
-            <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </div>
-        <div class="sponsorColumns">
-            <div>
-                <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
-                <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
-            </div>
-            <div>
-                <GlowText text="GOLD" font-size="var(--font-huge)" color="#FD0" shadow></GlowText>
-                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
-            </div>
-            <div>
-                <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
-                <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" name="ICode Logo" height="10vh"></HomeSponsorLogo>
-            </div>
-        </div>
-        <LineDivider color="#AAA"></LineDivider>
-        <div class="sponsors">
-            <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" name="Desmos Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" name="AoPS Logo" height="12vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" name=".xyz Logo" height="9vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/echo3d-logo.png" url="https://www.echo3d.com/" name="Echo3D Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/axure-logo.svg" url="https://axure.com/" name="Axure Logo" height="6vh"></HomeSponsorLogo>
-        </div>
-        <div style="flex-grow: 1;"></div>
         <ContactFooter></ContactFooter>
     </div>
 </template>
