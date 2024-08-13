@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import ContactFooter from '#/common/ContactFooter.vue';
-import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
 import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
+import LineDivider from '#/common/LineDivider.vue';
+import ContactFooter from '#/common/ContactFooter.vue';
+import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
@@ -645,5 +646,30 @@ ul>li {
 
 .spacer {
     flex-grow: 1;
+}
+
+.sponsorColumns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0px 5%;
+}
+
+.sponsorColumns>div {
+    width: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sponsors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 25px;
+    column-gap: 50px;
+    padding: 0px 5%;
 }
 </style>

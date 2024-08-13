@@ -183,29 +183,4 @@ p {
     row-gap: 24px;
     column-gap: 24px;
 }
-
-.sponsorColumns {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 0px 5%;
-}
-
-.sponsorColumns>div {
-    width: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sponsors {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 25px;
-    column-gap: 50px;
-    padding: 0px 5%;
-}
 </style>
