@@ -8,6 +8,17 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
 
 <template>
     <PanelView name="test" title="Test Page">
+        <!-- <div style="width: 100vw; height: 100vh; background-color: black;">
+            <div class="centered">
+                <GlowText text="503" color="white" font-size="50vh" glow shadow style="font-family: 'Apex Mk3'; line-height: 1em;"></GlowText>
+            </div>
+            <div class="centered">
+                <GlowText text="SERVICE UNAVAILABLE" color="rgb(200, 100, 255)" font-size="18vh" glow shadow style="font-family: 'Apex Mk3'; line-height: 1em;"></GlowText>
+            </div>
+            <div class="centered">
+                <GlowText text="SP^2" color="#3C70FF" font-size="20vh" glow shadow style="font-family: 'Apex Mk3'; line-height: 1em;"></GlowText>
+            </div>
+        </div> -->
         <PanelHeader>
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
