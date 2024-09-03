@@ -83,7 +83,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo"></a>
         <CenteredContainer>
-            <GlitchText text="S-2024 Winners" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
+            <GlitchText text="S-2024 Winners" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
         </CenteredContainer>
         <div class="contestInfoBlock winnersBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=200>
@@ -180,7 +180,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo2"></a>
         <CenteredContainer>
-            <GlitchText text="Format & Prizes" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
+            <GlitchText text="Format & Prizes" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
         </CenteredContainer>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
@@ -481,7 +481,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
     </div>
-    <div class="fullBlock homeBlock">
+    <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
         <div class="centered">
             <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>

@@ -9,8 +9,8 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
 
 <template>
-    <div class="fullBlock homeBlock">
-        <GlitchText text="WWPPC 2024" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :delay=10 :steps=2 random on-visible></GlitchText>
+    <div class="fullBlock stretchBlock">
+        <GlitchText text="WWPPC 2024" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="homeColumns">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
@@ -69,7 +69,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
         </div>
         <ScrollIndicator anchor="a[name=pageHomeScrollTo]"></ScrollIndicator>
     </div>
-    <div class="fullBlock homeBlock">
+    <div class="fullBlock stretchBlock">
         <a name="pageHomeScrollTo"></a>
         <div class="centered">
             <GlitchText text="About WWPPC" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
@@ -137,11 +137,6 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </template>
 
 <style scoped>
-.homeBlock {
-    display: flex;
-    flex-direction: column;
-}
-
 .homeTitle {
     transform-origin: top;
     transform: translate3D(0px, -20vh, -50px) scale(150%);
@@ -182,5 +177,9 @@ p {
     justify-items: stretch;
     row-gap: 24px;
     column-gap: 24px;
+}
+
+.spacer {
+    flex-grow: 1;
 }
 </style>

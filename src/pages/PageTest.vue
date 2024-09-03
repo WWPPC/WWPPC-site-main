@@ -54,7 +54,7 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
                 <p><i>Italic</i></p>
                 <code>const buh: number = NaN;</code>
                 <codeblock>function add(...nums) {
-    return nums.reduce((p, c) => p + c, 0);
+return nums.reduce((p, c) => p + c, 0);
 }</codeblock>
                 <p style="font-size: var(--font-16);">Size 16</p>
                 <p style="font-size: var(--font-18);">Size 18</p>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible } from '#/containers';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, AngledTitledContainer } from '#/containers';
 import { InputLinkButton } from '#/inputs';
 import { GlitchText } from '#/text';
 </script>
@@ -13,7 +13,7 @@ import { GlitchText } from '#/text';
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Come hack with us!" height="100%" align="center" hover-animation="lift">
                     <p>
-                        WWPHacks is a hackathon where programmers compete to develop technological solutions to real-world problems within 24 hours. Teams will build projects, attend workshops, and compete for prizes. Judges will evaluate the projects, with winners receiving interesting awards. At the end of the day, participants will leave the hackathon with technical experience, new friends, and fulfillment.
+                        short description + image
                     </p>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
@@ -40,8 +40,68 @@ import { GlitchText } from '#/text';
         </div>
         <ScrollIndicator anchor="a[name=pageHackathonScrollTo]"></ScrollIndicator>
     </div>
-    <div class="fullBlock stretchBlock">
+    <div class="fullBlock">
         <a name="pageHackathonScrollTo"></a>
+        <div class="hacksColumns">
+            <div class="stretchBlock hacksTilesColumn">
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer>
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+            </div>
+            <div>
+                <div class="hacksStickyBox">
+                    <CenteredContainer>
+                        <GlitchText text="idk lol" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
+                    </CenteredContainer>
+                    <AnimateInContainer type="fade" show-on-screen>
+                        <AngledTitledContainer title="Title">
+                            content content content content content content content content content content content content content content content content content content content content content content content
+                        </AngledTitledContainer>
+                        <AngledTitledContainer title="Title" flipped>
+                            content content content content content content content content content content content content content content content content content content content content content content content
+                        </AngledTitledContainer>
+                    </AnimateInContainer>
+                </div>
+            </div>
+        </div>
+        <ScrollIndicator anchor="a[name=pageHackathonScrollTo2]"></ScrollIndicator>
+    </div>
+    <div class="fullBlock stretchBlock">
+        <a name="pageHackathonScrollTo2"></a>
+        <CenteredContainer>
+            <GlitchText text="idk" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
+        </CenteredContainer>
+        <ScrollIndicator anchor="a[name=pageHackathonScrollTo3]"></ScrollIndicator>
+    </div>
+    <div class="fullBlock stretchBlock">
+        <a name="pageHackathonScrollTo3"></a>
         <CenteredContainer>
             <GlitchText text="FAQ" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
         </CenteredContainer>
@@ -87,11 +147,6 @@ import { GlitchText } from '#/text';
     text-align: center;
 }
 
-.stretchBlock {
-    display: flex;
-    flex-direction: column;
-}
-
 .hacksInfoBlock {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -106,6 +161,27 @@ import { GlitchText } from '#/text';
 
 .hacksInfoBlock>div {
     height: 100%;
+}
+
+.hacksColumns {
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+}
+
+.hacksColumns>div {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.hacksTilesColumn {
+    row-gap: 24px;
+}
+
+.hacksStickyBox {
+    position: sticky;
+    top: 0px;
+    bottom: 0px;
 }
 
 @media (max-width: 100vh) {
