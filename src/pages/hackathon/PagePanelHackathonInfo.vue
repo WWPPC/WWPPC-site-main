@@ -13,14 +13,15 @@ import { GlitchText } from '#/text';
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Come hack with us!" height="100%" align="center" hover-animation="lift">
                     <p>
-                        short description + image
+                        Join us for 24 hours of hackathon-ing at Princeton High School
                     </p>
+                    <!-- insert image here lol -->
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen :delay=200>
-                <TitledDoubleCutCornerContainer title="2024 Season" height="100%" align="center" hover-animation="lift" flipped>
+                <TitledDoubleCutCornerContainer title="WWP-Princeton Hacks 2024" height="100%" align="center" hover-animation="lift" flipped>
                     <div class="centered">
-                        <GlitchText text="??/??/????" font-size="var(--font-huge)" color="red" glow :steps=1 :delay=Infinity></GlitchText>
+                        <GlitchText text="12/18/2024" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
@@ -45,32 +46,32 @@ import { GlitchText } from '#/text';
         <div class="hacksColumns">
             <div class="stretchBlock hacksTilesColumn">
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
                 <AnimateInContainer type="slideUp" show-on-screen>
-                    <CutCornerContainer>
+                    <CutCornerContainer hover-animation="lift">
                         buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
                     </CutCornerContainer>
                 </AnimateInContainer>
@@ -81,10 +82,10 @@ import { GlitchText } from '#/text';
                         <GlitchText text="idk lol" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
                     </CenteredContainer>
                     <AnimateInContainer type="fade" show-on-screen>
-                        <AngledTitledContainer title="Title">
+                        <AngledTitledContainer title="Title" hover-animation="lift">
                             content content content content content content content content content content content content content content content content content content content content content content content
                         </AngledTitledContainer>
-                        <AngledTitledContainer title="Title" flipped>
+                        <AngledTitledContainer title="Title" hover-animation="lift" flipped>
                             content content content content content content content content content content content content content content content content content content content content content content content
                         </AngledTitledContainer>
                     </AnimateInContainer>
