@@ -91,15 +91,17 @@ const leaveTeam = async () => {
     showWriteTeamDataWait.value = false;
 };
 
-const teamCodeType = ref<'text' | 'password'>('password');
+// hides join code when user is not hovering over it
+const obfuscatedJoinCode = ref('');
 const onCodeMouseEnter = () => {
-    teamCodeType.value = 'text';
+    obfuscatedJoinCode.value = accountManager.teamJoinCode ?? '';
 };
 const onCodeMouseLeave = () => {
-    teamCodeType.value = 'password';
+    obfuscatedJoinCode.value = '******';
 };
 onMounted(() => {
-    document.addEventListener('blur', () => teamCodeType.value = 'password');
+    obfuscatedJoinCode.value = '******';
+    document.addEventListener('blur', () => obfuscatedJoinCode.value = '******');
 });
 
 // danger buttons
@@ -257,10 +259,10 @@ onMounted(clearDangerButtons);
             <div v-if="accountManager.team === accountManager.username && accountManager.teamMembers.length <= 1">
                 <div class="profileTeamSection">
                     <h3>Join a team!</h3>
-                    <span class="nowrap">
+                    <form class="nowrap" action="javascript:void(0)" @submit="joinTeam">
                         <InputTextBox v-model=joinTeamCode title="Ask team creator for join code!" placeholder="Join code" maxlength="6"></InputTextBox>
-                        <InputButton text="Join" :disabled="joinTeamCode.length != 6" @click=joinTeam></InputButton>
-                    </span>
+                        <InputButton type="submit" text="Join" :disabled="joinTeamCode.length != 6"></InputButton>
+                    </form>
                     <br>
                     <i>Joining will sync your registrations to the team</i>
                 </div>
@@ -272,7 +274,7 @@ onMounted(clearDangerButtons);
                     <div class="profileTeamList">
                         <AccountTeamUserDisp v-for="user in accountManager.teamMembers" :key="user" :user="user" :team="accountManager.team" allow-kick></AccountTeamUserDisp>
                     </div>
-                    <form action="javascript:void(0)" @submit=writeTeamData>
+                    <form action="javascript:void(0)" @submit="writeTeamData">
                         <PairedGridContainer width="100%">
                             <span>Team Name:</span>
                             <InputTextBox v-model=accountManager.teamName maxlength="32" width="var(--fwidth)" title="Collective team name" placeholder="Team Name"></InputTextBox>
@@ -284,11 +286,11 @@ onMounted(clearDangerButtons);
                 </div>
             </div>
             <div class="profileTeamSection">
-                <span class="nowrap">
+                <form class="nowrap" action="javascript:void(0)">
                     <span>Join Code:</span>
-                    <InputTextBox v-model=joinCodeNotEditable :type=teamCodeType disabled @mouseenter="onCodeMouseEnter" @mouseleave="onCodeMouseLeave"></InputTextBox>
+                    <InputTextBox v-model="obfuscatedJoinCode" autocomplete="off" disabled @mouseenter="onCodeMouseEnter" @mouseleave="onCodeMouseLeave"></InputTextBox>
                     <InputCopyButton :value="joinCodeNotEditable ?? ''"></InputCopyButton>
-                </span>
+                </form>
             </div>
             <div class="profileTeamSection" v-if="accountManager.team !== accountManager.username">
                 <InputButton text="Leave Team" color="red" glitch-on-mount @click=leaveTeam></InputButton>
