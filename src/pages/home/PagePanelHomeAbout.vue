@@ -50,7 +50,7 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
         <a name="pageAboutScrollTo3"></a>
         <GlitchText text="Alumni" class="organizerTitle" font-size="var(--font-small-title)" color="lime" shadow glow :steps=1 :delay=5 random on-visible></GlitchText>
         <div class="organizerTableSmall">
-            <HomeAboutCreditsCard name="Maitian Sha" username="sp" roles="Problemsetter" img="/img/maitian-sha.jpg" grade="Junior (HSS)" codeforces="spuh" aops="452171" github="SampleProvider" discord="706967946198777867" website="https://youtube.com/watch?v=dQw4w9WgXcQ" bio="Probably qualified for AIME in 6th grade. 2x WRO Future Engineers Internationals Top 4, USACO gold, Battlecode 2024 HS 3rd place, USAMO." width="273px" height="350px"></HomeAboutCreditsCard>
+            <HomeAboutCreditsCard name="Maitian Sha" username="sp" roles="Problemsetter" img="/img/maitian-sha.jpg" grade="Junior (HSS)" codeforces="spuh" aops="452171" github="SampleProvider" discord="706967946198777867" website="youtube.com/watch?v=dQw4w9WgXcQ" bio="Probably qualified for AIME in 6th grade. 2x WRO Future Engineers Internationals Top 4, USACO gold, Battlecode 2024 HS 3rd place, USAMO." width="273px" height="350px"></HomeAboutCreditsCard>
         </div>
         <div class="spacer"></div>
         <ContactFooter></ContactFooter>
