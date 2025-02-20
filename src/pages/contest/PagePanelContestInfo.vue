@@ -97,7 +97,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                     (
                                     <RouterLink to="/user/@ommehta16">Om Mehta</RouterLink>,
                                     <RouterLink to="/user/@square-brackets">Allan Chen</RouterLink>,
-                                    <RouterLink to="/user/@imkindabadimkindabad">Oscar Huang</RouterLink>,
+                                    <RouterLink to="/user/@imkindabad">Oscar Huang</RouterLink>,
                                     <RouterLink to="/user/@jonathanji">Jonathan Ji</RouterLink>
                                     )
                                 </span>
