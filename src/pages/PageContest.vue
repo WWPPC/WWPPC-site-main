@@ -8,11 +8,11 @@ import PagePanelContestContest from '#/common-pages/contest/PagePanelContestCont
 import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
-import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
+import PagePanelArchiveList from './archive/PagePanelUpsolveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
-import PagePanelContestPrevious from './contest/PagePanelContestPrevious.vue';
+import PagePanelContestPrevious from './contest/PagePanelContestArchive.vue';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -29,9 +29,9 @@ connectionEnforcer.connectionExcludeExact.add('/contest/home');
 connectionEnforcer.loginExcludeExact.add('/contest/home');
 connectionEnforcer.connectionExcludeExact.add('/contest');
 connectionEnforcer.loginExcludeExact.add('/contest');
+connectionEnforcer.loginExclude.add('/contest/upsolve');
 connectionEnforcer.loginExclude.add('/contest/archive');
-connectionEnforcer.loginExclude.add('/contest/previous');
-connectionEnforcer.connectionExclude.add('/contest/previous');
+connectionEnforcer.connectionExclude.add('/contest/archive');
 </script>
 
 <template>
@@ -41,8 +41,8 @@ connectionEnforcer.connectionExclude.add('/contest/previous');
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
-                <PanelNavButton text="Previous Contests" for="/contest/previous"></PanelNavButton>
-                <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
+                <PanelNavButton text="Contest Archive" for="/contest/archive"></PanelNavButton>
+                <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
                 <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
@@ -70,13 +70,13 @@ connectionEnforcer.connectionExclude.add('/contest/previous');
             <PanelBody name="leaderboard" title="Leaderboard">
                 <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
             </PanelBody>
-            <PanelBody name="archive" title="Archive">
+            <PanelBody name="upsolve" title="Upsolve">
                 <PagePanelArchiveList></PagePanelArchiveList>
             </PanelBody>
             <PanelBody name="archiveView" title="Archive Problem">
                 <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
-            <PanelBody name="previous" title="Previous Contests">
+            <PanelBody name="archive" title="Contest Archive">
                 <PagePanelContestPrevious></PagePanelContestPrevious>
             </PanelBody>
         </PanelMain>
