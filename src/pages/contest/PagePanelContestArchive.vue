@@ -27,39 +27,40 @@ function scrollToElement(elementId: string) {
 </script>
 
 <template>
-    <div class="fullBlock stretchBlock">
+    <div id="home" class="fullBlock stretchBlock">
         <a name="home"></a>
-        <GlitchText text="Previous Contests" class="previousContestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="Contest Archive" class="previousContestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="spacer"></div>
-        <div class="homeColumns">
-            <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
-                <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
-                    <p>
-                        Click on a contest to view.
-                    </p>
-                </TitledDoubleCutCornerContainer>
-            </AnimateInContainer>
-            <div class="spacer"></div>
-            <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
-                <TitledDoubleCutCornerContainer title="Contests" height="100%" align="center" hover-animation="lift" flipped>
+        <div class="contestInfoBlock">
+            <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-column: 1 / -1;">
+                <TitledDoubleCutCornerContainer title="Spring 2024" height="100%" align="center" hover-animation="lift" flipped>
                     <CenteredContainer style="font-size: var(--font-20);">
-                            <div class="centered" style="margin-top: 0.5em;">
-                                <AnimateInContainer type="fade" :delay=400>
-                                    <InputLinkButton text="Spring 2024" font-size="var(--font-large)" color="lime" v-on:click="scrollToElement('spring2024')"></InputLinkButton> 
-                                </AnimateInContainer>
-                            </div>
-                            <div class="centered" style="margin-top: 0.5em;">
-                                <AnimateInContainer type="fade" :delay=400>
-                                    <RouterLink to="/contest/previous" no-deco>
-                                        <InputLinkButton text="Coming Soon" font-size="var(--font-large)" color="lime"></InputLinkButton>
-                                    </RouterLink>
-                                </AnimateInContainer>
-                            </div>
+                        <div class="centered" style="margin-top: 0.5em;">
+                            <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
+                                <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
+                            </AnimateInContainer>
+                            <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
+                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime" v-on:click="scrollToElement('spring2024')"></InputLinkButton>
+                            </AnimateInContainer>
+                        </div>
                     </CenteredContainer>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
-            <div class="spacer"></div>
-            <ScrollIndicator anchor="a[name=spring2024]"></ScrollIndicator>
+            <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-column: 1 / -1;">
+                <TitledDoubleCutCornerContainer title="Coming Soon" height="100%" align="center" hover-animation="lift" flipped>
+                    <CenteredContainer style="font-size: var(--font-20);">
+                        <div class="centered" style="margin-top: 0.5em;">
+                            <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
+                                <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
+                            </AnimateInContainer>
+                            <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
+                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                            </AnimateInContainer>
+                        </div>
+                    </CenteredContainer>
+                </TitledDoubleCutCornerContainer>
+            </AnimateInContainer>
+        
         </div>
     </div>
     <div id="spring2024" class="fullBlock stretchBlock">
@@ -230,7 +231,7 @@ function scrollToElement(elementId: string) {
     min-height: 0px;
     row-gap: 24px;
     column-gap: 24px;
-    flex: 1;
+    
 }
 
 .contestInfoBlock>div {
@@ -297,7 +298,7 @@ function scrollToElement(elementId: string) {
 }
 
 .spacer {
-    flex-grow: 1;
+    flex-grow: 0.5;
 }
 
 .sponsorColumns {
