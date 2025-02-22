@@ -12,6 +12,7 @@ import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import PagePanelContestPrevious from './contest/PagePanelContestPrevious.vue';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -29,6 +30,8 @@ connectionEnforcer.loginExcludeExact.add('/contest/home');
 connectionEnforcer.connectionExcludeExact.add('/contest');
 connectionEnforcer.loginExcludeExact.add('/contest');
 connectionEnforcer.loginExclude.add('/contest/archive');
+connectionEnforcer.loginExclude.add('/contest/previous');
+connectionEnforcer.connectionExclude.add('/contest/previous');
 </script>
 
 <template>
@@ -38,6 +41,7 @@ connectionEnforcer.loginExclude.add('/contest/archive');
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
+                <PanelNavButton text="Previous Contests" for="/contest/previous"></PanelNavButton>
                 <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
                 <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
@@ -71,6 +75,9 @@ connectionEnforcer.loginExclude.add('/contest/archive');
             </PanelBody>
             <PanelBody name="archiveView" title="Archive Problem">
                 <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
+            </PanelBody>
+            <PanelBody name="previous" title="Previous Contests">
+                <PagePanelContestPrevious></PagePanelContestPrevious>
             </PanelBody>
         </PanelMain>
     </PanelView>
