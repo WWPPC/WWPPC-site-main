@@ -10,7 +10,6 @@ import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
 import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
-import PagePanelContestInfo from './PagePanelContestInfo.vue';
 
 // const modal = new FullscreenModal();
 
@@ -29,7 +28,7 @@ function scrollToElement(elementId: string) {
 <template>
     <div id="home" class="fullBlock stretchBlock">
         <a name="home"></a>
-        <GlitchText text="Contest Archive" class="previousContestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="Contest Archive" class="contestArchiveTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="spacer"></div>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-column: 1 / -1;">
@@ -210,11 +209,16 @@ function scrollToElement(elementId: string) {
     flex-grow: 1;
 }
 
-.previousContestTitle {
+.contestArchiveTitle {
     transform-origin: top;
     transform: translate3D(0px, -20vh, -50px) scale(150%);
     z-index: -1;
     text-align: center;
+}
+
+.stretchBlock {
+    display: flex;
+    flex-direction: column;
 }
 
 .stretchBlock {

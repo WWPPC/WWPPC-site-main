@@ -8,11 +8,11 @@ import PagePanelContestContest from '#/common-pages/contest/PagePanelContestCont
 import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
-import PagePanelArchiveList from './archive/PagePanelUpsolveList.vue';
+import PagePanelContestArchive from './contest/PagePanelContestArchive.vue';
+import PagePanelUpsolveList from './archive/PagePanelUpsolveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
-import PagePanelContestPrevious from './contest/PagePanelContestArchive.vue';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -71,13 +71,13 @@ connectionEnforcer.connectionExclude.add('/contest/archive');
                 <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
             </PanelBody>
             <PanelBody name="upsolve" title="Upsolve">
-                <PagePanelArchiveList></PagePanelArchiveList>
+                <PagePanelUpsolveList></PagePanelUpsolveList>
             </PanelBody>
             <PanelBody name="archiveView" title="Archive Problem">
                 <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
-            <PanelBody name="archive" title="Contest Archive">
-                <PagePanelContestPrevious></PagePanelContestPrevious>
+            <PanelBody name="archive" title="Archive">
+                <PagePanelContestArchive></PagePanelContestArchive>
             </PanelBody>
         </PanelMain>
     </PanelView>
