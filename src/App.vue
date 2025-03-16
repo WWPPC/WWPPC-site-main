@@ -14,8 +14,6 @@ import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import SuperSecretCarrier from '@/components/SuperSecretCarrier.vue';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import recaptcha from '#/scripts/recaptcha';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
 
@@ -29,16 +27,6 @@ connectionEnforcer.init();
 
 window.addEventListener('error', (err) => {
     modal.showModal({ title: 'An Error Occured', content: `<span style="color: red;">${err.message}<br>${err.filename} ${err.lineno}:${err.colno}</span>`, color: 'red' });
-});
-
-// hide recaptcha badge here
-const route = useRoute();
-watch(() => route.params, () => {
-    if (route.params.page === 'login' || route.params.page === 'account') {
-        recaptcha.show();
-    } else {
-        recaptcha.hide();
-    }
 });
 </script>
 

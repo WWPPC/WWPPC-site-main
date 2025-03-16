@@ -8,7 +8,6 @@ import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
 import { getAccountOpMessage, useAccountManager, validateCredentials } from '#/scripts/AccountManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
-import recaptcha from '#/scripts/recaptcha';
 
 const route = useRoute();
 const router = useRouter();
@@ -35,8 +34,7 @@ const attemptRecovery = async () => {
     if (!validateCredentials(usernameInput.value, passwordInput.value) || passwordInput.value != passwordInput2.value) return;
     showRecoveryWait.value = true;
     attemptedRecovery.value = true;
-    const token = await recaptcha.execute('recoverpassword');
-    const res = await accountManager.recoverAccount(usernameInput.value, recoveryPassword.value, passwordInput.value, token);
+    const res = await accountManager.recoverAccount(usernameInput.value, recoveryPassword.value, passwordInput.value);
     showRecoveryWait.value = false;
     if (res == 0) modal.showModal({ title: 'Password changed', content: 'Your password has been changed.', color: 'lime'}).result.then(() => window.location.reload());
     else modal.showModal({ title: 'Recovery failed:', content: getAccountOpMessage(res), color: 'red' });

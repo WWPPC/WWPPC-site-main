@@ -6,7 +6,6 @@ import AccountTeamUserDisp from '#/common-components/account/AccountTeamUserDisp
 import { onMounted, ref, watch } from 'vue';
 import { globalModal, ModalMode } from '#/modal';
 import { useAccountManager, gradeMaps, experienceMaps, languageMaps, AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/AccountManager';
-import recaptcha from '#/scripts/recaptcha';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -73,8 +72,7 @@ const writeTeamData = async () => {
 const joinTeam = async () => {
     showWriteTeamDataWait.value = true;
     if (joinTeamCode.value.length != 6) return;
-    const token = await recaptcha.execute('join_team');
-    const res = await accountManager.joinTeam(joinTeamCode.value, token);
+    const res = await accountManager.joinTeam(joinTeamCode.value);
     if (res == TeamOpResult.NOT_EXISTS) modal.showModal({ title: 'Invalid join code', content: 'The join code is invalid. Verify your join code is correct, then try again.', color: 'yellow' });
     else if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Could not join team', content: getTeamOpMessage(res), color: 'red' });
     await accountManager.updateOwnUserData();
@@ -152,8 +150,7 @@ const changePassword = async () => {
         }
     }
     modalSpam();
-    const token = await recaptcha.execute('changePassword');
-    const res = await accountManager.changePassword(currPassword, newPassword, token);
+    const res = await accountManager.changePassword(currPassword, newPassword);
     spam = false;
     modal.cancelAllModals();
     if (res == 0) window.location.reload();
@@ -208,8 +205,7 @@ const deleteAccount = async () => {
         }
     }
     modalSpam();
-    const token = await recaptcha.execute('deleteAccount');
-    const res = await accountManager.deleteAccount(currPassword, token);
+    const res = await accountManager.deleteAccount(currPassword);
     spam = false;
     await modal.cancelAllModals();
     if (res == 0) window.location.reload();

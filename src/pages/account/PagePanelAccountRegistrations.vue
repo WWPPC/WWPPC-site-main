@@ -6,7 +6,6 @@ import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
 import { getTeamOpMessage, TeamOpResult, useAccountManager } from '#/scripts/AccountManager';
 import { useContestManager } from '#/scripts/ContestManager';
-import recaptcha from '#/scripts/recaptcha';
 
 const accountManager = useAccountManager();
 const contestManager = useContestManager();
@@ -32,8 +31,7 @@ const showRegisterWait = ref(false);
 const attemptRegister = async () => {
     if (registrationSelected.value == '') return;
     showRegisterWait.value = true;
-    const token = await recaptcha.execute('register_contest');
-    const res = await accountManager.registerContest(registrationSelected.value, token);
+    const res = await accountManager.registerContest(registrationSelected.value);
     if (res != TeamOpResult.SUCCESS) modal.showModal({ title: 'Could not register', content: getTeamOpMessage(res), color: 'red' });
     await Promise.all([
         accountManager.updateOwnUserData(),

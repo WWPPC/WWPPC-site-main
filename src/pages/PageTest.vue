@@ -4,6 +4,8 @@ import UserDisp from '#/common-components/UserDisp.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { isMobile, isWebkit } from '#/scripts/userAgent';
+import { AccordionCollapsibleContainer } from '#/accordion';
+import { TitledCollapsible } from '#/containers';
 </script>
 
 <template>
@@ -23,7 +25,7 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
-                <PanelNavButton text="Fonts" for="/test/test"></PanelNavButton>
+                <PanelNavButton text="Not Fonts" for="/test/test"></PanelNavButton>
                 <PanelNavButton text="Fonts" for="/test/fonts"></PanelNavButton>
             </PanelNavList>
             <PanelRightList>
@@ -36,6 +38,20 @@ import { isMobile, isWebkit } from '#/scripts/userAgent';
                 Is mobile platform: {{ isMobile }}
                 <br>
                 Is Webkit browser: {{ isWebkit }}
+                <AccordionCollapsibleContainer exclusive>
+                    <TitledCollapsible title="buh">
+                        oofofoofofofo
+                    </TitledCollapsible>
+                    <TitledCollapsible title="buh">
+                        oofofoofofofo
+                    </TitledCollapsible>
+                    <TitledCollapsible title="buh">
+                        oofofoofofofo
+                    </TitledCollapsible>
+                    <TitledCollapsible title="buh">
+                        oofofoofofofo
+                    </TitledCollapsible>
+                </AccordionCollapsibleContainer>
             </PanelBody>
             <PanelBody name="fonts" title="Fonts">
                 <span style="font-size: var(--font-huge-title);">Huge Title</span>
