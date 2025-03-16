@@ -16,6 +16,7 @@ import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import recaptcha from '#/scripts/recaptcha';
+import PageContestArchive from './pages/PageContestArchive.vue';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
 
@@ -47,6 +48,7 @@ watch(() => route.params, () => {
     <PageHome></PageHome>
     <PageHackathon></PageHackathon>
     <PageContest></PageContest>
+    <PageContestArchive></PageContestArchive>
     <PageAccount></PageAccount>
     <PageUserView></PageUserView>
     <PageLogin></PageLogin>

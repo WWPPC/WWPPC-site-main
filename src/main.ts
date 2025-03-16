@@ -60,6 +60,7 @@ const router = createRouter({
                 }
             ]
         },
+        { path: '/contestArchive', redirect: '/contest/archive' },
         {
             path: '/:page(user)/@:userView',
             components: { App }

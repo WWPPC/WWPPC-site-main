@@ -1,28 +1,7 @@
 <script setup lang="ts">
-import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
 import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, DoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
-import LineDivider from '#/common/LineDivider.vue';
-import ContactFooter from '#/common/ContactFooter.vue';
-import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
-import { globalModal, FullscreenModal} from '#/modal';
 import { GlitchText, GlowText } from '#/text';
-import TimerDisplay from '#/common/TimerDisplay.vue';
-import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
-import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
-
-// const modal = new FullscreenModal();
-
-// const showS2024 = async () => {
-//     modal.showModal({title: 'Spring 2024', content: 'skibidi'});
-//     modal.showModal({title: 'Spring2024', content: 'skibidi'});
-// }
-
-function scrollToElement(elementId: string) {
-    const element = document.getElementById(elementId);
-    element?.scrollIntoView({behavior: "smooth"});
-}
-
 </script>
 
 <template>
@@ -39,7 +18,9 @@ function scrollToElement(elementId: string) {
                                 <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
                             </AnimateInContainer>
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime" v-on:click="scrollToElement('spring2024')"></InputLinkButton>
+                                <RouterLink to="/contestArchive/2024" no-deco>
+                                    <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink>
                             </AnimateInContainer>
                         </div>
                     </CenteredContainer>
@@ -53,8 +34,9 @@ function scrollToElement(elementId: string) {
                                 <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
                             </AnimateInContainer>
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime"></InputLinkButton>
-                            </AnimateInContainer>
+                                <RouterLink to="/contestArchive" no-deco>
+                                    <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink></AnimateInContainer>
                         </div>
                     </CenteredContainer>
                 </TitledDoubleCutCornerContainer>
@@ -62,7 +44,7 @@ function scrollToElement(elementId: string) {
         
         </div>
     </div>
-    <div id="spring2024" class="fullBlock stretchBlock">
+    <!-- <div id="spring2024" class="fullBlock stretchBlock">
         <a name="spring2024"></a>
         <CenteredContainer>
             <GlitchText text="Spring 2024" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
@@ -197,7 +179,7 @@ function scrollToElement(elementId: string) {
                 </AnimateInContainer>
             </AnimateInContainer>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>
