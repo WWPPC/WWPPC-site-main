@@ -13,12 +13,12 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPIT 2024" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="WWPIT 2025" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        The WWP Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 3 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 3 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
                         <br><br>
                         The contest will be held online, on this website, between two divisions: Novice and Advanced.
                         <br><br>
@@ -29,7 +29,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen :delay=200 style="grid-column: 1;">
                 <TitledDoubleCutCornerContainer title="Spring 2024" height="100%" align="center" hover-animation="lift">
                     <div class="centered">
-                        <GlitchText text="06/02/2024" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
+                        <GlitchText text="4/19/2025" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
                     <div class="centered" v-if="Date.now() < nextContest.getTime()">
                         <TimerDisplay :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
@@ -57,7 +57,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </RouterLink>
                         </div>
                         <p style="text-align: center">
-                            Thanks to all who participated! We hope to see you in the WWPIT Fall 2024!
+                            Thanks to all who participated! We hope to see you at WWPIT Spring 2025!
                         </p>
                     </CenteredContainer>
                     <CenteredContainer style="font-size: var(--font-20);" v-else>
@@ -72,7 +72,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             Join our <a href="https://discord.wwppc.tech">Discord</a> server for important information during the contest!
                         </p>
                         <p style="text-align: center; font-size: var(--font-small);">
-                            <i>Scroll down to see contest schedule</i>
+                            <i>Scroll down to see the tentative WWPIT Spring 2025 contest schedule</i>
                         </p>
                     </CenteredContainer>
                 </CutCornerContainer>
@@ -242,7 +242,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
                     <MultipaneSelectorContainer for="contestSchedule">
                         <div class="scheduleHeader">
-                            June 1
+                            April 18
                         </div>
                         <MultipaneSelector for="precontest">
                             <div class="scheduleRow">
@@ -250,55 +250,48 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </div>
                         </MultipaneSelector>
                         <div class="scheduleHeader">
-                            June 2
+                            April 19 - tentative competition schedule
                         </div>
                         <MultipaneSelector for="openingCeremonies">
                             <div class="scheduleRow">
-                                <div>10:15-10:45</div>
+                                <div>11:00-11:15</div>
                                 <div>|</div>
                                 <div>Opening ceremonies</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round1">
                             <div class="scheduleRow">
-                                <div>11:00-12:00</div>
+                                <div>11:30-12:30</div>
                                 <div>|</div>
-                                <div>Round 1</div>
+                                <div>Speed Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="lunch">
                             <div class="scheduleRow">
-                                <div>12:00-1:00</div>
+                                <div>12:30-1:30</div>
                                 <div>|</div>
-                                <div>Lunch break</div>
+                                <div>Break</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round2">
                             <div class="scheduleRow">
-                                <div>1:00-2:00</div>
+                                <div>1:30-4:00</div>
                                 <div>|</div>
-                                <div>Round 2</div>
+                                <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round3">
                             <div class="scheduleRow">
-                                <div>2:10-3:30</div>
-                                <div>|</div>
-                                <div>Round 3</div>
-                            </div>
-                        </MultipaneSelector>
-                        <MultipaneSelector for="sponsors">
-                            <div class="scheduleRow">
-                                <div>3:40-4:40</div>
+                                <div>4:00-6:30</div>
                                 <div>|</div>
                                 <div>Sponsor Events</div>
                             </div>
                         </MultipaneSelector>
-                        <MultipaneSelector for="closingCeremonies">
+                        <MultipaneSelector for="sponsors">
                             <div class="scheduleRow">
-                                <div>4:55-5:30</div>
+                                <div>6:30-7:00</div>
                                 <div>|</div>
-                                <div>Closing ceremonies</div>
+                                <div>Closing Ceremonies</div>
                             </div>
                         </MultipaneSelector>
                     </MultipaneSelectorContainer>
@@ -317,13 +310,13 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="openingCeremonies">
                             <GlitchText text="Opening Ceremonies" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Opening and closing ceremonies will be held on our Discord server!
+                                Opening and closing ceremonies will be held on our Discord server.
                             </p>
                             <div class="centered">
                                 <a href="https://discord.wwppc.tech" target="_blank" style="text-decoration: none;">
@@ -334,16 +327,16 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 We'll give more details and instructions on the contest format there.
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="round1">
                             <GlitchText text="Round 1" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Round 1 is 60 minutes long with 6 problems. Novice and Advanced divisions may or may not share problems.
+                                The Speed Round is 60 minutes long with 8 problems. Novice and Advanced divisions may or may not share problems.
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="lunch">
@@ -354,25 +347,16 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 However, be ready to resume the contest <b>10 minutes</b> before the break ends! The contest will resume <b>IMMEDIATELY</b> after lunch!
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="round2">
                             <GlitchText text="Round 2" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Round 2 is 60 minutes long with 6 problems. Novice and Advanced divisions may or may not share problems.
+                                The Power Round is 2.5 hours long with 6 problems. Novice and Advanced divisions may or may not share problems.
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
-                            </p>
-                        </MultipanePane>
-                        <MultipanePane for="round3">
-                            <GlitchText text="Round 3" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
-                            <p>
-                                Round 3 is 80 minutes long with 6 problems. Novice and Advanced divisions may or may not share problems.
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="sponsors">
@@ -380,10 +364,10 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             <p>
                                 We will be hosting some events by our sponsors!
                                 <br><br>
-                                During this time, we will also finalize scores and determine the standings.
+                                During this time, we will also finalize scores and determine the final standings.
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="closingCeremonies">
@@ -400,7 +384,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 We will announce the winners for each division before closing off the contest.
                             </p>
                             <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Standard Time (daylight savings)</i>
+                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                     </MultipanePaneContainer>
@@ -448,7 +432,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        WWPIT 2024 will be on <b>Sunday, June 2</b>, from 10:15 AM - 5:30 PM EST.
+                        WWPIT 2025 will be on <b>Saturday, April 19</b>, from 11:00 AM - 7:00 PM EDT.
                         <br><br>
                         <i>Scroll up to see contest schedule</i>
                     </p>
@@ -480,7 +464,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What resources are allowed?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        You can use any resource that was published before the beginning of the contest.
+                        You may use any resource that was published before the beginning of the contest.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
