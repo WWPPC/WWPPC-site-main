@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '#/common-components/UserDisp.vue';
-import { useRoute, useRouter } from 'vue-router';
-import PagePanelContestArchive from './contest/PagePanelContestArchive.vue';
+import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
-import { useContestManager } from '#/scripts/ContestManager';
 import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import PagePanel2024Archive from './archive/PagePanel2024Archive.vue';
 
@@ -15,7 +13,6 @@ watch(() => route.query.ignore_server, () => {
 });
 
 const connectionEnforcer = useConnectionEnforcer();
-const contestManager = useContestManager();
 
 connectionEnforcer.connectionExclude.add('/contestArchive');
 connectionEnforcer.loginExclude.add('/contestArchive');
