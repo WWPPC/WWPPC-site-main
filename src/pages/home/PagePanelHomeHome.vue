@@ -10,7 +10,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPPC 2024" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="WWPPC 2025" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="homeColumns">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">

@@ -8,7 +8,8 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
-import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
+const contest = new Date('6/2/2024 9:30 AM EST');
+const contestEnd = new Date('6/2/2024 5:00 PM EST');
 </script>
 
 <template>
@@ -31,14 +32,14 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                     <div class="centered">
                         <GlitchText text="06/02/2024" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
-                    <div class="centered" v-if="Date.now() < nextContest.getTime()">
-                        <TimerDisplay :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
+                    <div class="centered" v-if="Date.now() < contest.getTime()">
+                        <TimerDisplay :to="contest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
                     </div>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen :delay=300>
                 <CutCornerContainer height="100%" hover-animation="lift" flipped vertical-flipped>
-                    <CenteredContainer style="font-size: var(--font-20);" v-if="Date.now() < nextContest.getTime()">
+                    <CenteredContainer style="font-size: var(--font-20);" v-if="Date.now() < contest.getTime()">
                         <GlitchText text="Registrations open!" font-size="var(--font-28)" color="lime" glow flashing random></GlitchText>
                         <div class="centered" style="margin: 8px;">
                             <RouterLink to="/account/registrations" no-deco>
@@ -49,7 +50,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             <i>Scroll down to see contest schedule</i>
                         </p>
                     </CenteredContainer>
-                    <CenteredContainer style="font-size: var(--font-20);" v-else-if="Date.now() > nextContestEnd.getTime()">
+                    <CenteredContainer style="font-size: var(--font-20);" v-else-if="Date.now() > contestEnd.getTime()">
                         <GlitchText text="Contest ended!" font-size="var(--font-28)" color="red" glow random></GlitchText>
                         <div class="centered" style="margin: 8px;">
                             <RouterLink to="/contest/upsolve" no-deco>

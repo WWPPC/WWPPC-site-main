@@ -8,17 +8,17 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
-import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
+import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </script>
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPIT 2025" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText :text="'WWPIT ' + nextContest.getFullYear()" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 3 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
                         <br><br>
                         The contest will be held online, on this website, between two divisions: Novice and Advanced.
                         <br><br>
@@ -27,9 +27,9 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen :delay=200 style="grid-column: 1;">
-                <TitledDoubleCutCornerContainer title="Spring 2024" height="100%" align="center" hover-animation="lift">
+                <TitledDoubleCutCornerContainer :title="'Spring ' + nextContest.getFullYear() " height="100%" align="center" hover-animation="lift">
                     <div class="centered">
-                        <GlitchText text="4/19/2025" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
+                        <GlitchText :text="`${String(nextContest.getMonth() + 1).padStart(2, '0')}/${String(nextContest.getDate()).padStart(2, '0')}/${nextContest.getFullYear()}`" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
                     <div class="centered" v-if="Date.now() < nextContest.getTime()">
                         <TimerDisplay :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
@@ -57,7 +57,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </RouterLink>
                         </div>
                         <p style="text-align: center">
-                            Thanks to all who participated! We hope to see you at WWPIT Spring 2025!
+                            Thanks to all who participated! We hope to see you at the next WWPIT!
                         </p>
                     </CenteredContainer>
                     <CenteredContainer style="font-size: var(--font-20);" v-else>
@@ -71,111 +71,11 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             The contest has started!
                             Join our <a href="https://discord.wwppc.tech">Discord</a> server for important information during the contest!
                         </p>
-                        <p style="text-align: center; font-size: var(--font-small);">
-                            <i>Scroll down to see the tentative WWPIT Spring 2025 contest schedule</i>
-                        </p>
                     </CenteredContainer>
                 </CutCornerContainer>
             </AnimateInContainer>
         </div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo]"></ScrollIndicator>
-    </div>
-    <div class="fullBlock stretchBlock">
-        <a name="pageContestScrollTo"></a>
-        <CenteredContainer>
-            <GlitchText text="S-2024 Winners" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
-        <div class="contestInfoBlock winnersBlock">
-            <AnimateInContainer type="slideUp" show-on-screen :delay=200>
-                <TitledDoubleCutCornerContainer title="Novice" height="100%" align="center" hover-animation="lift" flipped>
-                    <div class="centered">
-                        <div class="contestWinnerTable">
-                            <span>🥇</span>
-                            <div class="contestWinnerBlock">
-                                <span>PHS CPT Amogus:</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@ommehta16">Om Mehta</RouterLink>,
-                                    <RouterLink to="/user/@square-brackets">Allan Chen</RouterLink>,
-                                    <RouterLink to="/user/@imkindabad">Oscar Huang</RouterLink>,
-                                    <RouterLink to="/user/@jonathanji">Jonathan Ji</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                            <span>🥈</span>
-                            <div class="contestWinnerBlock">
-                                <span>BinaryThree</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@litvinas">Fiodar Ziuzin</RouterLink>,
-                                    <RouterLink to="/user/@trgt26">Junayed Ahammed</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                            <span>🥉</span>
-                            <div class="contestWinnerBlock">
-                                <span>PuppyImpression</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@natnuo">Nathan Tao</RouterLink>,
-                                    <RouterLink to="/user/@adabot">Ada Langford</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </TitledDoubleCutCornerContainer>
-            </AnimateInContainer>
-            <AnimateInContainer type="slideUp" show-on-screen :delay=100>
-                <TitledDoubleCutCornerContainer title="Advanced" height="100%" align="center" hover-animation="lift">
-                    <div class="centered">
-                        <div class="contestWinnerTable">
-                            <span>🥇</span>
-                            <div class="contestWinnerBlock">
-                                <span>liympanda</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@liympanda">Yiming Li</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                            <span>🥈</span>
-                            <div class="contestWinnerBlock">
-                                <span>oursaco</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@oursaco">Thomas Liu</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                            <span>🥉</span>
-                            <div class="contestWinnerBlock">
-                                <span>tfg</span>
-                                <span>
-                                    (
-                                    <RouterLink to="/user/@tristansun">Tristan Sun</RouterLink>,
-                                    <RouterLink to="/user/@axujls">Andrew Xu</RouterLink>,
-                                    <RouterLink to="/user/@colecancode">Cole Miller</RouterLink>,
-                                    <RouterLink to="/user/@pikachu2021">Soham Samanta</RouterLink>
-                                    )
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </TitledDoubleCutCornerContainer>
-            </AnimateInContainer>
-            <AnimateInContainer type="slideUp" show-on-screen :delay=400>
-                <CutCornerContainer title="" height="100%" align="center" hover-animation="lift" flipped vertical-flipped>
-                    <div class="centered">
-                        <GlowText text="Congratulations to our winners!" color="lime" font-size="var(--font-large)" glow shadow></GlowText>
-                    </div>
-                    <p style="text-align: center;">
-                        Also thanks to everyone for sticking through our first contest with us! We are taking feedback and are making lots of changes for our fall contest!
-                    </p>
-                </CutCornerContainer>
-            </AnimateInContainer>
-        </div>
-        <ScrollIndicator anchor="a[name=pageContestScrollTo2]"></ScrollIndicator>
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo2"></a>
@@ -190,15 +90,15 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                         data: [
                             [
                                 '🥇 $30 + T-shirts',
-                                '🥇 $150 + T-shirts'
+                                '🥇 $200 + T-shirts'
                             ],
                             [
                                 '🥈 $10 + T-shirts',
-                                '🥈 $100 + T-shirts'
+                                '🥈 $150 + T-shirts'
                             ],
                             [
                                 '🥉 $10 + T-shirts',
-                                '🥉 $50 + T-shirts'
+                                '🥉 $100 + T-shirts'
                             ]
                         ]
                     }"></HeaderedTable>
@@ -206,7 +106,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                         X-Camp Prizes (per-person)
                     </p>
                     <HeaderedTable width="100%" border-color="transparent" header-background="transparent" style="font-size: var(--font-28); line-height: 0.7em;" :content="{
-                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100'],
+                        headers: ['🥇 - $???', '🥈 - $???', '🥉 - $???'],
                         data: []
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-16)">
@@ -219,10 +119,10 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen :delay=200 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Contest Format" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        WWPIT is a round-based team contest, where problems are revealed as time progresses.
+                        WWPIT is a round-based team contest.
                     </p>
                     <ul style="font-size: var(--font-medium);">
-                        <li>Three separate timed rounds of 6 problems</li>
+                        <li>Two separate timed rounds of eight problems each</li>
                         <li>Instant feedback on submissions</li>
                         <li>Scores based on problems solved, with subtasks</li>
                         <li>Subtask scores are weighted by the number of people who solved</li>
@@ -242,7 +142,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
                     <MultipaneSelectorContainer for="contestSchedule">
                         <div class="scheduleHeader">
-                            April 18
+                            {{ nextContestPractice.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) }}
                         </div>
                         <MultipaneSelector for="precontest">
                             <div class="scheduleRow">
@@ -250,7 +150,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </div>
                         </MultipaneSelector>
                         <div class="scheduleHeader">
-                            April 19 - tentative competition schedule
+                            {{ nextContest.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) }} - tentative competition schedule
                         </div>
                         <MultipaneSelector for="openingCeremonies">
                             <div class="scheduleRow">
@@ -294,6 +194,9 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 <div>Closing Ceremonies</div>
                             </div>
                         </MultipaneSelector>
+                        <div class="scheduleRow centered">
+                            <i>All times in Eastern Daylight Time</i>
+                        </div>
                     </MultipaneSelectorContainer>
                 </CutCornerContainer>
             </AnimateInContainer>
@@ -306,11 +209,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 Teams (including the WWPPC team) will have a chance to test the contest system with a few practice rounds.
                             </p>
                             <p>
-                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b>
-                                <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
+                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
                             </p>
                         </MultipanePane>
                         <MultipanePane for="openingCeremonies">
@@ -326,37 +225,23 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             <p>
                                 We'll give more details and instructions on the contest format there.
                             </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
-                            </p>
                         </MultipanePane>
                         <MultipanePane for="round1">
                             <GlitchText text="Round 1" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Speed Round is 60 minutes long with 8 problems. Novice and Advanced divisions may or may not share problems.
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
+                                The Speed Round is 60 minutes long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="lunch">
                             <GlitchText text="Lunch Break" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Lunch is one hour long and we'll be hosting some fun events during the break!
-                                <br><br>
-                                However, be ready to resume the contest <b>10 minutes</b> before the break ends! The contest will resume <b>IMMEDIATELY</b> after lunch!
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
+                                Be ready to resume the contest <b>10 minutes</b> before the break ends! The contest will resume <b>IMMEDIATELY</b> after lunch!
                             </p>
                         </MultipanePane>
                         <MultipanePane for="round2">
                             <GlitchText text="Round 2" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Power Round is 2.5 hours long with 6 problems. Novice and Advanced divisions may or may not share problems.
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
+                                The Power Round is 2.5 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="sponsors">
@@ -365,9 +250,6 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 We will be hosting some events by our sponsors!
                                 <br><br>
                                 During this time, we will also finalize scores and determine the final standings.
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                         <MultipanePane for="closingCeremonies">
@@ -382,9 +264,6 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </div>
                             <p>
                                 We will announce the winners for each division before closing off the contest.
-                            </p>
-                            <p style="font-size: var(--font-16)">
-                                <i>All times are in Eastern Daylight Time.</i>
                             </p>
                         </MultipanePane>
                     </MultipanePaneContainer>
@@ -432,7 +311,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        WWPIT 2025 will be on <b>Saturday, April 19</b>, from 11:00 AM - 7:00 PM EDT.
+                        WWPIT {{ nextContest.getFullYear() }} will be on <b>{{ nextContest.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) }}</b>, from {{ nextContest.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) }} - {{ nextContestEnd.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) }} EDT.
                         <br><br>
                         <i>Scroll up to see contest schedule</i>
                     </p>
@@ -464,14 +343,14 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What resources are allowed?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        You may use any resource that was published before the beginning of the contest.
+                        You may use any resource that was published before the beginning of the contest. Note that this means generative AIs like ChatGPT is disallowed.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What languages can I use?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        Allowed languages include Java 8, Java 11, Java 17, Java 21, C11, C++11, C++17, C++20, and Python3.12.3.
+                        Allowed languages include Java 8, Java 11, Java 17, Java 21, C11, C++11, C++17, C++20, C++23, and Python3.12.3.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
@@ -487,7 +366,9 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="What is the expected difficulty?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        For the Novice division, expect problems within the <a href="https://usaco.org" target="_blank">USACO</a> Bronze-upper USACO Silver division. For the Advanced division, expect problems within the USACO Silver-USACO Platinum division.
+                        For the Novice division, expect problems between AP CSA - <a href="https://usaco.org" target="_blank">USACO</a> Gold level.
+                        <br><br>
+                        For the Advanced division, expect problems between USACO Silver - USACO Platinum level.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
