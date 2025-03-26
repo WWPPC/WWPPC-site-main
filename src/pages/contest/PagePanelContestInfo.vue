@@ -68,7 +68,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                             </RouterLink>
                         </div>
                         <p style="text-align: center">
-                            The contest has started!
+                            The contest has not yet started!
                             Join our <a href="https://discord.wwppc.tech">Discord</a> server for important information during the contest!
                         </p>
                     </CenteredContainer>
