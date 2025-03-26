@@ -106,7 +106,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         X-Camp Prizes (per-person)
                     </p>
                     <HeaderedTable width="100%" border-color="transparent" header-background="transparent" style="font-size: var(--font-28); line-height: 0.7em;" :content="{
-                        headers: ['🥇 - $???', '🥈 - $???', '🥉 - $???'],
+                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100', '🎁 - $50'],
                         data: []
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-16)">
@@ -125,7 +125,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         <li>Two separate timed rounds of eight problems each</li>
                         <li>Instant feedback on submissions</li>
                         <li>Scores based on problems solved, with subtasks</li>
-                        <li>Subtask scores are weighted by the number of people who solved</li>
+                        <li>Subtask scores are weighted by solve count</li>
                     </ul>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
