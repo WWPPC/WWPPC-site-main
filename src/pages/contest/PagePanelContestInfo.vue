@@ -27,7 +27,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen :delay=200 style="grid-column: 1;">
-                <TitledDoubleCutCornerContainer title="Spring 2024" height="100%" align="center" hover-animation="lift">
+                <TitledDoubleCutCornerContainer title="Spring 2025" height="100%" align="center" hover-animation="lift">
                     <div class="centered">
                         <GlitchText text="4/19/2025" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
@@ -57,7 +57,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </RouterLink>
                         </div>
                         <p style="text-align: center">
-                            Thanks to all who participated! We hope to see you at WWPIT Spring 2025!
+                            We hope you are looking forward to WWPIT Spring 2025!
                         </p>
                     </CenteredContainer>
                     <CenteredContainer style="font-size: var(--font-20);" v-else>
@@ -68,7 +68,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                             </RouterLink>
                         </div>
                         <p style="text-align: center">
-                            The contest has started!
+                            The contest has not yet started!
                             Join our <a href="https://discord.wwppc.tech">Discord</a> server for important information during the contest!
                         </p>
                         <p style="text-align: center; font-size: var(--font-small);">
