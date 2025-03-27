@@ -180,16 +180,16 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                                 <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
-                        <MultipaneSelector for="round3">
+                        <MultipaneSelector for="sponsors">
                             <div class="scheduleRow">
-                                <div>4:00-6:30</div>
+                                <div>4:00-5:30</div>
                                 <div>|</div>
                                 <div>Sponsor Events</div>
                             </div>
                         </MultipaneSelector>
-                        <MultipaneSelector for="sponsors">
+                        <MultipaneSelector for="closingCeremonies">
                             <div class="scheduleRow">
-                                <div>6:30-7:00</div>
+                                <div>5:30-6:00</div>
                                 <div>|</div>
                                 <div>Closing Ceremonies</div>
                             </div>
@@ -206,7 +206,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         <MultipanePane for="precontest">
                             <GlitchText text="Pre-contest Practice & Testing" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Teams (including the WWPPC team) will have a chance to test the contest system with a few practice rounds.
+                                Teams will have a chance to test the contest system with a few practice rounds.
                             </p>
                             <p>
                                 The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
@@ -227,9 +227,9 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                             </p>
                         </MultipanePane>
                         <MultipanePane for="round1">
-                            <GlitchText text="Round 1" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
+                            <GlitchText text="Speed Round" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Speed Round is 60 minutes long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8.
+                                The Speed Round is 60 minutes long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="lunch">
@@ -239,9 +239,9 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                             </p>
                         </MultipanePane>
                         <MultipanePane for="round2">
-                            <GlitchText text="Round 2" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
+                            <GlitchText text="Power Round" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Power Round is 2.5 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8.
+                                The Power Round is 2.5 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="sponsors">
@@ -249,7 +249,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                             <p>
                                 We will be hosting some events by our sponsors!
                                 <br><br>
-                                During this time, we will also finalize scores and determine the final standings.
+                                During this time, we will also finalize scores and standings.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="closingCeremonies">
@@ -263,7 +263,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                                 </a>
                             </div>
                             <p>
-                                We will announce the winners for each division before closing off the contest.
+                                We will announce the winners for each division before closing off the contest. If you won a prize, we will contact you shortly ;)
                             </p>
                         </MultipanePane>
                     </MultipanePaneContainer>
