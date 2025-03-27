@@ -40,7 +40,7 @@ connectionEnforcer.connectionExclude.add('/contest/archive');
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
-                <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
+                <PanelNavButton text="WWPIT" for="/contest" is-default></PanelNavButton>
                 <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
                 <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
                 <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
