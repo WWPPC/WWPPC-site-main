@@ -272,7 +272,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
         </div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo4]"></ScrollIndicator>
     </div>
-    <div class="fullBlock stretchBlock">
+    <!-- <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
         <div class="centered">
             <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
@@ -301,7 +301,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
         </div>
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
-    </div>
+    </div> -->
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
         <CenteredContainer>
