@@ -272,7 +272,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
         </div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo4]"></ScrollIndicator>
     </div>
-    <!-- <div class="fullBlock stretchBlock">
+    <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
         <div class="centered">
             <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
@@ -282,26 +282,23 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                 <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
                 <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
             </div>
-            <div>
+            <!-- <div>
                 <GlowText text="GOLD" font-size="var(--font-huge)" color="#FD0" shadow></GlowText>
                 <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
-            </div>
+            </div> -->
             <div>
                 <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
-                <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" name="ICode Logo" height="10vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/hrt-logo.png" url="https://hudsonrivertrading.com/" name="Hudson River Trading Logo" height="10vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/jane-street-logo.png" url="https://janestreet.com/" name="Jane Street Logo" height="9vh"></HomeSponsorLogo>
             </div>
         </div>
         <LineDivider color="#AAA"></LineDivider>
         <div class="sponsors">
-            <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" name="Desmos Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" name="AoPS Logo" height="12vh"></HomeSponsorLogo>
             <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" name=".xyz Logo" height="9vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/echo3d-logo.png" url="https://www.echo3d.com/" name="Echo3D Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/axure-logo.svg" url="https://axure.com/" name="Axure Logo" height="6vh"></HomeSponsorLogo>
         </div>
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
-    </div> -->
+    </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
         <CenteredContainer>
