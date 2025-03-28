@@ -89,15 +89,15 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         headers: ['Novice', 'Advanced'],
                         data: [
                             [
-                                '🥇 $30 + T-shirts',
+                                '🥇 $50 + T-shirts',
                                 '🥇 $200 + T-shirts'
                             ],
                             [
-                                '🥈 $10 + T-shirts',
+                                '🥈 $30',
                                 '🥈 $150 + T-shirts'
                             ],
                             [
-                                '🥉 $10 + T-shirts',
+                                '🥉 $30',
                                 '🥉 $100 + T-shirts'
                             ]
                         ]
