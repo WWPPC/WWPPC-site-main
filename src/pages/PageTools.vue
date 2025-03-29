@@ -12,7 +12,7 @@ import PagePanelToolsImageFilter from './tools/PagePanelToolsImageFilter.vue';
         <PanelHeader>
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
-                <PanelNavButton text="Tools" for="/tools/index" is-default></PanelNavButton>
+                <PanelNavButton text="Tools" for="/tools" is-default></PanelNavButton>
                 <PanelNavButton text="Problem Editor" for="/tools/editor"></PanelNavButton>
                 <PanelNavButton text="Image to Dataurl" for="/tools/dataurl"></PanelNavButton>
                 <PanelNavButton text="SVG to PNG" for="/tools/svgconverter"></PanelNavButton>

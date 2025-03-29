@@ -1,35 +1,13 @@
 <script setup lang="ts">
-import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, DoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
-import LineDivider from '#/common/LineDivider.vue';
-import ContactFooter from '#/common/ContactFooter.vue';
-import ScrollIndicator from '#/common/ScrollIndicator.vue';
-import { InputLinkButton, InputIconButton } from '#/inputs';
-import { globalModal, FullscreenModal} from '#/modal';
-import { GlitchText, GlowText } from '#/text';
-import TimerDisplay from '#/common/TimerDisplay.vue';
-import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
-import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
-import PagePanelContestInfo from './PagePanelContestInfo.vue';
-
-// const modal = new FullscreenModal();
-
-// const showS2024 = async () => {
-//     modal.showModal({title: 'Spring 2024', content: 'skibidi'});
-//     modal.showModal({title: 'Spring2024', content: 'skibidi'});
-// }
-
-function scrollToElement(elementId: string) {
-    const element = document.getElementById(elementId);
-    element?.scrollIntoView({behavior: "smooth"});
-}
-
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer } from '#/containers';
+import { InputLinkButton } from '#/inputs';
+import { GlitchText } from '#/text';
 </script>
 
 <template>
     <div id="home" class="fullBlock stretchBlock">
         <a name="home"></a>
-        <GlitchText text="Contest Archive" class="previousContestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="Contest Archive" class="contestArchiveTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="spacer"></div>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-column: 1 / -1;">
@@ -37,10 +15,14 @@ function scrollToElement(elementId: string) {
                     <CenteredContainer style="font-size: var(--font-20);">
                         <div class="centered" style="margin-top: 0.5em;">
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
+                                <RouterLink to="/contest/upsolve" no-deco>
+                                    <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink>
                             </AnimateInContainer>
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime" v-on:click="scrollToElement('spring2024')"></InputLinkButton>
+                                <RouterLink to="/contestArchive/2024" no-deco>
+                                    <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink>
                             </AnimateInContainer>
                         </div>
                     </CenteredContainer>
@@ -51,19 +33,70 @@ function scrollToElement(elementId: string) {
                     <CenteredContainer style="font-size: var(--font-20);">
                         <div class="centered" style="margin-top: 0.5em;">
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton> 
+                                <RouterLink to="/contest/archive" no-deco>
+                                    <InputLinkButton text="Upsolve" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink>
                             </AnimateInContainer>
                             <AnimateInContainer type="fade" :delay=400 style="grid-row: 1 / -1;">
-                                <InputLinkButton text="Winners" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                <RouterLink to="/contestArchive" no-deco>
+                                    <InputLinkButton text="Contest Page" font-size="var(--font-large)" color="lime"></InputLinkButton>
+                                </RouterLink>
                             </AnimateInContainer>
                         </div>
                     </CenteredContainer>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
-        
         </div>
     </div>
-    <div id="spring2024" class="fullBlock stretchBlock">
+    <!-- <div class="fullBlock">
+        <a name="pageHackathonScrollTo"></a>
+        <div class="hacksColumns">
+            <div class="center">
+                <div class="hacksStickyBox">
+                    <div class="spacer"></div>
+                    <div class="spacer"></div>
+                    <CenteredContainer>
+                        <GlitchText text="Archive" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
+                    </CenteredContainer>
+                    
+                </div>
+            </div>
+            <div class="stretchBlock hacksTilesColumn">
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+                <AnimateInContainer type="slideUp" show-on-screen>
+                    <CutCornerContainer hover-animation="lift">
+                        buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh<br>buh
+                    </CutCornerContainer>
+                </AnimateInContainer>
+            </div>
+        </div>
+        <ScrollIndicator anchor="a[name=pageHackathonScrollTo2]"></ScrollIndicator>
+    </div> -->
+    <!-- <div id="spring2024" class="fullBlock stretchBlock">
         <a name="spring2024"></a>
         <CenteredContainer>
             <GlitchText text="Spring 2024" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
@@ -198,7 +231,7 @@ function scrollToElement(elementId: string) {
                 </AnimateInContainer>
             </AnimateInContainer>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>
@@ -210,16 +243,11 @@ function scrollToElement(elementId: string) {
     flex-grow: 1;
 }
 
-.previousContestTitle {
+.contestArchiveTitle {
     transform-origin: top;
     transform: translate3D(0px, -20vh, -50px) scale(150%);
     z-index: -1;
     text-align: center;
-}
-
-.stretchBlock {
-    display: flex;
-    flex-direction: column;
 }
 
 .contestInfoBlock {
@@ -234,95 +262,12 @@ function scrollToElement(elementId: string) {
     
 }
 
-.contestInfoBlock>div {
-    height: 100%;
-}
-
-.scheduleBlock {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    row-gap: 16px;
-    column-gap: 16px;
-    flex-grow: 1;
-}
-
-@media (max-width: 100vh) {
-    .contestInfoBlock {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: repeat(4, min-content);
-        grid-auto-flow: column;
-        min-height: min-content;
-    }
-
-    .scheduleBlock {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: min-content min-content;
-    }
-}
-
-.contestWinnerTable {
-    display: grid;
-    grid-template-columns: 2em 1fr;
-    font-size: var(--font-32);
-}
-
-.contestWinnerTable>span:nth-child(even) {
-    color: lime;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.contestWinnerBlock {
-    display: flex;
-    flex-direction: column;
-    font-size: var(--font-20);
-}
-
-.contestWinnerBlock>span:nth-child(2) {
-    font-size: var(--font-16);
-}
-
-.winnersBlock {
-    grid-auto-flow: row dense;
-    grid-template-rows: minmax(0, 1fr) min-content;
-}
-
-.winnersBlock>div:nth-child(3) {
-    grid-column: span 2;
-}
-
-@media (max-width: 100vh) {
-    .winnersBlock>div:nth-child(3) {
-        grid-column: 1;
-    }
-}
-
 .spacer {
     flex-grow: 0.5;
 }
 
-.sponsorColumns {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    padding: 0px 5%;
-}
-
-.sponsorColumns>div {
-    width: 40vh;
+.stretchBlock {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-.sponsors {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 25px;
-    column-gap: 50px;
-    padding: 0px 5%;
 }
 </style>

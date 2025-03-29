@@ -10,7 +10,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPPC 2024" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchText text="WWPPC 2025" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
         <div class="homeColumns">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
@@ -44,7 +44,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                         <div class="homeVertical">
                             <div style="flex-grow: 1;">
                                 <GlitchText text="WWPIT" font-size="var(--font-subtitle)" color="lime" glow shadow :steps=3 :delay=10 random></GlitchText>
-                                <GlitchText text="06/02/2024" font-size="var(--font-subsubtitle)" color="red" glow random flashing :delay=10 start-glitched></GlitchText>
+                                <GlitchText :text="`${String(nextContest.getMonth() + 1).padStart(2, '0')}/${String(nextContest.getDate()).padStart(2, '0')}/${nextContest.getFullYear()}`" font-size="var(--font-subsubtitle)" color="red" glow random flashing :delay=10 start-glitched></GlitchText>
                                 <LineDivider color="#AAA"></LineDivider>
                                 <p>
                                     WWPIT is a round-based informatics tournament with multiple divisions for high school competitive programmers of all skill levels.
