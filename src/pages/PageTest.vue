@@ -40,16 +40,24 @@ import { TitledCollapsible } from '#/containers';
                 Is Webkit browser: {{ isWebkit }}
                 <AccordionCollapsibleContainer exclusive>
                     <TitledCollapsible title="buh">
-                        oofofoofofofo
+                        oofofoofofofo<br>sdafasdf
                     </TitledCollapsible>
                     <TitledCollapsible title="buh">
-                        oofofoofofofo
+                        oofofoofofofo<br><br>adskj
                     </TitledCollapsible>
                     <TitledCollapsible title="buh">
-                        oofofoofofofo
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
+                        oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
                     </TitledCollapsible>
                     <TitledCollapsible title="buh">
-                        oofofoofofofo
+                        oofofoofofofo<br><br><br><br><br>>>>>>>>>boh
                     </TitledCollapsible>
                 </AccordionCollapsibleContainer>
             </PanelBody>
