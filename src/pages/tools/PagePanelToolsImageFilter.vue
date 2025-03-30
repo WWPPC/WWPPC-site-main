@@ -29,10 +29,10 @@ const draw = () => {
         const canvas = document.createElement('canvas');
         width.value = img.width;
         height.value = img.height;
-        canvas.width = img.width * scale.value;
-        canvas.height = img.height * scale.value;
+        canvas.width = img.width;
+        canvas.height = img.height;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, img.width * scale.value, img.height * scale.value);
+        ctx?.drawImage(img, 0, 0, img.width, img.height);
         converted.value = canvas.toDataURL('image/png');
     };
 };
@@ -46,7 +46,7 @@ const upload = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         original.value = reader.result;
          draw();
-        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI') { //prevents videos from loading, can remove this idk if you want this to happen
+        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI') { //prevents videos from loading
             modal.showModal({ title: 'Unsupported file type', content: 'Only images are allowed.', color: 'red' });
         }
     };
@@ -55,7 +55,7 @@ const upload = (event: any) => {
 
 const imgStyle = computed(() => { //computed() is a cache to make program faster
     return {
-    transform: `rotate(${rotate.value}deg)`, 
+    transform: `rotate(${rotate.value}deg) scale(${scale.value})`,  //instead of using watch(scale, draw), utilizing the css filter scale reduces lag by a lot.
     filter: `
           brightness(${brightness.value}%) 
           contrast(${contrast.value}%)
@@ -64,7 +64,6 @@ const imgStyle = computed(() => { //computed() is a cache to make program faster
           blur(${blur.value}px)
           opacity(${opacity.value}%)
         `
-        // opacity + brightness do the same thing
     };
     
 });
@@ -82,7 +81,6 @@ const reset_filters = () => {
  
 }
 
-watch(scale, draw); 
 </script>
 
 <template>
@@ -97,13 +95,13 @@ watch(scale, draw);
             <div>
                 Scale: 
                 <br/>
-                <InputNumberBox v-model="scale" :default-value="1" :step="0.1"></InputNumberBox>
+                <InputNumberBox v-model="scale" :default-value="1" :step="0.1" :min="-5" :max="5"></InputNumberBox>
             </div>
             <br>
             <div>
                 Rotate:
                 <input v-model="rotate" type="range" min="0" max="360" class="slider" />
-                <br />
+                <br/>
                 <InputNumberBox v-model="rotate" :step="1"></InputNumberBox>
             </div>
             <br>
@@ -158,6 +156,7 @@ watch(scale, draw);
 </template>
 
 <style scoped>
+
 .columns {
     display: grid;
     height: 100%;
@@ -184,21 +183,6 @@ watch(scale, draw);
     background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
 }
 
-.transformedImg {
-    box-sizing: border-box;
-    max-width: 100%;
-    max-height: calc(100% - 32px);
-    border: 4px solid white;
-    background-color: black;
-    background-image:
-        linear-gradient(45deg, #222 25%, transparent 25%),
-        linear-gradient(135deg, #222 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #222 75%),
-        linear-gradient(135deg, transparent 75%, #222 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
-}
-
 .big {
     box-sizing: border-box;
     width: 100%;
@@ -206,9 +190,6 @@ watch(scale, draw);
     margin: 0px 0px;
 }
 
-.rotate_img {
-    transform: rotate(45deg);
-}
 
 </style>
 
