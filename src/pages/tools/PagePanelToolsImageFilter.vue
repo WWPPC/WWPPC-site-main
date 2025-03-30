@@ -3,10 +3,11 @@ import { TitledCutCornerContainer } from '#/containers';
 import { InputFileUpload, InputNumberBox } from '#/inputs';
 import { ref, watch, computed } from 'vue';
 import { globalModal } from '#/modal';
+import InputButton from '#/inputs/InputButton.vue';
 
 const modal = globalModal();
 
-const scale = ref(0.5);
+const scale = ref(1);
 const width = ref(0);
 const height = ref(0);
 const original = ref('');
@@ -68,6 +69,19 @@ const imgStyle = computed(() => { //computed() is a cache to make program faster
     
 });
 
+const reset_filters = () => {
+
+   return rotate.value = 0, 
+   hue.value = 0,
+   saturation.value = 100,
+   contrast.value = 100,
+   brightness.value = 100,
+   blur.value = 0,
+   opacity.value = 100,
+   scale.value = 1;
+ 
+}
+
 watch(scale, draw); 
 </script>
 
@@ -88,47 +102,58 @@ watch(scale, draw);
                 <br/>
                 <InputNumberBox v-model="scale" :default-value="1" :step="0.1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Rotate:
                 <input v-model="rotate" type="range" min="0" max="360" class="slider" />
                 <br />
                 <InputNumberBox v-model="rotate" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Hue:
                 <input v-model="hue" type="range" min="0" max="360" class="slider" />
                 <br />
                 <InputNumberBox v-model="hue" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Saturation:
                 <input v-model="saturation"  type="range" min="0" max="100" class="slider" />
                 <br />
                 <InputNumberBox  v-model="saturation" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Contrast:
                 <input v-model="contrast" type="range"  min="0" max="100" class="slider" />
                 <br />
                 <InputNumberBox v-model="contrast" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Brightness:
                 <input v-model="brightness" type="range"  min="0" max="100" class="slider" />
                 <br />
                 <InputNumberBox v-model="brightness" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Opacity:
                 <input v-model="opacity" type="range"  min="0" max="100" class="slider" />
                 <br />
                 <InputNumberBox v-model="opacity" :step="1"></InputNumberBox>
             </div>
+            <br>
             <div>
                 Blur:
                 <input v-model="blur" type="range"  min="0" max="10" class="slider" />
                 <br />
                 <InputNumberBox v-model="blur" :step="0.1"></InputNumberBox>
+            </div>
+            <br>
+            <div>
+                <InputButton text="Reset Filters" color="Red" @click="reset_filters"></InputButton>
             </div>
             
         </TitledCutCornerContainer> 
