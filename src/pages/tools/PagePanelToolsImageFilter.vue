@@ -87,16 +87,13 @@ watch(scale, draw);
 
 <template>
     <div class="columns"> 
-        <TitledCutCornerContainer title="Original" reversed>
-            <img :src="original" class="uploadImg">
+        <TitledCutCornerContainer title="Image" reversed>
+            <img :src="converted" class="uploadImg" :style="imgStyle">
             <br>
             <InputFileUpload class="align" accept="image/png+xml" @change=upload></InputFileUpload>
             <br>
         </TitledCutCornerContainer>
-        <TitledCutCornerContainer title="Filter">
-            <img :src="converted" class="uploadImg" :style="imgStyle" >
-            <br>
-            <br>
+        <TitledCutCornerContainer title="Filters">
             <div>
                 Scale: 
                 <br/>
@@ -119,21 +116,21 @@ watch(scale, draw);
             <br>
             <div>
                 Saturation:
-                <input v-model="saturation"  type="range" min="0" max="100" class="slider" />
+                <input v-model="saturation"  type="range" min="0" max="200" class="slider" />
                 <br />
                 <InputNumberBox  v-model="saturation" :step="1"></InputNumberBox>
             </div>
             <br>
             <div>
                 Contrast:
-                <input v-model="contrast" type="range"  min="0" max="100" class="slider" />
+                <input v-model="contrast" type="range"  min="0" max="200" class="slider" />
                 <br />
                 <InputNumberBox v-model="contrast" :step="1"></InputNumberBox>
             </div>
             <br>
             <div>
                 Brightness:
-                <input v-model="brightness" type="range"  min="0" max="100" class="slider" />
+                <input v-model="brightness" type="range"  min="0" max="200" class="slider" />
                 <br />
                 <InputNumberBox v-model="brightness" :step="1"></InputNumberBox>
             </div>
