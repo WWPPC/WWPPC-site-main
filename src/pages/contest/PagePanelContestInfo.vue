@@ -84,7 +84,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
         </CenteredContainer>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
-                <TitledDoubleCutCornerContainer title="Prizes" height="100%" align="center" hover-animation="lift">
+                <TitledDoubleCutCornerContainer title="Prizes (tentative)" height="100%" align="center" hover-animation="lift">
                     <HeaderedTable width="100%" border-color="transparent" header-color="lime" header-background="transparent" style="font-size: var(--font-28); line-height: 0.9em;" :content="{
                         headers: ['Novice', 'Advanced'],
                         data: [
