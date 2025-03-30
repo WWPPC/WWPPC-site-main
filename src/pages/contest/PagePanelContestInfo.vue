@@ -175,14 +175,14 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         </MultipaneSelector>
                         <MultipaneSelector for="round2">
                             <div class="scheduleRow">
-                                <div>1:30-4:00</div>
+                                <div>1:30-4:30</div>
                                 <div>|</div>
                                 <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="sponsors">
                             <div class="scheduleRow">
-                                <div>4:00-5:30</div>
+                                <div>4:30-5:30</div>
                                 <div>|</div>
                                 <div>Sponsor Events</div>
                             </div>
