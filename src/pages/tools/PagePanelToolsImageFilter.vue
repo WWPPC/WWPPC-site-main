@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TitledCutCornerContainer } from '#/containers';
 import { InputFileUpload, InputNumberBox } from '#/inputs';
-import { ref, watch, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
 
@@ -55,7 +55,6 @@ const upload = (event: any) => {
 
 const imgStyle = computed(() => { //computed() is a cache to make program faster
     return {
-    transform: `rotate(${rotate.value}deg) scale(${scale.value})`,  //instead of using watch(scale, draw), utilizing the css filter scale reduces lag by a lot.
     filter: `
           brightness(${brightness.value}%) 
           contrast(${contrast.value}%)
@@ -76,9 +75,7 @@ const reset_filters = () => {
    contrast.value = 100,
    brightness.value = 100,
    blur.value = 0,
-   opacity.value = 100,
-   scale.value = 1;
- 
+   opacity.value = 100;
 }
 
 </script>
@@ -92,19 +89,6 @@ const reset_filters = () => {
             <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
-            <div>
-                Scale: 
-                <br/>
-                <InputNumberBox v-model="scale" :default-value="1" :step="0.1" :min="-5" :max="5"></InputNumberBox>
-            </div>
-            <br>
-            <div>
-                Rotate:
-                <input v-model="rotate" type="range" min="0" max="360" class="slider" />
-                <br/>
-                <InputNumberBox v-model="rotate" :step="1"></InputNumberBox>
-            </div>
-            <br>
             <div>
                 Hue:
                 <input v-model="hue" type="range" min="0" max="360" class="slider" />
@@ -165,7 +149,10 @@ const reset_filters = () => {
 }
 
 .align {
-    margin-right: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;   
 }
 
 .uploadImg {
@@ -181,6 +168,10 @@ const reset_filters = () => {
         linear-gradient(135deg, transparent 75%, #222 75%);
     background-size: 20px 20px;
     background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;   
 }
 
 .big {
@@ -189,6 +180,7 @@ const reset_filters = () => {
     height: 20em;
     margin: 0px 0px;
 }
+
 
 
 </style>
