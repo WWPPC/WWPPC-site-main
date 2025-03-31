@@ -241,7 +241,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         <MultipanePane for="round2">
                             <GlitchText text="Power Round" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Power Round is 2.5 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
+                                The Power Round is 3 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="sponsors">
