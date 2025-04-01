@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, AngledTitledContainer } from '#/containers';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsibleContainer, AngledTitledContainer } from '#/containers';
 import { InputLinkButton } from '#/inputs';
 import { GlitchText } from '#/text';
 </script>
@@ -108,31 +108,31 @@ import { GlitchText } from '#/text';
         </CenteredContainer>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="When is it?" startCollapsed>
+                <TitledCollapsibleContainer title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         WWPHacks is expected to happen towards of the start of the 2024-2025 school year.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Where will it be held?" startCollapsed>
+                <TitledCollapsibleContainer title="Where will it be held?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         We can't say anything about possible venues yet.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How many people can be on a team?" startCollapsed>
+                <TitledCollapsibleContainer title="How many people can be on a team?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         Expect to have teams of 3-4 people
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
         </div>
         <div class="spacer"></div>

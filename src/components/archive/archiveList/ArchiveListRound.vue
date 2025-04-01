@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { autoGlitchTextTransition } from '#/text';
-import { AnimateInContainer, TitledCollapsible } from '#/containers';
+import { AnimateInContainer, TitledCollapsibleContainer } from '#/containers';
 import LoadingBar from '#/common/LoadingBar.vue';
 import ContestProblemListProblem from '#/common-components/contest/problemList/ContestProblemListProblem.vue';
 import { onMounted, ref, watch } from 'vue';
@@ -59,14 +59,14 @@ if (!props.minimized) {
 </script>
 
 <template>
-    <TitledCollapsible :title="titleText" class="archiveListRoundDropdown" :start-collapsed="$props.minimized" @open="load()">
+    <TitledCollapsibleContainer :title="titleText" class="archiveListRoundDropdown" :start-collapsed="$props.minimized" @open="load()">
         <AnimateInContainer type="fade" v-for="(problem, index) of problems" :key="index" :delay="index * 50">
             <ContestProblemListProblem :data="problem" archive></ContestProblemListProblem>
         </AnimateInContainer>
         <div class="centered" v-if="problems == null" style="margin: 8px 0px;">
             <LoadingBar width="max(50%, 100px)" height="16px"></LoadingBar>
         </div>
-    </TitledCollapsible>
+    </TitledCollapsibleContainer>
 </template>
 
 <style scoped>

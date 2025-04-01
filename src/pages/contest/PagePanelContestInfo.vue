@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsibleContainer, HeaderedTable } from '#/containers';
 import LineDivider from '#/common/LineDivider.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
@@ -416,66 +416,66 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
         </CenteredContainer>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="When is it?" startCollapsed>
+                <TitledCollapsibleContainer title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         WWPIT 2024 will be on <b>Sunday, June 2</b>, from 10:15 AM - 5:30 PM EST.
                         <br><br>
                         <i>Scroll up to see contest schedule</i>
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How do I compete?" startCollapsed>
+                <TitledCollapsibleContainer title="How do I compete?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         You can sign up by <b>creating an account and registering <a href="/account/registrations" target="_blank">HERE</a></b>, NO prerequisites needed!
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Who is eligible for prizes?" startCollapsed>
+                <TitledCollapsibleContainer title="Who is eligible for prizes?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         Currently, we can only guarantee prizes to high school students in the United States.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Where will it be held?" startCollapsed>
+                <TitledCollapsibleContainer title="Where will it be held?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         WWPIT will be held on this website!
                         <br><br>
                         You can register <a href="/account/registrations" target="_blank">here</a> at any time before the contest starts.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What resources are allowed?" startCollapsed>
+                <TitledCollapsibleContainer title="What resources are allowed?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         You can use any resource that was published before the beginning of the contest.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What languages can I use?" startCollapsed>
+                <TitledCollapsibleContainer title="What languages can I use?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         Allowed languages include Java 8, Java 11, Java 17, Java 21, C11, C++11, C++17, C++20, and Python3.12.3.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How can I prepare?" startCollapsed>
+                <TitledCollapsibleContainer title="How can I prepare?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         For those experienced in programming, helpful resources include <a href="https://usaco.guide" target="_blank">USACO Guide</a> and <a href="https://codeforces.com" target="_blank">Codeforces</a>.
                         <br><br>
                         To learn C++, see <a href="https://cplusplus.com/doc/tutorial/" target="_blank">CPlusPlus.com</a>. To learn Python, a more beginner-friendly language, the <a href="https://runestone.academy/ns/books/published/thinkcspy/index.html" target="_blank">thinkcspy textbook</a> is useful.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What is the expected difficulty?" startCollapsed>
+                <TitledCollapsibleContainer title="What is the expected difficulty?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         For the Novice division, expect problems within the <a href="https://usaco.org" target="_blank">USACO</a> Bronze-upper USACO Silver division. For the Advanced division, expect problems within the USACO Silver-USACO Platinum division.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
         </div>
         <div class="spacer"></div>

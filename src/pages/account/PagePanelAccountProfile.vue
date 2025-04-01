@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import WaitCover from '#/common/WaitCover.vue';
-import { AnimateInContainer, PairedGridContainer, TitledCollapsible, TitledCutCornerContainer } from '#/containers';
+import { AnimateInContainer, PairedGridContainer, TitledCollapsibleContainer, TitledCutCornerContainer } from '#/containers';
 import { InputButton, InputTextArea, InputTextBox, InputDropdown, InputCopyButton } from '#/inputs';
 import AccountTeamUserDisp from '#/common-components/account/AccountTeamUserDisp.vue';
 import { onMounted, ref, watch } from 'vue';
@@ -301,7 +301,7 @@ onMounted(clearDangerButtons);
                 <InputTextBox v-model=emailNotEditable width="var(--fwidth)" title="Email used to update you on contests, password changes, etc. (you cannot edit this)" disabled></InputTextBox>
             </PairedGridContainer>
             <br>
-            <TitledCollapsible title="Danger buttons" font-size="var(--font-medium)" border-color="red" @click="clearDangerButtons" start-collapsed>
+            <TitledCollapsibleContainer title="Danger buttons" font-size="var(--font-medium)" border-color="red" @click="clearDangerButtons" start-collapsed>
                 <!-- useless form -->
                 <form class="profileDangerButtons" action="javascript:void(0)">
                     <div style="text-align: right; align-content: center; font-size: var(--font-18);">Enter password:</div>
@@ -309,7 +309,7 @@ onMounted(clearDangerButtons);
                     <InputButton text="CHANGE PASSWORD" color="red" @click="changePassword" :disabled="currentPasswordInput.length == 0"></InputButton>
                     <InputButton text="DELETE ACCOUNT" color="red" @click="deleteAccount" :disabled="currentPasswordInput.length == 0"></InputButton>
                 </form>
-            </TitledCollapsible>
+            </TitledCollapsibleContainer>
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <WaitCover text="Signing in..." :show=showCredWait></WaitCover>

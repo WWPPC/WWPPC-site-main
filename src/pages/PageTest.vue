@@ -5,7 +5,7 @@ import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { isMobile, isWebkit } from '#/scripts/userAgent';
 import { AccordionCollapsibleContainer } from '#/accordion';
-import { TitledCollapsible } from '#/containers';
+import { TitledCollapsibleContainer } from '#/containers';
 </script>
 
 <template>
@@ -39,13 +39,13 @@ import { TitledCollapsible } from '#/containers';
                 <br>
                 Is Webkit browser: {{ isWebkit }}
                 <AccordionCollapsibleContainer exclusive>
-                    <TitledCollapsible title="buh">
+                    <TitledCollapsibleContainer title="buh">
                         oofofoofofofo<br>sdafasdf
-                    </TitledCollapsible>
-                    <TitledCollapsible title="buh">
+                    </TitledCollapsibleContainer>
+                    <TitledCollapsibleContainer title="buh">
                         oofofoofofofo<br><br>adskj
-                    </TitledCollapsible>
-                    <TitledCollapsible title="buh">
+                    </TitledCollapsibleContainer>
+                    <TitledCollapsibleContainer title="buh">
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
@@ -55,10 +55,10 @@ import { TitledCollapsible } from '#/containers';
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
                         oofofoofofofo<br>buhaAAAAAAAAAAAAAAAAAAAAAc
-                    </TitledCollapsible>
-                    <TitledCollapsible title="buh">
+                    </TitledCollapsibleContainer>
+                    <TitledCollapsibleContainer title="buh">
                         oofofoofofofo<br><br><br><br><br>>>>>>>>>boh
-                    </TitledCollapsible>
+                    </TitledCollapsibleContainer>
                 </AccordionCollapsibleContainer>
             </PanelBody>
             <PanelBody name="fonts" title="Fonts">
