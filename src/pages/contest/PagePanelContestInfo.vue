@@ -84,7 +84,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
         </CenteredContainer>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
-                <TitledDoubleCutCornerContainer title="Prizes" height="100%" align="center" hover-animation="lift">
+                <TitledDoubleCutCornerContainer title="Prizes (tentative)" height="100%" align="center" hover-animation="lift">
                     <HeaderedTable width="100%" border-color="transparent" header-color="lime" header-background="transparent" style="font-size: var(--font-28); line-height: 0.9em;" :content="{
                         headers: ['Novice', 'Advanced'],
                         data: [
@@ -175,14 +175,14 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         </MultipaneSelector>
                         <MultipaneSelector for="round2">
                             <div class="scheduleRow">
-                                <div>1:30-4:00</div>
+                                <div>1:30-4:30</div>
                                 <div>|</div>
                                 <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="sponsors">
                             <div class="scheduleRow">
-                                <div>4:00-5:30</div>
+                                <div>4:30-5:30</div>
                                 <div>|</div>
                                 <div>Sponsor Events</div>
                             </div>
@@ -241,7 +241,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         <MultipanePane for="round2">
                             <GlitchText text="Power Round" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                The Power Round is 2.5 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
+                                The Power Round is 3 hours long with 8 problems. There will be 12 problems in total; Novice will solve the easiest 8; Advanced will solve the hardest 8, with 4 problems shared between divisions.
                             </p>
                         </MultipanePane>
                         <MultipanePane for="sponsors">
