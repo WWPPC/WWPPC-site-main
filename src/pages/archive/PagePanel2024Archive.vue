@@ -1,15 +1,35 @@
 <script setup lang="ts">
 import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
 import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
-import LineDivider from '#/common/LineDivider.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
+import SponsorList from '#/common-components/home/home/SponsorList.vue';
+import { reactive } from "vue";
 const contest = new Date('6/2/2024 9:30 AM EST');
 const contestEnd = new Date('6/2/2024 5:00 PM EST');
+
+const sponsors = reactive({
+    partner: [
+        { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "12vh" }
+    ],
+    gold: [
+        { name: "X-Camp Logo", src: "/img/x-camp-logo.png", url: "https://x-camp.academy/", height: "10vh" }
+    ],
+    silver: [
+        { name: "ICode Logo", src: "/img/icode-logo.png", url: "https://icodeschool.com/", height: "10vh" }
+    ],
+    other: [
+        { name: "Desmos Logo", src: "/img/desmos-logo.svg", url: "https://desmos.com/", height: "5.5vh" },
+        { name: "AoPS Logo", src: "/img/aops-logo.svg", url: "https://artofproblemsolving.com/", height: "12vh" },
+        { name: ".xyz Logo", src: "/img/xyz-logo.svg", url: "https://gen.xyz", height: "9vh" },
+        { name: "Echo3D Logo", src: "/img/echo3d-logo.png", url: "https://www.echo3d.com/", height: "5.5vh" },
+        { name: "Axure Logo", src: "/img/axure-logo.svg", url: "https://axure.com/", height: "6vh" }
+    ]
+});
+
 </script>
 
 <template>
@@ -412,31 +432,12 @@ const contestEnd = new Date('6/2/2024 5:00 PM EST');
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
-        <div class="centered">
-            <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </div>
-        <div class="sponsorColumns">
-            <div>
-                <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
-                <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
-            </div>
-            <div>
-                <GlowText text="GOLD" font-size="var(--font-huge)" color="#FD0" shadow></GlowText>
-                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
-            </div>
-            <div>
-                <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
-                <HomeSponsorLogo src="/img/icode-logo.png" url="https://icodeschool.com/" name="ICode Logo" height="10vh"></HomeSponsorLogo>
-            </div>
-        </div>
-        <LineDivider color="#AAA"></LineDivider>
-        <div class="sponsors">
-            <HomeSponsorLogo src="/img/desmos-logo.svg" url="https://desmos.com/" name="Desmos Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/aops-logo.svg" url="https://artofproblemsolving.com/" name="AoPS Logo" height="12vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" name=".xyz Logo" height="9vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/echo3d-logo.png" url="https://www.echo3d.com/" name="Echo3D Logo" height="5.5vh"></HomeSponsorLogo>
-            <HomeSponsorLogo src="/img/axure-logo.svg" url="https://axure.com/" name="Axure Logo" height="6vh"></HomeSponsorLogo>
-        </div>
+        <SponsorList 
+            :partners="sponsors.partner" 
+            :gold="sponsors.gold" 
+            :silver="sponsors.silver" 
+            :otherSponsors="sponsors.other"
+        />
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
     </div>
