@@ -56,6 +56,6 @@ watch(() => route.params, () => {
     <PageTest></PageTest>
     <PageTools></PageTools>
     <FullscreenModal ref="modalComponent"></FullscreenModal>
-    <SuperSecretFeature show></SuperSecretFeature>
-    <SuperSecretCarrier show></SuperSecretCarrier>
+    <SuperSecretFeature></SuperSecretFeature>
+    <SuperSecretCarrier></SuperSecretCarrier>
 </template>
