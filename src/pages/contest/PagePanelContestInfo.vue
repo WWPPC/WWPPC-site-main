@@ -290,6 +290,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                 <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
                 <HomeSponsorLogo src="/img/hrt-logo.png" url="https://hudsonrivertrading.com/" name="Hudson River Trading Logo" height="10vh"></HomeSponsorLogo>
                 <HomeSponsorLogo src="/img/jane-street-logo.png" url="https://janestreet.com/" name="Jane Street Logo" height="9vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
             </div>
         </div>
         <LineDivider color="#AAA"></LineDivider>
