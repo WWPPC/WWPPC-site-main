@@ -18,7 +18,9 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming designed contest for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        <br><br>
+                        However, all are encouraged to participate.
                         <br><br>
                         The contest will be held online, on this website, between two divisions: Novice and Advanced.
                         <br><br>
@@ -110,7 +112,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                         data: []
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-16)">
-                        <i>Note: Currently, we can only guarantee prizes to high school students within the US. International transactions are subject to federal law. Other people may compete but may not be able to recieve prizes.</i>
+                        <i>Note: Currently, we can only guarantee prizes to pre-college students within the US. International transactions are subject to federal law. Other people may compete but may not be able to recieve prizes.</i>
                         <br>
                         <i>X-Camp Prizes are in the form of X-Camp giftcards</i>
                     </p>
@@ -321,7 +323,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="Who is eligible for prizes?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        Currently, we can only guarantee prizes to high school students in the United States.
+                        Currently, we can only guarantee prizes to pre-college students in the United States.
                     </p>
                 </TitledCollapsible>
             </AnimateInContainer>
