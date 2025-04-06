@@ -47,7 +47,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                                 <GlitchText :text="`${String(nextContest.getMonth() + 1).padStart(2, '0')}/${String(nextContest.getDate()).padStart(2, '0')}/${nextContest.getFullYear()}`" font-size="var(--font-subsubtitle)" color="red" glow random flashing :delay=10 start-glitched></GlitchText>
                                 <LineDivider color="#AAA"></LineDivider>
                                 <p>
-                                    WWPIT is a round-based informatics tournament with multiple divisions for high school competitive programmers of all skill levels.
+                                    WWPIT is a round-based informatics tournament with multiple divisions for competitive programmers of all skill levels.
                                 </p>
                             </div>
                             <div style="display: flex; flex-direction: column;">
