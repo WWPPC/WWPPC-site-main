@@ -7,11 +7,10 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import SponsorList from '#/common-components/home/home/SponsorList.vue';
-import { reactive } from "vue";
 const contest = new Date('6/2/2024 9:30 AM EST');
 const contestEnd = new Date('6/2/2024 5:00 PM EST');
 
-const sponsors = reactive({
+const sponsors = {
     partner: [
         { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "12vh" }
     ],
@@ -28,7 +27,7 @@ const sponsors = reactive({
         { name: "Echo3D Logo", src: "/img/echo3d-logo.png", url: "https://www.echo3d.com/", height: "5.5vh" },
         { name: "Axure Logo", src: "/img/axure-logo.svg", url: "https://axure.com/", height: "6vh" }
     ]
-});
+};
 
 </script>
 
@@ -433,6 +432,7 @@ const sponsors = reactive({
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
         <SponsorList 
+            color="lime"
             :partners="sponsors.partner" 
             :gold="sponsors.gold" 
             :silver="sponsors.silver" 

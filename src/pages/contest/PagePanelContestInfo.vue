@@ -1,14 +1,31 @@
 <script setup lang="ts">
 import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
 import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
-import LineDivider from '#/common/LineDivider.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
-import { GlitchText, GlowText } from '#/text';
+import { GlitchText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import HomeSponsorLogo from '#/common-components/home/home/HomeSponsorLogo.vue';
+import SponsorList from '#/common-components/home/home/SponsorList.vue';
 import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/contestInfo';
+
+const sponsors = {
+    partner: [
+        { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "28.5vh" }
+    ],
+    gold: [],
+    silver: [
+        { name: "Hudson River Trading Logo", src: "/img/hrt-logo.png", url: "https://hudsonrivertrading.com/", height: "10vh" },
+        { name: "Jane Street Logo", src: "/img/jane-street-logo.png", url: "https://janestreet.com/", height: "9vh" },
+        { name: "X-Camp Logo", src: "/img/x-camp-logo.png", url: "https://x-camp.academy/", height: "10vh" }
+    
+    
+    ],
+    other: [
+        { name: ".xyz Logo", src: "/img/xyz-logo.svg", url: "https://gen.xyz", height: "9vh" },
+    ]
+};
+
 </script>
 
 <template>
@@ -276,25 +293,13 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
-        <div class="centered">
-            <GlitchText text="Sponsors" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </div>
-        <div class="sponsorColumns">
-            <div>
-                <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
-                <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
-            </div>
-            <div>
-                <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
-                <HomeSponsorLogo src="/img/hrt-logo.png" url="https://hudsonrivertrading.com/" name="Hudson River Trading Logo" height="10vh"></HomeSponsorLogo>
-                <HomeSponsorLogo src="/img/jane-street-logo.png" url="https://janestreet.com/" name="Jane Street Logo" height="9vh"></HomeSponsorLogo>
-                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
-            </div>
-        </div>
-        <LineDivider color="#AAA"></LineDivider>
-        <div class="sponsors">
-            <HomeSponsorLogo src="/img/xyz-logo.svg" url="https://gen.xyz" name=".xyz Logo" height="9vh"></HomeSponsorLogo>
-        </div>
+        <SponsorList 
+            color="lime"
+            :partners="sponsors.partner" 
+            :gold="sponsors.gold" 
+            :silver="sponsors.silver" 
+            :otherSponsors="sponsors.other"
+        />
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
     </div>
