@@ -282,14 +282,11 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
                 <GlowText text="PARTNERS" font-size="var(--font-huge)" color="lime" shadow></GlowText>
                 <HomeSponsorLogo src="/img/cpi-logo.svg" url="https://joincpi.org/" name="CPI Logo" height="12vh"></HomeSponsorLogo>
             </div>
-            <!-- <div>
-                <GlowText text="GOLD" font-size="var(--font-huge)" color="#FD0" shadow></GlowText>
-                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
-            </div> -->
             <div>
                 <GlowText text="SILVER" font-size="var(--font-huge)" color="#CCC" shadow></GlowText>
                 <HomeSponsorLogo src="/img/hrt-logo.png" url="https://hudsonrivertrading.com/" name="Hudson River Trading Logo" height="10vh"></HomeSponsorLogo>
                 <HomeSponsorLogo src="/img/jane-street-logo.png" url="https://janestreet.com/" name="Jane Street Logo" height="9vh"></HomeSponsorLogo>
+                <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
                 <HomeSponsorLogo src="/img/x-camp-logo.png" url="https://x-camp.academy/" name="X-Camp Logo" height="10vh"></HomeSponsorLogo>
                 <HomeSponsorLogo src="/img/recursive-dragon-logo.png" url="https://recursivedragon.com/" name="Recursive Dragon Logo" height="10vh"></HomeSponsorLogo>
             </div>
