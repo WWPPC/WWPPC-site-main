@@ -173,42 +173,35 @@ const sponsors = {
                         </div>
                         <MultipaneSelector for="openingCeremonies">
                             <div class="scheduleRow">
-                                <div>11:00-11:15</div>
+                                <div>12:30-12:45</div>
                                 <div>|</div>
                                 <div>Opening ceremonies</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round1">
                             <div class="scheduleRow">
-                                <div>11:30-12:30</div>
+                                <div>1:00-2:00</div>
                                 <div>|</div>
                                 <div>Speed Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="lunch">
                             <div class="scheduleRow">
-                                <div>12:30-1:30</div>
+                                <div>2:00-3:00</div>
                                 <div>|</div>
                                 <div>Break</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round2">
                             <div class="scheduleRow">
-                                <div>1:30-4:30</div>
+                                <div>3:00-6:00</div>
                                 <div>|</div>
                                 <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
-                        <MultipaneSelector for="sponsors">
-                            <div class="scheduleRow">
-                                <div>4:30-5:30</div>
-                                <div>|</div>
-                                <div>Sponsor Events</div>
-                            </div>
-                        </MultipaneSelector>
                         <MultipaneSelector for="closingCeremonies">
                             <div class="scheduleRow">
-                                <div>5:30-6:00</div>
+                                <div>7:00-7:15</div>
                                 <div>|</div>
                                 <div>Closing Ceremonies</div>
                             </div>
