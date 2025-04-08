@@ -11,7 +11,7 @@ import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/cont
 
 const sponsors = {
     partner: [
-        { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "28.5vh" }
+        { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "12vh" }
     ],
     gold: [],
     silver: [
