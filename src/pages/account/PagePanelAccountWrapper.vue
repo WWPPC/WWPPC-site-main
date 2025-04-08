@@ -7,6 +7,10 @@ import { globalModal } from '#/modal';
 import { useServerConnection } from '#/scripts/ServerConnection';
 import { useAccountManager } from '#/scripts/AccountManager';
 
+const props = defineProps<{
+    allowProfileImgChange?: boolean
+}>();
+
 const modal = globalModal();
 const serverConnection = useServerConnection();
 const accountManager = useAccountManager();
@@ -45,8 +49,8 @@ const changeProfileImage = (event: any) => {
         <div class="accountUserDisp">
             <label class="accountUserDispImgContainer">
                 <img class="accountUserDispImg" :src=accountManager.profileImage alt="Profile picture">
-                <img class="accountuserDispImgReplaceOverlay" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
-                <input type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
+                <img v-if="props.allowProfileImgChange class="accountuserDispImgReplaceOverlay"" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
+                <input v-if="props.allowProfileImgChange type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
             </label>
             <span class="accountUserDisplayName">{{ dispName }}</span>
             <span class="accountUserUsername">{{ username }}</span>

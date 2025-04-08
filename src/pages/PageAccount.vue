@@ -33,7 +33,7 @@ connectionEnforcer.loginInclude.add('/account');
         </PanelHeader>
         <PanelMain>
             <PanelBody name="profile" title="Account" is-default>
-                <PagePanelAccountWrapper>
+                <PagePanelAccountWrapper allow-profile-img-change>
                     <PagePanelAccountProfile></PagePanelAccountProfile>
                 </PagePanelAccountWrapper>
             </PanelBody>
