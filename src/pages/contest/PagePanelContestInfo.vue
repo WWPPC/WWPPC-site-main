@@ -113,12 +113,21 @@ const sponsors = {
                             ],
                             [
                                 '🥈 $30',
-                                '🥈 $150 + T-shirts'
+                                '🥈 $150'
                             ],
                             [
                                 '🥉 $30',
-                                '🥉 $100 + T-shirts'
+                                '🥉 $100'
+                            ],
+                            [
+                                '4. $20',
+                                '4. $50'
+                            ],
+                            [
+                                '5. $20',
+                                '5. $50'
                             ]
+                            
                         ]
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-28); text-align: center; color: lime; margin: 0px;">
