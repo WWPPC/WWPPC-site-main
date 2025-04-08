@@ -35,7 +35,7 @@ const sponsors = {
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming designed contest for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
+                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest designed for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
                         <br><br>
                         However, all are encouraged to participate.
                         <br><br>
