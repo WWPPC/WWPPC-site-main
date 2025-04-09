@@ -6,14 +6,14 @@ import LoadingCover from '#/common/LoadingCover.vue';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
-import { useServerConnection } from '#/scripts/ServerConnection';
-import { useUpsolveManager } from '#/scripts/UpsolveManager';
-import type { UpsolveContest, UpsolveRound } from '#/scripts/UpsolveManager';
+import { useServerState } from '#/modules/ServerState';
+import { useUpsolveManager } from '#/modules/UpsolveManager';
+import type { UpsolveContest, UpsolveRound } from '#/modules/UpsolveManager';
 
 const modal = globalModal();
 const route = useRoute();
 const router = useRouter();
-const serverConnection = useServerConnection();
+const serverState = useServerState();
 const upsolveManager = useUpsolveManager();
 
 const contestList = ref<string[] | null>();
@@ -54,8 +54,8 @@ const load = async () => {
 };
 // onMounted(load);
 // watch(() => route.params, load);
-// serverConnection.onconnect(load);
-// watch(() => serverConnection.loggedIn, load);
+// serverState.onconnect(load);
+// watch(() => serverState.loggedIn, load);
 </script>
 
 <template>

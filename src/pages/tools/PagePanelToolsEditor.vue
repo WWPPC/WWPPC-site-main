@@ -2,7 +2,7 @@
 import { TitledCutCornerContainer } from '#/containers';
 import { InputTextArea } from '#/inputs';
 import { onMounted, ref, watch } from 'vue';
-import latexify from '#/scripts/katexify';
+import latexify from '#/util/katexify';
 
 const html = ref('');
 const rendered = ref('');

@@ -5,7 +5,7 @@ import ArchiveListRound from './ArchiveListRound.vue';
 import OnScreenHook from '#/common/OnScreenHook.vue';
 import LoadingBar from '#/common/LoadingBar.vue';
 import { ref } from 'vue';
-import { useUpsolveManager, type UpsolveContest } from '#/scripts/UpsolveManager';
+import { useUpsolveManager, type UpsolveContest } from '#/modules/UpsolveManager';
 import { globalModal } from '#/modal';
 
 const props = defineProps<{

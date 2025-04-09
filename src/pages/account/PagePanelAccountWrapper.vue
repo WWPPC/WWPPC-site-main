@@ -4,15 +4,15 @@ import { AnimateInContainer } from '#/containers';
 import { InputButton } from '#/inputs';
 import { ref } from 'vue';
 import { globalModal } from '#/modal';
-import { useServerConnection } from '#/scripts/ServerConnection';
-import { useAccountManager } from '#/scripts/AccountManager';
+import { useServerState } from '#/modules/ServerState';
+import { useAccountManager } from '#/modules/AccountManager';
 
 const props = defineProps<{
     allowProfileImgChange?: boolean
 }>();
 
 const modal = globalModal();
-const serverConnection = useServerConnection();
+const serverState = useServerState();
 const accountManager = useAccountManager();
 
 const dispName = autoGlitchTextTransition(() => accountManager.displayName, 40, 1, 10);
@@ -26,7 +26,7 @@ const changeProfileImage = (event: any) => {
     reader.onload = () => {
         if (typeof reader.result != 'string') return; // idk should never happen
         if (/^data:image\/(png|jpeg)/.test(reader.result)) {
-            if (reader.result.length > serverConnection.serverConfig.maxProfileImgSize) {
+            if (reader.result.length > serverState.serverConfig.maxProfileImgSize) {
                 modal.showModal({ title: 'Image too large', content: 'Due to database restrictions, the maximum file size is an arbitrary small number.', color: 'red' });
                 if (fileUpload.value) fileUpload.value.value = '';
                 return;
@@ -49,8 +49,8 @@ const changeProfileImage = (event: any) => {
         <div class="accountUserDisp">
             <label class="accountUserDispImgContainer">
                 <img class="accountUserDispImg" :src=accountManager.profileImage alt="Profile picture">
-                <img v-if="props.allowProfileImgChange class="accountuserDispImgReplaceOverlay"" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
-                <input v-if="props.allowProfileImgChange type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
+                <img v-if="props.allowProfileImgChange" class="accountuserDispImgReplaceOverlay" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
+                <input v-if="props.allowProfileImgChange" type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
             </label>
             <span class="accountUserDisplayName">{{ dispName }}</span>
             <span class="accountUserUsername">{{ username }}</span>

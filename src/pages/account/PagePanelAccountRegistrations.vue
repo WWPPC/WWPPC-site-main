@@ -4,8 +4,8 @@ import { InputButton, InputDropdown } from '#/inputs';
 import WaitCover from '#/common/WaitCover.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
-import { getTeamOpMessage, TeamOpResult, useAccountManager } from '#/scripts/AccountManager';
-import { useContestManager } from '#/scripts/ContestManager';
+import { useAccountManager } from '#/modules/AccountManager';
+import { useContestManager } from '#/modules/ContestManager';
 
 const accountManager = useAccountManager();
 const contestManager = useContestManager();

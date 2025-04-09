@@ -4,16 +4,16 @@ import PagePanelAccountWrapper from './account/PagePanelAccountWrapper.vue';
 import PagePanelAccountProfile from './account/PagePanelAccountProfile.vue';
 import PagePanelAccountRegistrations from './account/PagePanelAccountRegistrations.vue';
 import { useRoute } from 'vue-router';
-import { useServerConnection } from '#/scripts/ServerConnection';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import { useServerState } from '#/modules/ServerState';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
 const route = useRoute();
 
-const serverConnection = useServerConnection();
-const connectionEnforcer = useConnectionEnforcer();
+const serverState = useServerState();
+const loginEnforcer = useLoginEnforcer();
 
-connectionEnforcer.connectionInclude.add('/account');
-connectionEnforcer.loginInclude.add('/account');
+loginEnforcer.connectionInclude.add('/account');
+loginEnforcer.loginInclude.add('/account');
 </script>
 
 <template>
@@ -26,7 +26,7 @@ connectionEnforcer.loginInclude.add('/account');
                 <PanelNavButton text="Register" for="/account/registrations"></PanelNavButton>
             </PanelNavList>
             <PanelRightList>
-                <div v-if="!serverConnection.loggedIn && route.query.ignore_server !== undefined" style="color: yellow">
+                <div v-if="!serverState.loggedIn && route.query.ignore_server !== undefined" style="color: yellow">
                     You are not signed in!
                 </div>
             </PanelRightList>

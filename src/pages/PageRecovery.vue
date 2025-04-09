@@ -6,17 +6,17 @@ import WaitCover from '#/common/WaitCover.vue';
 import { nextTick, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { globalModal } from '#/modal';
-import { getAccountOpMessage, useAccountManager, validateCredentials } from '#/scripts/AccountManager';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import { useAccountManager } from '#/modules/AccountManager';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
 const route = useRoute();
 const router = useRouter();
 
 const modal = globalModal();
 const accountManager = useAccountManager();
-const connectionEnforcer = useConnectionEnforcer();
+const loginEnforcer = useLoginEnforcer();
 
-connectionEnforcer.connectionInclude.add('/recovery');
+loginEnforcer.connectionInclude.add('/recovery');
 
 const usernameInput = ref('');
 const passwordInput = ref('');

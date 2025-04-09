@@ -12,7 +12,6 @@ import PageTest from '@/pages/PageTest.vue';
 import PageTools from './pages/PageTools.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import SuperSecretCarrier from '@/components/SuperSecretCarrier.vue';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
 import { ref, watch } from 'vue';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
@@ -21,9 +20,6 @@ const modal = globalModal();
 watch(() => modalComponent.value, () => {
     if (modalComponent.value != undefined) modal.setModal(modalComponent.value);
 });
-
-const connectionEnforcer = useConnectionEnforcer();
-connectionEnforcer.init();
 
 window.addEventListener('error', (err) => {
     modal.showModal({ title: 'An Error Occured', content: `<span style="color: red;">${err.message}<br>${err.filename} ${err.lineno}:${err.colno}</span>`, color: 'red' });

@@ -5,7 +5,7 @@ import { InputButton, InputTextArea, InputTextBox, InputDropdown, InputCopyButto
 import AccountTeamUserDisp from '#/common-components/account/AccountTeamUserDisp.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal, ModalMode } from '#/modal';
-import { useAccountManager, gradeMaps, experienceMaps, languageMaps, AccountOpResult, getAccountOpMessage, getTeamOpMessage, TeamOpResult } from '#/scripts/AccountManager';
+import { useAccountManager, gradeMaps, experienceMaps, languageMaps } from '#/modules/AccountManager';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();

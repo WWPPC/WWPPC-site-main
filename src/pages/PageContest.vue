@@ -10,8 +10,8 @@ import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContest
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
 import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
 import { ref, watch } from 'vue';
-import { useContestManager } from '#/scripts/ContestManager';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import { useContestManager } from '#/modules/ContestManager';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -19,16 +19,16 @@ watch(() => route.query.ignore_server, () => {
     ignoreServer.value = route.query.ignore_server !== undefined;
 });
 
-const connectionEnforcer = useConnectionEnforcer();
+const loginEnforcer = useLoginEnforcer();
 const contestManager = useContestManager();
 
-connectionEnforcer.connectionInclude.add('/contest');
-connectionEnforcer.loginInclude.add('/contest');
-connectionEnforcer.connectionExcludeExact.add('/contest/home');
-connectionEnforcer.loginExcludeExact.add('/contest/home');
-connectionEnforcer.connectionExcludeExact.add('/contest');
-connectionEnforcer.loginExcludeExact.add('/contest');
-connectionEnforcer.loginExclude.add('/contest/archive');
+loginEnforcer.connectionInclude.add('/contest');
+loginEnforcer.loginInclude.add('/contest');
+loginEnforcer.connectionExcludeExact.add('/contest/home');
+loginEnforcer.loginExcludeExact.add('/contest/home');
+loginEnforcer.connectionExcludeExact.add('/contest');
+loginEnforcer.loginExcludeExact.add('/contest');
+loginEnforcer.loginExclude.add('/contest/archive');
 </script>
 
 <template>

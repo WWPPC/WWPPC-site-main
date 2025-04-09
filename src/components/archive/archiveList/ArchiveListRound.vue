@@ -5,9 +5,9 @@ import LoadingBar from '#/common/LoadingBar.vue';
 import ContestProblemListProblem from '#/common-components/contest/problemList/ContestProblemListProblem.vue';
 import { onMounted, ref, watch } from 'vue';
 import { globalModal } from '#/modal';
-import { useServerConnection } from '#/scripts/ServerConnection';
-import { type ContestProblem, ContestProblemCompletionState } from '#/scripts/ContestManager';
-import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '#/scripts/UpsolveManager';
+import { useServerState } from '#/modules/ServerState';
+import { type ContestProblem, ContestProblemCompletionState } from '#/modules/ContestManager';
+import { useUpsolveManager, type UpsolveProblem, type UpsolveRound, type UpsolveSubmission } from '#/modules/UpsolveManager';
 
 const props = defineProps<{
     data: UpsolveRound
@@ -15,7 +15,7 @@ const props = defineProps<{
 }>();
 
 const modal = globalModal();
-const serverConnection = useServerConnection();
+const serverState = useServerState();
 const upsolveManager = useUpsolveManager();
 
 const titleText = autoGlitchTextTransition(() => 'Round ' + (props.data.number + 1), 40, 1, 10, 2);
@@ -53,8 +53,8 @@ onMounted(async () => {
     if (!props.minimized) load();
 });
 if (!props.minimized) {
-    serverConnection.onconnect(load);
-    watch(() => serverConnection.loggedIn, load);
+    serverState.onconnect(load);
+    watch(() => serverState.loggedIn, load);
 }
 </script>
 
