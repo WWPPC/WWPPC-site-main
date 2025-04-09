@@ -35,9 +35,7 @@ const sponsors = {
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
                     <p>
-                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest designed for high school students in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum.
-                        <br><br>
-                        However, all are encouraged to participate.
+                        The West Windsor Plainsboro Informatics Tournament (WWPIT) is a USACO / Codeforces-style programming contest in which teams of up to 4 compete in 2 rounds of problems across 2 divisions, ranging from AP CSA to USACO Platinum. All are encouraged to participate.
                         <br><br>
                         The contest will be held online, on this website, between two divisions: Novice and Advanced.
                         <br><br>
@@ -48,7 +46,7 @@ const sponsors = {
             <AnimateInContainer type="slideUp" show-on-screen :delay=200 style="grid-column: 1;">
                 <TitledDoubleCutCornerContainer :title="'Spring ' + nextContest.getFullYear() " height="100%" align="center" hover-animation="lift">
                     <div class="centered">
-                        <GlitchText :text="`${String(nextContest.getMonth() + 1).padStart(2, '0')}/${String(nextContest.getDate()).padStart(2, '0')}/${nextContest.getFullYear()}`" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
+                        <GlitchText :text="nextContest.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric'})" font-size="var(--font-huge)" color="red" glow random flashing :steps=5 start-glitched></GlitchText>
                     </div>
                     <div class="centered" v-if="Date.now() < nextContest.getTime()">
                         <TimerDisplay :to="nextContest" type="clock" font-size="var(--font-large)" color="lime" glow></TimerDisplay>
@@ -170,7 +168,7 @@ const sponsors = {
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
                     <MultipaneSelectorContainer for="contestSchedule">
                         <div class="scheduleHeader">
-                            {{ nextContestPractice.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) }}
+                            {{ nextContestPractice.toLocaleDateString(undefined, { month: 'long', day: 'numeric' }) }}
                         </div>
                         <MultipaneSelector for="precontest">
                             <div class="scheduleRow">
@@ -178,45 +176,45 @@ const sponsors = {
                             </div>
                         </MultipaneSelector>
                         <div class="scheduleHeader">
-                            {{ nextContest.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) }} - tentative competition schedule
+                            {{ nextContest.toLocaleDateString(undefined, { month: 'long', day: 'numeric' }) }}
                         </div>
                         <MultipaneSelector for="openingCeremonies">
                             <div class="scheduleRow">
-                                <div>12:30-12:45</div>
+                                <div>{{ new Date("4/19/2025 12:30 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}-{{ new Date("4/19/2025 12:45 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}</div>
                                 <div>|</div>
-                                <div>Opening ceremonies</div>
+                                <div>Opening Ceremony</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round1">
                             <div class="scheduleRow">
-                                <div>1:00-2:00</div>
+                                <div>{{ new Date("4/19/2025 1:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}-{{ new Date("4/19/2025 2:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}</div>
                                 <div>|</div>
                                 <div>Speed Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="lunch">
                             <div class="scheduleRow">
-                                <div>2:00-3:00</div>
+                                <div>{{ new Date("4/19/2025 2:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}-{{ new Date("4/19/2025 3:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}</div>
                                 <div>|</div>
                                 <div>Break</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="round2">
                             <div class="scheduleRow">
-                                <div>3:00-6:00</div>
+                                <div>{{ new Date("4/19/2025 3:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}-{{ new Date("4/19/2025 6:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}</div>
                                 <div>|</div>
                                 <div>Power Round</div>
                             </div>
                         </MultipaneSelector>
                         <MultipaneSelector for="closingCeremonies">
                             <div class="scheduleRow">
-                                <div>7:00-7:15</div>
+                                <div>{{ new Date("4/19/2025 7:00 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}-{{ new Date("4/19/2025 7:15 PM EDT").toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }}</div>
                                 <div>|</div>
-                                <div>Closing Ceremonies</div>
+                                <div>Closing Ceremony</div>
                             </div>
                         </MultipaneSelector>
                         <div class="scheduleRow centered">
-                            <i>All times in Eastern Daylight Time</i>
+                            <i>All times in {{ new Intl.DateTimeFormat(undefined, { timeZoneName: 'long'}).formatToParts(new Date()).find(part => part.type === 'timeZoneName')!.value }}</i>
                         </div>
                     </MultipaneSelectorContainer>
                 </CutCornerContainer>
@@ -227,10 +225,10 @@ const sponsors = {
                         <MultipanePane for="precontest">
                             <GlitchText text="Pre-contest Practice & Testing" font-size="var(--font-28)" color="lime" on-visible></GlitchText>
                             <p>
-                                Teams will have a chance to test the contest system with a few practice rounds.
+                                Teams will have a chance to test the contest system with a practice round.
                             </p>
                             <p>
-                                The practice contest will be open all day. If you wish to enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
+                                The practice contest will be open all day. To enter the practice, you <b>MUST</b> <RouterLink to="/account/registrations">register</RouterLink> for the practice contest <b>1 day</b> before the actual contest!
                             </p>
                         </MultipanePane>
                         <MultipanePane for="openingCeremonies">
@@ -314,7 +312,7 @@ const sponsors = {
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
-                        WWPIT {{ nextContest.getFullYear() }} will be on <b>{{ nextContest.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) }}</b>, from {{ nextContest.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) }} - {{ nextContestEnd.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) }} EDT.
+                        WWPIT {{ nextContest.getFullYear() }} will be on <b>{{ nextContest.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' }) }}</b>, from {{ nextContest.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }} to {{ nextContestEnd.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }} ({{ new Intl.DateTimeFormat(undefined, { timeZoneName: 'long'}).formatToParts(new Date()).find(part => part.type === 'timeZoneName')!.value }}).
                         <br><br>
                         <i>Scroll up to see contest schedule</i>
                     </p>
@@ -490,7 +488,7 @@ const sponsors = {
 
 .scheduleRow>div:nth-child(1) {
     text-align: right;
-    width: 5.2em;
+    width: 8em;
 }
 
 .scheduleRow>div:nth-child(2) {
