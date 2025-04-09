@@ -6,7 +6,7 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import SponsorList from '#/common-components/home/home/SponsorList.vue';
+import SponsorList from '#/common-components/SponsorList.vue';
 const contest = new Date('6/2/2024 9:30 AM EST');
 const contestEnd = new Date('6/2/2024 5:00 PM EST');
 
@@ -20,7 +20,7 @@ const sponsors = {
     silver: [
         { name: "ICode Logo", src: "/img/icode-logo.png", url: "https://icodeschool.com/", height: "10vh" }
     ],
-    other: [
+    bronze: [
         { name: "Desmos Logo", src: "/img/desmos-logo.svg", url: "https://desmos.com/", height: "5.5vh" },
         { name: "AoPS Logo", src: "/img/aops-logo.svg", url: "https://artofproblemsolving.com/", height: "12vh" },
         { name: ".xyz Logo", src: "/img/xyz-logo.svg", url: "https://gen.xyz", height: "9vh" },
@@ -436,7 +436,7 @@ const sponsors = {
             :partners="sponsors.partner" 
             :gold="sponsors.gold" 
             :silver="sponsors.silver" 
-            :otherSponsors="sponsors.other"
+            :bronze="sponsors.bronze"
         />
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>

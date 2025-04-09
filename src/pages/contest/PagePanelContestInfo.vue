@@ -6,14 +6,16 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
-import SponsorList from '#/common-components/home/home/SponsorList.vue';
+import SponsorList from '#/common-components/SponsorList.vue';
 import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/contestInfo';
 
 const sponsors = {
     partner: [
         { name: "CPI Logo", src: "/img/cpi-logo.svg", url: "https://joincpi.org/", height: "12vh" }
     ],
-    gold: [],
+    gold: [
+        
+    ],
     silver: [
         { name: "Hudson River Trading Logo", src: "/img/hrt-logo.png", url: "https://hudsonrivertrading.com/", height: "10vh" },
         { name: "Jane Street Logo", src: "/img/jane-street-logo.png", url: "https://janestreet.com/", height: "9vh" },
@@ -21,8 +23,8 @@ const sponsors = {
         { name: "Recursive Dragon", src: "/img/recursive-dragon-logo.png", url:"https://recursivedragon.com", height: "10vh"}
     
     ],
-    other: [
-        { name: ".xyz Logo", src: "/img/xyz-logo.svg", url: "https://gen.xyz", height: "9vh" },
+    bronze: [
+        { name: ".xyz Logo", src: "/img/xyz-logo.svg", url: "https://gen.xyz", height: "9vh" }
     ]
 };
 
@@ -298,7 +300,7 @@ const sponsors = {
             :partners="sponsors.partner" 
             :gold="sponsors.gold" 
             :silver="sponsors.silver" 
-            :otherSponsors="sponsors.other"
+            :bronze="sponsors.bronze"
         />
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
