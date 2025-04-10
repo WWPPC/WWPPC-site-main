@@ -16,8 +16,6 @@ const modal = globalModal();
 const accountManager = useAccountManager();
 const loginEnforcer = useLoginEnforcer();
 
-loginEnforcer.connectionInclude.add('/recovery');
-
 const usernameInput = ref('');
 const passwordInput = ref('');
 const passwordInput2 = ref('');

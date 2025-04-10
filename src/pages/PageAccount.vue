@@ -12,8 +12,7 @@ const route = useRoute();
 const serverState = useServerState();
 const loginEnforcer = useLoginEnforcer();
 
-loginEnforcer.connectionInclude.add('/account');
-loginEnforcer.loginInclude.add('/account');
+loginEnforcer.include.add('/account');
 </script>
 
 <template>

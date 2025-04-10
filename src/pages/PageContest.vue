@@ -22,13 +22,9 @@ watch(() => route.query.ignore_server, () => {
 const loginEnforcer = useLoginEnforcer();
 const contestManager = useContestManager();
 
-loginEnforcer.connectionInclude.add('/contest');
-loginEnforcer.loginInclude.add('/contest');
-loginEnforcer.connectionExcludeExact.add('/contest/home');
-loginEnforcer.loginExcludeExact.add('/contest/home');
-loginEnforcer.connectionExcludeExact.add('/contest');
-loginEnforcer.loginExcludeExact.add('/contest');
-loginEnforcer.loginExclude.add('/contest/archive');
+loginEnforcer.include.add('/contest');
+loginEnforcer.excludeExact.add('/contest/home');
+loginEnforcer.excludeExact.add('/contest');
 </script>
 
 <template>
