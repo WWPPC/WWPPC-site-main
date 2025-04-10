@@ -4,6 +4,7 @@ import NotFound from '#/common/NotFound.vue';
 import PageHome from '@/pages/PageHome.vue';
 import PageHackathon from '@/pages/PageHackathon.vue';
 import PageContest from '@/pages/PageContest.vue';
+import PageContestArchive from './pages/PageContestArchive.vue';
 import PageAccount from './pages/PageAccount.vue';
 import PageUserView from '#/common-pages/PageUserView.vue';
 import PageLogin from '#/common-pages/PageLogin.vue';
@@ -13,6 +14,7 @@ import PageTools from './pages/PageTools.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import SuperSecretCarrier from '@/components/SuperSecretCarrier.vue';
 import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
 
@@ -31,6 +33,7 @@ window.addEventListener('error', (err) => {
     <PageHome></PageHome>
     <PageHackathon></PageHackathon>
     <PageContest></PageContest>
+    <PageContestArchive></PageContestArchive>
     <PageAccount></PageAccount>
     <PageUserView></PageUserView>
     <PageLogin></PageLogin>

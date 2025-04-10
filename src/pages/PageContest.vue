@@ -8,7 +8,8 @@ import PagePanelContestContest from '#/common-pages/contest/PagePanelContestCont
 import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
-import PagePanelArchiveList from './archive/PagePanelArchiveList.vue';
+import PagePanelContestArchive from './contest/PagePanelContestArchive.vue';
+import PagePanelUpsolveList from './archive/PagePanelUpsolveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/modules/ContestManager';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
@@ -25,6 +26,8 @@ const contestManager = useContestManager();
 loginEnforcer.include.add('/contest');
 loginEnforcer.excludeExact.add('/contest/home');
 loginEnforcer.excludeExact.add('/contest');
+loginEnforcer.exclude.add('/contest/archive');
+loginEnforcer.exclude.add('/contest/upsolve');
 </script>
 
 <template>
@@ -33,8 +36,9 @@ loginEnforcer.excludeExact.add('/contest');
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
-                <PanelNavButton text="WWPIT" for="/contest/home" is-default></PanelNavButton>
+                <PanelNavButton text="WWPIT" for="/contest" is-default></PanelNavButton>
                 <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
+                <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
                 <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
@@ -53,6 +57,15 @@ loginEnforcer.excludeExact.add('/contest');
             <PanelBody name="contest" title="Contest" scroll-snap>
                 <PagePanelContestContest contest="WWPIT"></PagePanelContestContest>
             </PanelBody>
+            <PanelBody name="archive" title="Archive">
+                <PagePanelContestArchive></PagePanelContestArchive>
+            </PanelBody>
+            <PanelBody name="upsolve" title="Upsolve">
+                <PagePanelUpsolveList></PagePanelUpsolveList>
+            </PanelBody>
+            <PanelBody name="upsolveView" title="Upsolve Problem">
+                <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
+            </PanelBody>
             <PanelBody name="problemList" title="Problem List">
                 <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>
             </PanelBody>
@@ -61,12 +74,6 @@ loginEnforcer.excludeExact.add('/contest');
             </PanelBody>
             <PanelBody name="leaderboard" title="Leaderboard">
                 <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
-            </PanelBody>
-            <PanelBody name="archive" title="Archive">
-                <PagePanelArchiveList></PagePanelArchiveList>
-            </PanelBody>
-            <PanelBody name="archiveView" title="Archive Problem">
-                <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
         </PanelMain>
     </PanelView>

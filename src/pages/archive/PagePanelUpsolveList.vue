@@ -63,7 +63,7 @@ const load = async () => {
         <div class="maintenance-box-temp">
             <img src="/icon.svg" style="height: 20vh;">
             <h3>Site Maintenance</h3>
-            <p style="text-wrap: balance; font-size: var(--font-small);">The Archive is currently under maintenance as we restructure our contest system. Sorry about that!</p>
+            <p style="text-wrap: balance; font-size: var(--font-small);">The archive is currently under maintenance as we restructure our contest system. Sorry about that! WWPIT 2024 problems can be found at <a href="https://github.com/WWPPC/WWPIT-Spring-2024-ProblemGrader" target="_blank">https://github.com/WWPPC/WWPIT-Spring-2024-ProblemGrader</a>.</p>
             <span style="text-wrap: nowrap;">-------------------------------------------</span>
             <span>
                 <img src="/img/spaghetti.png" style="max-height: 30vh;">

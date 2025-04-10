@@ -11,7 +11,7 @@ import PagePanelHomeHome from '@/pages/home/PagePanelHomeHome.vue';
         <PanelHeader>
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
-                <PanelNavButton text="Home" for="/home/home" is-default></PanelNavButton>
+                <PanelNavButton text="Home" for="/home" is-default></PanelNavButton>
                 <PanelNavButton text="WWPPC Math" :for="isDev ? 'http://localhost:5174' : 'https://math.wwppc.tech'" link></PanelNavButton>
                 <PanelNavButton text="WWPHacks" for="/hackathon"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest"></PanelNavButton>
