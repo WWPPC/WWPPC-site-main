@@ -14,9 +14,15 @@ import PageTools from './pages/PageTools.vue';
 import SuperSecretFeature from '@/components/SuperSecretFeature.vue';
 import SuperSecretCarrier from '@/components/SuperSecretCarrier.vue';
 import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
+import { useServerState } from '#/modules/ServerState';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
+
+const loginEnforcer = useLoginEnforcer();
+const serverState = useServerState();
+loginEnforcer.init();
+serverState.init();
 
 const modal = globalModal();
 watch(() => modalComponent.value, () => {

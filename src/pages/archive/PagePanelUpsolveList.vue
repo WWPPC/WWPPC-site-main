@@ -1,57 +1,57 @@
 <script setup lang="ts">
-import ArchiveListContest from '@/components/archive/archiveList/ArchiveListContest.vue';
-import ArchiveListRound from '@/components/archive/archiveList/ArchiveListRound.vue';
-import { AngledTitledContainer, AnimateInContainer } from '#/containers';
-import LoadingCover from '#/common/LoadingCover.vue';
-import { onMounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { globalModal } from '#/modal';
-import { useServerState } from '#/modules/ServerState';
-import { useUpsolveManager } from '#/modules/UpsolveManager';
-import type { UpsolveContest, UpsolveRound } from '#/modules/UpsolveManager';
+// import ArchiveListContest from '@/components/archive/archiveList/ArchiveListContest.vue';
+// import ArchiveListRound from '@/components/archive/archiveList/ArchiveListRound.vue';
+// import { AngledTitledContainer, AnimateInContainer } from '#/containers';
+// import LoadingCover from '#/common/LoadingCover.vue';
+// import { onMounted, ref, watch } from 'vue';
+// import { useRoute, useRouter } from 'vue-router';
+// import { globalModal } from '#/modal';
+// import { useServerState } from '#/modules/ServerState';
+// import { useUpsolveManager } from '#/modules/UpsolveManager';
+// import type { UpsolveContest, UpsolveRound } from '#/modules/UpsolveManager';
 
-const modal = globalModal();
-const route = useRoute();
-const router = useRouter();
-const serverState = useServerState();
-const upsolveManager = useUpsolveManager();
+// const modal = globalModal();
+// const route = useRoute();
+// const router = useRouter();
+// const serverState = useServerState();
+// const upsolveManager = useUpsolveManager();
 
-const contestList = ref<string[] | null>();
-const contest = ref<UpsolveContest | null>();
-const round = ref<UpsolveRound | null>();
-const load = async () => {
-    if (route.params.archiveProblem !== undefined) {
-        router.push(`/contest/archiveView/${route.params.archiveContest}/${route.params.archiveRound}/${route.params.archiveProblem}`);
-    } else if (route.params.archiveRound !== undefined) {
-        if (isNaN(Number(route.params.archiveRound))) return;
-        const data = await upsolveManager.getRoundData(route.params.archiveContest.toString(), Number(route.params.archiveRound));
-        if (data instanceof Error) {
-            modal.showModal({ title: data.message, content: 'Could not load round', color: 'red' });
-            return;
-        }
-        round.value = data;
-        contest.value = null;
-        contestList.value = null;
-    } else if (route.params.archiveContest !== undefined) {
-        const data = await upsolveManager.getContestData(route.params.archiveContest.toString());
-        if (data instanceof Error) {
-            modal.showModal({ title: data.message, content: 'Could not load contest', color: 'red' });
-            return;
-        }
-        contest.value = data;
-        round.value = null;
-        contestList.value = null;
-    } else {
-        const data = await upsolveManager.getContestList();
-        if (data instanceof Error) {
-            modal.showModal({ title: data.message, content: 'Could not load contest list', color: 'red' });
-            return;
-        }
-        contestList.value = data;
-        round.value = null;
-        contest.value = null;
-    }
-};
+// const contestList = ref<string[] | null>();
+// const contest = ref<UpsolveContest | null>();
+// const round = ref<UpsolveRound | null>();
+// const load = async () => {
+//     if (route.params.archiveProblem !== undefined) {
+//         router.push(`/contest/archiveView/${route.params.archiveContest}/${route.params.archiveRound}/${route.params.archiveProblem}`);
+//     } else if (route.params.archiveRound !== undefined) {
+//         if (isNaN(Number(route.params.archiveRound))) return;
+//         const data = await upsolveManager.getRoundData(route.params.archiveContest.toString(), Number(route.params.archiveRound));
+//         if (data instanceof Error) {
+//             modal.showModal({ title: data.message, content: 'Could not load round', color: 'red' });
+//             return;
+//         }
+//         round.value = data;
+//         contest.value = null;
+//         contestList.value = null;
+//     } else if (route.params.archiveContest !== undefined) {
+//         const data = await upsolveManager.getContestData(route.params.archiveContest.toString());
+//         if (data instanceof Error) {
+//             modal.showModal({ title: data.message, content: 'Could not load contest', color: 'red' });
+//             return;
+//         }
+//         contest.value = data;
+//         round.value = null;
+//         contestList.value = null;
+//     } else {
+//         const data = await upsolveManager.getContestList();
+//         if (data instanceof Error) {
+//             modal.showModal({ title: data.message, content: 'Could not load contest list', color: 'red' });
+//             return;
+//         }
+//         contestList.value = data;
+//         round.value = null;
+//         contest.value = null;
+//     }
+// };
 // onMounted(load);
 // watch(() => route.params, load);
 // serverState.onconnect(load);
