@@ -4,6 +4,9 @@ import { InputFileUpload, InputNumberBox } from '#/inputs';
 import { ref, computed } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
+import InputRangeSlider from '#/inputs/InputRangeSlider.vue';
+import InputTime from '#/inputs/InputTime.vue';
+import InputTextArea from '#/inputs/InputTextArea.vue';
 
 const modal = globalModal();
 
@@ -46,7 +49,7 @@ const upload = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         original.value = reader.result;
          draw();
-        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI') { //prevents videos from loading
+        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI' || file.type =='audio/mpeg') { //prevents videos and audios from loading
             modal.showModal({ title: 'Unsupported file type', content: 'Only images are allowed.', color: 'red' });
         }
     };
@@ -89,46 +92,35 @@ const reset_filters = () => {
             <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
+
             <div>
-                Hue:
-                <input v-model="hue" type="range" min="0" max="360" class="slider" />
-                <br />
-                <InputNumberBox v-model="hue" :step="1"></InputNumberBox>
+                <p>Hue: {{ hue }}</p>
+                <InputRangeSlider v-model:val="hue" :min="0" :max="360" ></InputRangeSlider>
             </div>
             <br>
             <div>
-                Saturation:
-                <input v-model="saturation"  type="range" min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox  v-model="saturation" :step="1"></InputNumberBox>
+                <p>Saturation: {{ saturation }}</p>
+                <InputRangeSlider v-model:val="saturation" :min="0" :max="200" ></InputRangeSlider>
             </div>
             <br>
             <div>
-                Contrast:
-                <input v-model="contrast" type="range"  min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox v-model="contrast" :step="1"></InputNumberBox>
+                <p>Contrast: {{ contrast }}</p>
+                <InputRangeSlider v-model:val="contrast" :min="100" :max="200" ></InputRangeSlider>
             </div>
             <br>
             <div>
-                Brightness:
-                <input v-model="brightness" type="range"  min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox v-model="brightness" :step="1"></InputNumberBox>
+                <p>Brightness: {{ brightness }}</p>
+                <InputRangeSlider v-model:val="brightness" :min="100" :max="200" ></InputRangeSlider>
             </div>
             <br>
             <div>
-                Opacity:
-                <input v-model="opacity" type="range"  min="0" max="100" class="slider" />
-                <br />
-                <InputNumberBox v-model="opacity" :step="1"></InputNumberBox>
+                <p>Opacity: {{ opacity }}</p>
+                <InputRangeSlider v-model:val="opacity" :min="0" :max="100" ></InputRangeSlider>
             </div>
             <br>
             <div>
-                Blur:
-                <input v-model="blur" type="range"  min="0" max="10" class="slider" />
-                <br />
-                <InputNumberBox v-model="blur" :step="0.1"></InputNumberBox>
+                <p>Blur: {{ blur }}</p>
+                <InputRangeSlider v-model:val="blur" :min="0" :max="10" :step="0.1" ></InputRangeSlider>
             </div>
             <br>
             <div>
@@ -149,10 +141,7 @@ const reset_filters = () => {
 }
 
 .align {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;   
+    margin-right: 25%;
 }
 
 .uploadImg {
@@ -180,8 +169,6 @@ const reset_filters = () => {
     height: 20em;
     margin: 0px 0px;
 }
-
-
 
 </style>
 
