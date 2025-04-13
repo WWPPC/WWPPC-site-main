@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelRightList, PanelView, PanelNavLargeLogo } from '#/panels';
 import UserDisp from '#/common-components/UserDisp.vue';
-import PagePanelHackathonInfo from './hackathon/PagePanelHackathonInfo.vue';
+import PagePanelHackathonInfo from './wwphacks/PagePanelWWPHacksInfo.vue';
 </script>
 
 <template>
-    <PanelView name="hackathon" title="WWPHacks">
+    <PanelView name="wwphacks" title="WWPHacks">
         <PanelHeader>
             <PanelNavLargeLogo></PanelNavLargeLogo>
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
-                <PanelNavButton text="WWPHacks" for="/hackathon" is-default></PanelNavButton>
+                <PanelNavButton text="WWPHacks" for="/wwphacks" is-default></PanelNavButton>
             </PanelNavList>
             <PanelRightList>
                 <UserDisp></UserDisp>

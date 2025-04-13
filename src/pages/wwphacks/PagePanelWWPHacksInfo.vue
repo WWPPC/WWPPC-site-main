@@ -13,7 +13,7 @@ import { GlitchText } from '#/text';
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Come hack with us!" height="100%" align="center" hover-animation="lift">
                     <p>
-                        Join us for 24 hours of hackathon-ing at Princeton High School
+                        Join us for 24 hours of hackathon-ing
                     </p>
                     <!-- insert image here lol -->
                 </TitledDoubleCutCornerContainer>

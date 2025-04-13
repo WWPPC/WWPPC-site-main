@@ -2,7 +2,7 @@
 import { FullscreenModal, globalModal } from '#/modal';
 import NotFound from '#/common/NotFound.vue';
 import PageHome from '@/pages/PageHome.vue';
-import PageHackathon from '@/pages/PageHackathon.vue';
+import PageHackathon from '@/pages/PageWWPHacks.vue';
 import PageContest from '@/pages/PageWWPIT.vue';
 import PageContestArchive from './pages/PageContestArchive.vue';
 import PageAccount from '../WWPPC-site-common/src/common-pages/PageAccount.vue';

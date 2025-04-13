@@ -9,7 +9,7 @@ import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContest
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
 import PagePanelContestArchive from './wwpit/PagePanelWWPITArchive.vue';
-import PagePanelUpsolveList from './upsolve/PagePanelUpsolveList.vue';
+import PagePanelUpsolveList from '#/common-pages/upsolve/PagePanelUpsolveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/modules/ContestManager';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
