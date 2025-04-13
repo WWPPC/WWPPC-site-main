@@ -16,13 +16,16 @@ import SuperSecretCarrier from '@/components/SuperSecretCarrier.vue';
 import { ref, watch } from 'vue';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 import { useServerState } from '#/modules/ServerState';
+import { useAccountManager } from '#/modules/AccountManager';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
 
 const loginEnforcer = useLoginEnforcer();
 const serverState = useServerState();
+const accountManager = useAccountManager();
 loginEnforcer.init();
 serverState.init();
+accountManager.init();
 
 const modal = globalModal();
 watch(() => modalComponent.value, () => {

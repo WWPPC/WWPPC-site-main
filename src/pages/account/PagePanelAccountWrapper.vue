@@ -15,8 +15,8 @@ const modal = globalModal();
 const serverState = useServerState();
 const accountManager = useAccountManager();
 
-const dispName = autoGlitchTextTransition(() => accountManager.displayName, 40, 1, 10);
-const username = autoGlitchTextTransition(() => '@' + accountManager.username, 40, 1, 10);
+const dispName = autoGlitchTextTransition(() => accountManager.user.displayName, 40, 1, 10);
+const username = autoGlitchTextTransition(() => '@' + accountManager.user.username, 40, 1, 10);
 
 const fileUpload = ref<HTMLInputElement>();
 const changeProfileImage = (event: any) => {
@@ -27,18 +27,17 @@ const changeProfileImage = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         if (/^data:image\/(png|jpeg)/.test(reader.result)) {
             if (reader.result.length > serverState.serverConfig.maxProfileImgSize) {
-                modal.showModal({ title: 'Image too large', content: 'Due to database restrictions, the maximum file size is an arbitrary small number.', color: 'red' });
+                modal.showModal({ title: 'Image too large', content: 'Due to database restrictions, the maximum profile image size is an arbitrary small number.', color: 'red' });
                 if (fileUpload.value) fileUpload.value.value = '';
                 return;
             }
-            accountManager.profileImage = reader.result;
-            accountManager.writeUserData();
+            accountManager.user.profileImage = reader.result;
         } else {
-            modal.showModal({ title: 'Unsupported file type', content: 'Only .png and .jpg/.jpeg images are allowed.', color: 'red' });
+            modal.showModal({ title: 'Unsupported file type', content: 'Only PNG and JPEG images are allowed.', color: 'red' });
         }
     };
     reader.onerror = () => {
-        modal.showModal({ title: 'Error decoding image', content: 'An error occured and your profile image could not be used. Try using a .png or .jpg/.jpeg image instead.', color: 'red' });
+        modal.showModal({ title: 'Error decoding image', content: 'An error occured and your profile image could not be used. Try using a PNG or JPEG image instead.', color: 'red' });
     };
     reader.readAsDataURL(file);
 };
@@ -48,27 +47,27 @@ const changeProfileImage = (event: any) => {
     <div class="accountUserDispWrapper">
         <div class="accountUserDisp">
             <label class="accountUserDispImgContainer">
-                <img class="accountUserDispImg" :src=accountManager.profileImage alt="Profile picture">
+                <img class="accountUserDispImg" :src=accountManager.user.profileImage alt="Profile picture">
                 <img v-if="props.allowProfileImgChange" class="accountuserDispImgReplaceOverlay" src="../../../WWPPC-site-common/public/assets/upload.svg" title="Upload profile image">
                 <input v-if="props.allowProfileImgChange" type="file" class="accountUserDispImgUpload" accept="image/png,image/jpeg" @change=changeProfileImage>
             </label>
             <span class="accountUserDisplayName">{{ dispName }}</span>
             <span class="accountUserUsername">{{ username }}</span>
             <div class="accountUserRegistrations">
-                <AnimateInContainer type="slideUp" v-for="(reg, i) in accountManager.registrations" :key="i" :delay="i * 200" single>
+                <AnimateInContainer type="slideUp" v-for="(reg, i) in accountManager.team?.registrations" :key="i" :delay="i * 200" single>
                     <span class="accountUserRegistrationLine">
                         <div class="registrationStatusDotUpcoming"></div>
                         {{ reg }}
                     </span>
                 </AnimateInContainer>
-                <AnimateInContainer type="fade" v-for="(reg, i) in accountManager.pastRegistrations" :key="i" :delay="i * 200" single>
+                <AnimateInContainer type="fade" v-for="(reg, i) in accountManager.user.pastRegistrations" :key="i" :delay="i * 200" single>
                     <span class="accountUserRegistrationLine">
                         <div class="registrationStatusDotCompleted"></div>
                         {{ reg }}
                     </span>
                 </AnimateInContainer>
             </div>
-            <InputButton text="Sign Out" width="100%" @click="accountManager.signout"></InputButton>
+            <InputButton text="Log Out" width="100%" @click="accountManager.logout"></InputButton>
         </div>
     </div>
     <div class="accountScrollboxWrapper">

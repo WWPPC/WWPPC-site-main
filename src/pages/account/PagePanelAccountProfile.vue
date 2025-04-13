@@ -12,54 +12,33 @@ const route = useRoute();
 const modal = globalModal();
 const accountManager = useAccountManager();
 
-const loading = ref(true);
-onMounted(async () => {
-    loading.value = true;
-    await accountManager.updateOwnUserData();
-    loading.value = false;
-    usernameNotEditable.value = accountManager.username;
-    gradeInput.value = accountManager.grade?.toString();
-    experienceInput.value = accountManager.experience?.toString();
-    joinCodeNotEditable.value = accountManager.teamJoinCode ?? '';
-    emailNotEditable.value = accountManager.email;
-});
-
 // prevent username being overwritten
 const usernameNotEditable = ref('');
 const emailNotEditable = ref('');
 const joinCodeNotEditable = ref('');
-watch(() => accountManager.username, () => usernameNotEditable.value = accountManager.username);
-watch(() => accountManager.teamJoinCode, () => joinCodeNotEditable.value = accountManager.teamJoinCode ?? '');
-watch(() => accountManager.email, () => emailNotEditable.value = accountManager.email);
+watch(() => accountManager.user.username, () => usernameNotEditable.value = accountManager.user.username);
+watch(() => accountManager.team?.joinKey, () => joinCodeNotEditable.value = accountManager.team?.joinKey ?? '');
+watch(() => accountManager.user.email, () => emailNotEditable.value = accountManager.user.email);
 
 // oops
 const gradeInput = ref('');
 const experienceInput = ref('');
 const languagesInput = ref<string[]>([]);
-watch(gradeInput, () => accountManager.grade = Number(gradeInput.value));
-watch(experienceInput, () => accountManager.experience = Number(experienceInput.value));
-watch(languagesInput, () => accountManager.languages = languagesInput.value);
-watch(() => accountManager.grade, () => gradeInput.value = accountManager.grade?.toString());
-watch(() => accountManager.experience, () => experienceInput.value = accountManager.experience?.toString());
-watch(() => accountManager.languages, () => languagesInput.value = accountManager.languages);
+watch(gradeInput, () => accountManager.user.grade = Number(gradeInput.value));
+watch(experienceInput, () => accountManager.user.experience = Number(experienceInput.value));
+watch(languagesInput, () => accountManager.user.languages = languagesInput.value);
+watch(() => accountManager.user.grade, () => gradeInput.value = accountManager.user.grade?.toString());
+watch(() => accountManager.user.experience, () => experienceInput.value = accountManager.user.experience?.toString());
+watch(() => accountManager.user.languages, () => languagesInput.value = accountManager.user.languages);
 
 const remainingBioCharacters = ref(2048);
 const remainingBioCharacters2 = ref(1024);
-watch(() => accountManager.bio, () => remainingBioCharacters.value = 2048 - accountManager.bio?.length);
-watch(() => accountManager.teamBio, () => remainingBioCharacters2.value = 1024 - accountManager.teamBio?.length);
-
-const showWriteDataWait = ref(false);
-const writeData = async () => {
-    showWriteDataWait.value = true;
-    // artificial wait
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const res = await accountManager.writeUserData();
-    if (res != AccountOpResult.SUCCESS) modal.showModal({ title: 'Write data failed', content: getAccountOpMessage(res), color: 'red' });
-    showWriteDataWait.value = false;
-};
+watch(() => accountManager.user.bio, () => remainingBioCharacters.value = 2048 - accountManager.user.bio?.length);
+watch(() => accountManager.team?.bio, () => remainingBioCharacters2.value = 1024 - (accountManager.team?.bio?.length ?? 0));
 
 // teams
 const joinTeamCode = ref('');
+const createTeamName = ref('');
 const showWriteTeamDataWait = ref(false);
 const writeTeamData = async () => {
     showWriteTeamDataWait.value = true;
@@ -224,17 +203,17 @@ onMounted(clearDangerButtons);
 <template>
     <AnimateInContainer type="slideUp" :delay=100>
         <TitledCutCornerContainer title="Profile" hover-animation="lift">
-            <form action="javascript:void(0)" @submit=writeData>
+            <form action="javascript:void(0)">
                 <PairedGridContainer width=100%>
                     <span>Display Name:</span>
-                    <InputTextBox v-model=accountManager.displayName maxlength="32" width="var(--fwidth)" title="Name used in profile, contests, etc." required></InputTextBox>
+                    <InputTextBox v-model=accountManager.user.displayName maxlength="32" width="var(--fwidth)" title="Name used in profile, contests, etc." required></InputTextBox>
                     <span>Name:</span>
                     <span class="nowrap">
-                        <InputTextBox v-model=accountManager.firstName maxlength="32" width="var(--hwidth)" title="First name" required></InputTextBox>
-                        <InputTextBox v-model=accountManager.lastName maxlength="32" width="var(--hwidth)" title="Last name" required></InputTextBox>
+                        <InputTextBox v-model=accountManager.user.firstName maxlength="32" width="var(--hwidth)" title="First name" required></InputTextBox>
+                        <InputTextBox v-model=accountManager.user.lastName maxlength="32" width="var(--hwidth)" title="Last name" required></InputTextBox>
                     </span>
-                    <span>School:</span>
-                    <InputTextBox v-model=accountManager.school maxlength="64" width="var(--fwidth)" title="Your school name" required></InputTextBox>
+                    <span>School/Organization:</span>
+                    <InputTextBox v-model=accountManager.user.organization maxlength="64" width="var(--fwidth)" title="Your organization name" required></InputTextBox>
                     <span>Grade/Experience:</span>
                     <span class="nowrap">
                         <InputDropdown v-model=gradeInput width="var(--hwidth)" :items="gradeMaps" title="Your current grade level" required></InputDropdown>
@@ -243,16 +222,16 @@ onMounted(clearDangerButtons);
                     <span>Known Languages:<br>(Use CTRL/SHIFT)</span>
                     <InputDropdown v-model=languagesInput width="var(--fwidth)" :items="languageMaps" title="What programming languages have you used in contest?" height="80px" multiple></InputDropdown>
                     <span>Biography<br>({{ remainingBioCharacters }} chars):</span>
-                    <InputTextArea v-model=accountManager.bio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="2048" placeholder="Describe yourself in a few short sentences!" resize="vertical"></InputTextArea>
+                    <InputTextArea v-model=accountManager.user.bio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="2048" placeholder="Describe yourself in a few short sentences!" resize="vertical"></InputTextArea>
                 </PairedGridContainer>
-                <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedChanges text="Save" color="yellow" glitch-on-mount></InputButton>
+                <!-- <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedUserChanges text="Save" color="yellow" glitch-on-mount></InputButton> -->
             </form>
-            <WaitCover text="Please wait..." :show="(showWriteDataWait || loading) && route.query.ignore_server === undefined"></WaitCover>
+            <!-- <WaitCover text="Please wait..." :show="(showWriteDataWait || loading) && route.query.ignore_server === undefined"></WaitCover> -->
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <AnimateInContainer type="slideUp" :delay=200>
         <TitledCutCornerContainer title="Team" hover-animation="lift">
-            <div v-if="accountManager.team === accountManager.username && accountManager.teamMembers.length <= 1">
+            <div v-if="accountManager.team == null">
                 <div class="profileTeamSection">
                     <h3>Join a team!</h3>
                     <form class="nowrap" action="javascript:void(0)" @submit="joinTeam">
@@ -263,19 +242,26 @@ onMounted(clearDangerButtons);
                     <i>Joining will sync your registrations to the team</i>
                 </div>
                 <p>OR</p>
+                <div class="profileTeamSection">
+                    <h3>Create Team</h3>
+                    <form class="nowrap" action="javascript:void(0)" @submit="createTeam">
+                        <InputTextBox v-model=createTeamName title="Create team!" placeholder="Team name" maxlength="32"></InputTextBox>
+                        <InputButton type="submit" text="Create" :disabled="createTeamName.length == 0"></InputButton>
+                    </form>
+                </div>
             </div>
-            <div class="profileTeamSection">
+            <div class="profileTeamSection" v-else>
                 <h3>Your Team</h3>
                 <div class="profileTeamGrid">
                     <div class="profileTeamList">
-                        <AccountTeamUserDisp v-for="user in accountManager.teamMembers" :key="user" :user="user" :team="accountManager.team" allow-kick></AccountTeamUserDisp>
+                        <AccountTeamUserDisp v-for="user in accountManager.team?.members" :key="user" :user="user" :team="accountManager.user.team!" allow-kick></AccountTeamUserDisp>
                     </div>
                     <form action="javascript:void(0)" @submit="writeTeamData">
                         <PairedGridContainer width="100%">
                             <span>Team Name:</span>
-                            <InputTextBox v-model=accountManager.teamName maxlength="32" width="var(--fwidth)" title="Collective team name" placeholder="Team Name"></InputTextBox>
+                            <InputTextBox v-model=accountManager.team?.name maxlength="32" width="var(--fwidth)" title="Collective team name" placeholder="Team Name"></InputTextBox>
                             <span>Biography<br>({{ remainingBioCharacters2 }} chars):</span>
-                            <InputTextArea v-model=accountManager.teamBio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" placeholder="Describe your team in a few short sentences!" resize="vertical"></InputTextArea>
+                            <InputTextArea v-model=accountManager.team?.bio width="var(--fwidth)" min-height="2em" height="4em" max-height="20em" maxlength="1024" placeholder="Describe your team in a few short sentences!" resize="vertical"></InputTextArea>
                         </PairedGridContainer>
                         <InputButton class="profileSaveButton" type="submit" v-if=accountManager.unsavedTeamChanges text="Save" color="yellow" glitch-on-mount></InputButton>
                     </form>
@@ -288,10 +274,10 @@ onMounted(clearDangerButtons);
                     <InputCopyButton :value="joinCodeNotEditable ?? ''"></InputCopyButton>
                 </form>
             </div>
-            <div class="profileTeamSection" v-if="accountManager.team !== accountManager.username">
+            <div class="profileTeamSection" v-if="accountManager.team?.id !== accountManager.user.username">
                 <InputButton text="Leave Team" color="red" glitch-on-mount @click=leaveTeam></InputButton>
             </div>
-            <WaitCover text="Please wait..." :show="(showWriteTeamDataWait || loading) && route.query.ignore_server === undefined"></WaitCover>
+            <!-- <WaitCover text="Please wait..." :show="(showWriteTeamDataWait || loading) && route.query.ignore_server === undefined"></WaitCover> -->
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <AnimateInContainer type="slideUp" :delay=300>
@@ -315,6 +301,7 @@ onMounted(clearDangerButtons);
         </TitledCutCornerContainer>
     </AnimateInContainer>
     <WaitCover text="Signing in..." :show=showCredWait></WaitCover>
+    <WaitCover text="Fetching data..." :show="!accountManager.loaded"></WaitCover>
 </template>
 
 <style scoped>
