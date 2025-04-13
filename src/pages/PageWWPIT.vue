@@ -3,13 +3,13 @@ import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelR
 import UserDisp from '#/common-components/UserDisp.vue';
 import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { useRoute } from 'vue-router';
-import PagePanelContestInfo from './contest/PagePanelContestInfo.vue';
+import PagePanelContestInfo from './wwpit/PagePanelWWPITInfo.vue';
 import PagePanelContestContest from '#/common-pages/contest/PagePanelContestContest.vue';
 import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
-import PagePanelContestArchive from './contest/PagePanelContestArchive.vue';
-import PagePanelUpsolveList from './archive/PagePanelUpsolveList.vue';
+import PagePanelContestArchive from './wwpit/PagePanelWWPITArchive.vue';
+import PagePanelUpsolveList from './upsolve/PagePanelUpsolveList.vue';
 import { ref, watch } from 'vue';
 import { useContestManager } from '#/modules/ContestManager';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
