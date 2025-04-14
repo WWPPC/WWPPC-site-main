@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { TitledCutCornerContainer } from '#/containers';
-import { InputFileUpload, InputNumberBox } from '#/inputs';
-import { ref, computed } from 'vue';
+import { InputFileUpload } from '#/inputs';
+import { watch, ref } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
+import InputSlider from '#/inputs/InputSlider.vue';
 
 const modal = globalModal();
 
-const scale = ref(1);
-const width = ref(0);
-const height = ref(0);
 const original = ref('');
 const converted = ref('');
 
@@ -22,20 +20,29 @@ const blur = ref(0);
 const opacity = ref(100);
 
 const draw = () => {
-    if (original.value == '') return;
+    if (original.value === '') return;
     const img = new Image();
     img.src = original.value;
     img.onload = () => {
         const canvas = document.createElement('canvas');
-        width.value = img.width;
-        height.value = img.height;
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, img.width, img.height);
+        if (!ctx) { // idk it gives an error without this (i clicked on the lightbulb and it did this)
+            return;
+        }
+        ctx.filter = `
+          brightness(${brightness.value}%) 
+          contrast(${contrast.value}%) 
+          saturate(${saturation.value}%) 
+          hue-rotate(${hue.value}deg) 
+          blur(${blur.value}px) 
+          opacity(${opacity.value}%)
+        `;
+        ctx.drawImage(img, 0, 0, img.width, img.height);
         converted.value = canvas.toDataURL('image/png');
-    };
-};
+    }
+}
 
 const upload = (event: any) => {
     const file: File | undefined = event.target?.files?.item(0);
@@ -53,20 +60,6 @@ const upload = (event: any) => {
     reader.readAsDataURL(file);
 };
 
-const imgStyle = computed(() => { //computed() is a cache to make program faster
-    return {
-    filter: `
-          brightness(${brightness.value}%) 
-          contrast(${contrast.value}%)
-          saturate(${saturation.value}%)
-          hue-rotate(${hue.value}deg)
-          blur(${blur.value}px)
-          opacity(${opacity.value}%)
-        `
-    };
-    
-});
-
 const reset_filters = () => {
 
    return rotate.value = 0, 
@@ -76,59 +69,52 @@ const reset_filters = () => {
    brightness.value = 100,
    blur.value = 0,
    opacity.value = 100;
+
 }
 
+watch([brightness, contrast, saturation, hue, blur, opacity], () => {
+    draw(); // watches the filters
+  },
+);
 </script>
 
 <template>
     <div class="columns"> 
         <TitledCutCornerContainer title="Image" reversed>
-            <img :src="converted" class="uploadImg" :style="imgStyle">
+            <img :src="converted" class="uploadImg">
             <br>
             <InputFileUpload class="align" accept="image/png+xml" @change=upload></InputFileUpload>
             <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
             <div>
-                Hue:
-                <input v-model="hue" type="range" min="0" max="360" class="slider" />
-                <br />
-                <InputNumberBox v-model="hue" :step="1"></InputNumberBox>
+                <p>Hue: {{ hue }}</p>
+                <InputSlider v-model="hue" :min="0" :max="360" ></InputSlider>
             </div>
             <br>
             <div>
-                Saturation:
-                <input v-model="saturation"  type="range" min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox  v-model="saturation" :step="1"></InputNumberBox>
+                <p>Saturation: {{ saturation }}</p>
+                <InputSlider v-model="saturation" :min="0" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
-                Contrast:
-                <input v-model="contrast" type="range"  min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox v-model="contrast" :step="1"></InputNumberBox>
+                <p>Contrast: {{ contrast }}</p>
+                <InputSlider v-model="contrast" :min="100" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
-                Brightness:
-                <input v-model="brightness" type="range"  min="0" max="200" class="slider" />
-                <br />
-                <InputNumberBox v-model="brightness" :step="1"></InputNumberBox>
+                <p>Brightness: {{ brightness }}</p>
+                <InputSlider v-model="brightness" :min="100" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
-                Opacity:
-                <input v-model="opacity" type="range"  min="0" max="100" class="slider" />
-                <br />
-                <InputNumberBox v-model="opacity" :step="1"></InputNumberBox>
+                <p>Opacity: {{ opacity }}</p>
+                <InputSlider v-model="opacity" :min="0" :max="100" ></InputSlider>
             </div>
             <br>
             <div>
-                Blur:
-                <input v-model="blur" type="range"  min="0" max="10" class="slider" />
-                <br />
-                <InputNumberBox v-model="blur" :step="0.1"></InputNumberBox>
+                <p>Blur: {{ blur }}</p>
+                <InputSlider v-model="blur" :min="0" :max="10" :step="0.1" ></InputSlider>
             </div>
             <br>
             <div>
@@ -150,9 +136,7 @@ const reset_filters = () => {
 
 .align {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;   
+    margin-left: 0%; 
 }
 
 .uploadImg {
