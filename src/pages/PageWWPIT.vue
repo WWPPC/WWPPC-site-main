@@ -10,7 +10,7 @@ import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContest
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
 import PagePanelContestArchive from './wwpit/PagePanelWWPITArchive.vue';
 import PagePanelUpsolveList from '#/common-pages/upsolve/PagePanelUpsolveList.vue';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useContestManager } from '#/modules/ContestManager';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
@@ -28,6 +28,9 @@ loginEnforcer.excludeExact.add('/contest/home');
 loginEnforcer.excludeExact.add('/contest');
 loginEnforcer.exclude.add('/contest/archive');
 loginEnforcer.exclude.add('/contest/upsolve');
+
+const problem = computed(() => contestManager.contests.WWPIT?.data.contest?.rounds[parseInt(route.params.problemRound.toString())].problems[parseInt(route.params.problemNumber.toString())] ?? "buh");
+const submissions = computed(() =>  contestManager.contests.WWPIT?.data.submissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id));
 </script>
 
 <template>
@@ -64,13 +67,13 @@ loginEnforcer.exclude.add('/contest/upsolve');
                 <PagePanelUpsolveList></PagePanelUpsolveList>
             </PanelBody>
             <PanelBody name="upsolveView" title="Upsolve Problem">
-                <PagePanelContestProblemView contest="WWPIT" isUpsolve></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT" isUpsolve :data="problem" :submissions="submissions ?? []"></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
                 <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>
             </PanelBody>
             <PanelBody name="problemView" title="Problem">
-                <PagePanelContestProblemView contest="WWPIT"></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT" :data="problem" :submissions="submissions ?? []"></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="leaderboard" title="Leaderboard">
                 <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
