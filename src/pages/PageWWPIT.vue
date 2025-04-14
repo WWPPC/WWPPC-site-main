@@ -64,7 +64,7 @@ loginEnforcer.exclude.add('/contest/upsolve');
                 <PagePanelUpsolveList></PagePanelUpsolveList>
             </PanelBody>
             <PanelBody name="upsolveView" title="Upsolve Problem">
-                <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
                 <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>
