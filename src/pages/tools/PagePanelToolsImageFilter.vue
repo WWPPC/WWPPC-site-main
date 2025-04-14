@@ -29,7 +29,7 @@ const draw = () => {
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
         if (!ctx) { // idk it gives an error without this (i clicked on the lightbulb and it did this)
-            return;
+            return modal.showModal({title: 'Unsopported image', content:'Try again or use another image.', color: 'red'}); //idk how this would happen
         }
         ctx.filter = `
           brightness(${brightness.value}%) 
