@@ -8,9 +8,6 @@ import InputSlider from '#/inputs/InputSlider.vue';
 
 const modal = globalModal();
 
-const scale = ref(1);
-const width = ref(0);
-const height = ref(0);
 const original = ref('');
 const converted = ref('');
 
@@ -28,8 +25,6 @@ const draw = () => {
     img.src = original.value;
     img.onload = () => {
         const canvas = document.createElement('canvas');
-        width.value = img.width;
-        height.value = img.height;
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
@@ -48,6 +43,7 @@ const draw = () => {
         converted.value = canvas.toDataURL('image/png');
     }
 }
+
 const upload = (event: any) => {
     const file: File | undefined = event.target?.files?.item(0);
     if (file == undefined) return;
@@ -64,8 +60,6 @@ const upload = (event: any) => {
     reader.readAsDataURL(file);
 };
 
-
-
 const reset_filters = () => {
 
    return rotate.value = 0, 
@@ -75,10 +69,11 @@ const reset_filters = () => {
    brightness.value = 100,
    blur.value = 0,
    opacity.value = 100;
+
 }
 
 watch([brightness, contrast, saturation, hue, blur, opacity], () => {
-    draw(); // Call the draw function whenever any of the filters change
+    draw(); // watches the filters
   },
 );
 </script>
@@ -141,9 +136,7 @@ watch([brightness, contrast, saturation, hue, blur, opacity], () => {
 
 .align {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;   
+    margin-left: 0%; 
 }
 
 .uploadImg {
