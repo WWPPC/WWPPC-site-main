@@ -134,7 +134,7 @@ const sponsors = {
                         X-Camp Prizes (per-person)
                     </p>
                     <HeaderedTable width="100%" border-color="transparent" header-background="transparent" style="font-size: var(--font-28); line-height: 0.7em;" :content="{
-                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100', '🎁 - $50 (all)'],
+                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100', 'All - $50'],
                         data: []
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-16)">
