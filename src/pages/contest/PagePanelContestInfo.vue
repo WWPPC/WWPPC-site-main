@@ -140,7 +140,7 @@ const sponsors = {
                     <p style="font-size: var(--font-16)">
                         <i>Note: Currently, we can only guarantee prizes to pre-college students within the US. International transactions are subject to federal law. Other people may compete but may not be able to recieve prizes.</i>
                         <br>
-                        <i>X-Camp Prizes are in the form of X-Camp giftcards</i>
+                        <i>X-Camp Prizes are in the form of X-Camp class coupons.</i>
                     </p>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>

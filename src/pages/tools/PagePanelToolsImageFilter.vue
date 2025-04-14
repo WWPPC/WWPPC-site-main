@@ -87,40 +87,21 @@ watch([brightness, contrast, saturation, hue, blur, opacity], () => {
             <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
-            <div>
+            <div class="flexbox">
                 <p>Hue: {{ hue }}</p>
                 <InputSlider v-model="hue" :min="0" :max="360" ></InputSlider>
-            </div>
-            <br>
-            <div>
                 <p>Saturation: {{ saturation }}</p>
                 <InputSlider v-model="saturation" :min="0" :max="200" ></InputSlider>
-            </div>
-            <br>
-            <div>
                 <p>Contrast: {{ contrast }}</p>
                 <InputSlider v-model="contrast" :min="100" :max="200" ></InputSlider>
-            </div>
-            <br>
-            <div>
                 <p>Brightness: {{ brightness }}</p>
                 <InputSlider v-model="brightness" :min="100" :max="200" ></InputSlider>
-            </div>
-            <br>
-            <div>
                 <p>Opacity: {{ opacity }}</p>
                 <InputSlider v-model="opacity" :min="0" :max="100" ></InputSlider>
-            </div>
-            <br>
-            <div>
                 <p>Blur: {{ blur }}</p>
                 <InputSlider v-model="blur" :min="0" :max="10" :step="0.1" ></InputSlider>
+                <InputButton class="buttonpad" text="Reset Filters" color="Red" @click="reset_filters"></InputButton>
             </div>
-            <br>
-            <div>
-                <InputButton text="Reset Filters" color="Red" @click="reset_filters"></InputButton>
-            </div>
-            
         </TitledCutCornerContainer> 
     </div>
 </template>
@@ -165,7 +146,13 @@ watch([brightness, contrast, saturation, hue, blur, opacity], () => {
     margin: 0px 0px;
 }
 
+.flexbox {
+    display: flex;
+    flex-direction: column;
+}
 
+.buttonpad {
+    margin-top: 15px;
+}
 
 </style>
-
