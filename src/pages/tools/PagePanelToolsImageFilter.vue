@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { TitledCutCornerContainer } from '#/containers';
-import { InputFileUpload, InputNumberBox } from '#/inputs';
-import { ref, computed } from 'vue';
+import { InputFileUpload } from '#/inputs';
+import { watch, ref } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
-import InputRangeSlider from '#/inputs/InputRangeSlider.vue';
-import InputTime from '#/inputs/InputTime.vue';
-import InputTextArea from '#/inputs/InputTextArea.vue';
+import InputSlider from '#/inputs/InputSlider.vue';
 
 const modal = globalModal();
 
@@ -25,7 +23,7 @@ const blur = ref(0);
 const opacity = ref(100);
 
 const draw = () => {
-    if (original.value == '') return;
+    if (original.value === '') return;
     const img = new Image();
     img.src = original.value;
     img.onload = () => {
@@ -35,11 +33,21 @@ const draw = () => {
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, img.width, img.height);
+        if (!ctx) { // idk it gives an error without this (i clicked on the lightbulb and it did this)
+            return;
+        }
+        ctx.filter = `
+          brightness(${brightness.value}%) 
+          contrast(${contrast.value}%) 
+          saturate(${saturation.value}%) 
+          hue-rotate(${hue.value}deg) 
+          blur(${blur.value}px) 
+          opacity(${opacity.value}%)
+        `;
+        ctx.drawImage(img, 0, 0, img.width, img.height);
         converted.value = canvas.toDataURL('image/png');
-    };
-};
-
+    }
+}
 const upload = (event: any) => {
     const file: File | undefined = event.target?.files?.item(0);
     if (file == undefined) return;
@@ -49,26 +57,14 @@ const upload = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         original.value = reader.result;
          draw();
-        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI' || file.type =='audio/mpeg') { //prevents videos and audios from loading
+        if (file.type == 'video/mp4' || file.type == 'video/mov' || file.type == 'video/AVI') { //prevents videos from loading
             modal.showModal({ title: 'Unsupported file type', content: 'Only images are allowed.', color: 'red' });
         }
     };
     reader.readAsDataURL(file);
 };
 
-const imgStyle = computed(() => { //computed() is a cache to make program faster
-    return {
-    filter: `
-          brightness(${brightness.value}%) 
-          contrast(${contrast.value}%)
-          saturate(${saturation.value}%)
-          hue-rotate(${hue.value}deg)
-          blur(${blur.value}px)
-          opacity(${opacity.value}%)
-        `
-    };
-    
-});
+
 
 const reset_filters = () => {
 
@@ -81,46 +77,49 @@ const reset_filters = () => {
    opacity.value = 100;
 }
 
+watch([brightness, contrast, saturation, hue, blur, opacity], () => {
+    draw(); // Call the draw function whenever any of the filters change
+  },
+);
 </script>
 
 <template>
     <div class="columns"> 
         <TitledCutCornerContainer title="Image" reversed>
-            <img :src="converted" class="uploadImg" :style="imgStyle">
+            <img :src="converted" class="uploadImg">
             <br>
             <InputFileUpload class="align" accept="image/png+xml" @change=upload></InputFileUpload>
             <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
-
             <div>
                 <p>Hue: {{ hue }}</p>
-                <InputRangeSlider v-model:val="hue" :min="0" :max="360" ></InputRangeSlider>
+                <InputSlider v-model="hue" :min="0" :max="360" ></InputSlider>
             </div>
             <br>
             <div>
                 <p>Saturation: {{ saturation }}</p>
-                <InputRangeSlider v-model:val="saturation" :min="0" :max="200" ></InputRangeSlider>
+                <InputSlider v-model="saturation" :min="0" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
                 <p>Contrast: {{ contrast }}</p>
-                <InputRangeSlider v-model:val="contrast" :min="100" :max="200" ></InputRangeSlider>
+                <InputSlider v-model="contrast" :min="100" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
                 <p>Brightness: {{ brightness }}</p>
-                <InputRangeSlider v-model:val="brightness" :min="100" :max="200" ></InputRangeSlider>
+                <InputSlider v-model="brightness" :min="100" :max="200" ></InputSlider>
             </div>
             <br>
             <div>
                 <p>Opacity: {{ opacity }}</p>
-                <InputRangeSlider v-model:val="opacity" :min="0" :max="100" ></InputRangeSlider>
+                <InputSlider v-model="opacity" :min="0" :max="100" ></InputSlider>
             </div>
             <br>
             <div>
                 <p>Blur: {{ blur }}</p>
-                <InputRangeSlider v-model:val="blur" :min="0" :max="10" :step="0.1" ></InputRangeSlider>
+                <InputSlider v-model="blur" :min="0" :max="10" :step="0.1" ></InputSlider>
             </div>
             <br>
             <div>
@@ -141,7 +140,10 @@ const reset_filters = () => {
 }
 
 .align {
-    margin-right: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;   
 }
 
 .uploadImg {
@@ -169,6 +171,8 @@ const reset_filters = () => {
     height: 20em;
     margin: 0px 0px;
 }
+
+
 
 </style>
 
