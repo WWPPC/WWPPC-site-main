@@ -5,6 +5,7 @@ import { watch, ref } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
 import InputSlider from '#/inputs/InputSlider.vue';
+import { throttle } from '#/util/inputLimiting';
 
 const modal = globalModal();
 
@@ -71,11 +72,9 @@ const reset_filters = () => {
    opacity.value = 100;
 
 }
+watch([brightness, contrast, saturation, hue, blur, opacity], throttle(() => draw(), 1000));
 
-watch([brightness, contrast, saturation, hue, blur, opacity], () => {
-    draw(); // watches the filters
-  },
-);
+
 </script>
 
 <template>
