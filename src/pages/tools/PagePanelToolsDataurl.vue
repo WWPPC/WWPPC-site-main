@@ -32,7 +32,7 @@ const upload = (event: any) => {
             <InputFileUpload accept="image/png,image/jpeg" @change=upload></InputFileUpload>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Data URL">
-            <InputTextArea v-model="dataurl" resize="vertical" class="big" disabled></InputTextArea>
+            <InputTextArea v-model="dataurl" resize="vertical" class="big" :disable-typing=true></InputTextArea>
             <InputCopyButton :value="dataurl"></InputCopyButton>
         </TitledCutCornerContainer>
     </div>
