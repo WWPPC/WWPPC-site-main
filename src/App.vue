@@ -17,15 +17,18 @@ import { ref, watch } from 'vue';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 import { useServerState } from '#/modules/ServerState';
 import { useAccountManager } from '#/modules/AccountManager';
+import { useContestManager } from '#/modules/ContestManager';
 
 const modalComponent = ref<InstanceType<typeof FullscreenModal>>();
 
 const loginEnforcer = useLoginEnforcer();
 const serverState = useServerState();
 const accountManager = useAccountManager();
+const contestManager = useContestManager();
 loginEnforcer.init();
 serverState.init();
 accountManager.init();
+contestManager.init();
 
 const modal = globalModal();
 watch(() => modalComponent.value, () => {
