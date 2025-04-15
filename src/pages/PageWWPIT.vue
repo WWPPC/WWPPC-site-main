@@ -11,7 +11,7 @@ import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContest
 import PagePanelContestArchive from './wwpit/PagePanelWWPITArchive.vue';
 import PagePanelUpsolveList from '#/common-pages/upsolve/PagePanelUpsolveList.vue';
 import { computed, ref, watch } from 'vue';
-import { useContestManager } from '#/modules/ContestManager';
+import { useContestManager, type Submission } from '#/modules/ContestManager';
 import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
 const route = useRoute();
@@ -29,8 +29,17 @@ loginEnforcer.excludeExact.add('/contest');
 loginEnforcer.exclude.add('/contest/archive');
 loginEnforcer.exclude.add('/contest/upsolve');
 
-const problem = computed(() => contestManager.contests.WWPIT?.data.contest?.rounds[parseInt(route.params.problemRound.toString())].problems[parseInt(route.params.problemNumber.toString())] ?? "buh");
-const submissions = computed(() => contestManager.contests.WWPIT?.data.submissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id));
+const problem = computed(() => {
+    const contest = contestManager.contests.WWPIT?.data.contest;
+    if (contest === undefined) return 'Loading...';
+    if (route.params.problemRound === undefined || route.params.problemNumber === undefined) return 'Loading...';
+    return contest.rounds[parseInt(route.params.problemRound.toString())].problems[parseInt(route.params.problemNumber.toString())];
+});
+const submissions = computed(() => {
+    const allSubmissions = contestManager.contests.WWPIT?.data.submissions;
+    if (allSubmissions === undefined) return [];
+    return allSubmissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id);
+});
 </script>
 
 <template>
