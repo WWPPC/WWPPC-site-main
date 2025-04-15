@@ -134,13 +134,13 @@ const sponsors = {
                         X-Camp Prizes (per-person)
                     </p>
                     <HeaderedTable width="100%" border-color="transparent" header-background="transparent" style="font-size: var(--font-28); line-height: 0.7em;" :content="{
-                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100', '🎁 - $50'],
+                        headers: ['🥇 - $200', '🥈 - $150', '🥉 - $100', 'All - $50'],
                         data: []
                     }"></HeaderedTable>
                     <p style="font-size: var(--font-16)">
                         <i>Note: Currently, we can only guarantee prizes to pre-college students within the US. International transactions are subject to federal law. Other people may compete but may not be able to recieve prizes.</i>
                         <br>
-                        <i>X-Camp Prizes are in the form of X-Camp giftcards</i>
+                        <i>X-Camp Prizes are in the form of X-Camp class coupons.</i>
                     </p>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
