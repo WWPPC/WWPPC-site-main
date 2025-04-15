@@ -8,6 +8,7 @@ import { GlitchText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import SponsorList from '#/common-components/SponsorList.vue';
 import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/contestInfo';
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 
 const sponsors = {
     partner: [
@@ -32,7 +33,7 @@ const sponsors = {
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText :text="'WWPIT ' + nextContest.getFullYear()" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchSectionTitle :text="'WWPIT ' + nextContest.getFullYear()" parallax font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
@@ -98,9 +99,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo2"></a>
-        <CenteredContainer>
-            <GlitchText text="Format & Prizes" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Format & Prizes" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Prizes (tentative)" height="100%" align="center" hover-animation="lift">
@@ -162,9 +161,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo3"></a>
-        <CenteredContainer>
-            <GlitchText text="Schedule" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Schedule" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="scheduleBlock">
             <AnimateInContainer type="slideUp" show-on-screen>
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
@@ -307,9 +304,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
-        <CenteredContainer>
-            <GlitchText text="FAQ" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="FAQ" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsibleContainer title="When is it?" startCollapsed>
@@ -382,13 +377,6 @@ const sponsors = {
 </template>
 
 <style scoped>
-.contestTitle {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-    text-align: center;
-}
-
 .stretchBlock {
     display: flex;
     flex-direction: column;

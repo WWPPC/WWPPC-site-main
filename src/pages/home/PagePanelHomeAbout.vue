@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import ContactFooter from '#/common/ContactFooter.vue';
 import HomeAboutCreditsCard from '#/common-components/home/about/HomeAboutCreditsCard.vue';
-import { GlitchText } from '#/text';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 </script>
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="Organizers" class="organizerTitle parallax" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=5 random on-visible></GlitchText>
+        <GlitchSectionTitle text="Organizers" parallax font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="organizerTable">
             <HomeAboutCreditsCard name="Rishikesh Anabathula" username="wwppc-rishikesh" roles="Lead Organizer<br>WWPPC President<br>Contest Director<br>Problemsetter" img="/img/rishikesh-anabathula.png" grade="Senior (HSS)" codeforces="CutSandstone" github="CutSandstone" discord="559131662143979534" linkedin="rishikesh-anabathula-b621b82a3" bio="USACO Platinum, running enjoyer, AIME qualifier, leetcoder. Likes short biographies, so I made this long sentence for him."></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Jie Gao" username="spsquared" roles="Development Lead<br>Website Developer<br>Contest Backend Developer" img="/img/jie-gao.jpg" grade="Senior (HSS)" github="spsquared" discord="587770060462882854" youtube="@sp-squared?sub_confirmation=1" linkedin="jie-gao-518204306" bio="SPARK + SPAARK = win everything. Battlecode 2025 HS 1st & WRO 2023 FE Int. top 4. Made most of the website & servers and maintains backend infrastructure."></HomeAboutCreditsCard>
@@ -20,7 +20,7 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageAboutScrollTo1"></a>
-        <GlitchText text="Junior Organizers" class="organizerTitle" font-size="var(--font-small-title)" color="lime" shadow glow :steps=1 :delay=5 random on-visible></GlitchText>
+        <GlitchSectionTitle text="Junior Organizers" font-size="var(--font-small-title)"></GlitchSectionTitle>
         <div class="organizerTableSmall">
             <HomeAboutCreditsCard name="Chris Ren" username="chrispyhackerace" roles="Logistics & Outreach<br>Website Developer" img="/img/chris-ren.jpg" grade="Freshman (HSS)" github="chrispyhackingace" discord="706203796774322278" linkedin="christopher-ren-67a967314" website="instagram.com/chrispyhackingace/" bio="already has his ED to MIT." width="273px" height="350px"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Siddharth Goli" username="rawbill" roles="Junior Dev" img="/img/internet-icon.svg" grade="Freshman (HSS)" codeforces="siddharthgoli" github="rawbill" discord="1238666673884500024" bio="USACO Bronze<br></br>First Tech Challenge #23490" width="273px" height="350px"></HomeAboutCreditsCard>
@@ -32,7 +32,7 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageAboutScrollTo2"></a>
-        <GlitchText text="Problem Testers" class="organizerTitle" font-size="var(--font-small-title)" color="lime" shadow glow :steps=1 :delay=5 random on-visible></GlitchText>
+        <GlitchSectionTitle text="Problem Testers" font-size="var(--font-small-title)"></GlitchSectionTitle>
         <div class="problemTesterTable">
             <h3>William Yuan</h3>
             <h3>Advik Vermani</h3>
@@ -42,7 +42,7 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageAboutScrollTo3"></a>
-        <GlitchText text="Alumni" class="organizerTitle" font-size="var(--font-small-title)" color="lime" shadow glow :steps=1 :delay=5 random on-visible></GlitchText>
+        <GlitchSectionTitle text="Alumni" font-size="var(--font-small-title)"></GlitchSectionTitle>
         <div class="organizerTableSmall">
             <HomeAboutCreditsCard name="Maitian Sha" username="sp" roles="Problemsetter" img="/img/maitian-sha.jpg" grade="Junior (HSS)" codeforces="spuh" aops="452171" github="SampleProvider" discord="706967946198777867" website="youtube.com/watch?v=dQw4w9WgXcQ" bio="USACO Plat, USAMO, 6x AIME, 2x WRO Future Engineers Internationals Top 4, Battlecode 2025 HS 1st place, also Block Pushing Game." width="273px" height="350px"></HomeAboutCreditsCard>
         </div>
@@ -52,16 +52,6 @@ import ScrollIndicator from '#/common/ScrollIndicator.vue';
 </template>
 
 <style scoped>
-.organizerTitle {
-    text-align: center;
-}
-
-.parallax {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-}
-
 .organizerTable {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

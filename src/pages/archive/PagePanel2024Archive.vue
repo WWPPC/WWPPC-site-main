@@ -7,6 +7,7 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import { GlitchText, GlowText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import SponsorList from '#/common-components/SponsorList.vue';
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 const contest = new Date('6/2/2024 9:30 AM EST');
 const contestEnd = new Date('6/2/2024 5:00 PM EST');
 
@@ -33,7 +34,7 @@ const sponsors = {
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPIT 2024" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchSectionTitle text="WWPIT 2024" parallax font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
@@ -58,18 +59,7 @@ const sponsors = {
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen :delay=300>
                 <CutCornerContainer height="100%" hover-animation="lift" flipped vertical-flipped>
-                    <CenteredContainer style="font-size: var(--font-20);" v-if="Date.now() < contest.getTime()">
-                        <GlitchText text="Registrations open!" font-size="var(--font-28)" color="lime" glow flashing random></GlitchText>
-                        <div class="centered" style="margin: 8px;">
-                            <RouterLink to="/account/registrations" no-deco>
-                                <InputLinkButton text="Register" color="lime" font-size="var(--font-large)"></InputLinkButton>
-                            </RouterLink>
-                        </div>
-                        <p style="text-align: center; font-size: var(--font-small);">
-                            <i>Scroll down to see contest schedule</i>
-                        </p>
-                    </CenteredContainer>
-                    <CenteredContainer style="font-size: var(--font-20);" v-else-if="Date.now() > contestEnd.getTime()">
+                    <CenteredContainer style="font-size: var(--font-20);">
                         <GlitchText text="Contest ended!" font-size="var(--font-28)" color="red" glow random></GlitchText>
                         <div class="centered" style="margin: 8px;">
                             <RouterLink to="/contest/upsolve" no-deco>
@@ -80,21 +70,6 @@ const sponsors = {
                             Thanks to all who participated! We hope to see you in the WWPIT Fall 2024!
                         </p>
                     </CenteredContainer>
-                    <CenteredContainer style="font-size: var(--font-20);" v-else>
-                        <GlitchText text="Contest started!" font-size="var(--font-28)" color="lime" glow flashing flash-color="red" random></GlitchText>
-                        <div class="centered" style="margin: 8px;">
-                            <RouterLink to="/contest/contest" no-deco>
-                                <InputLinkButton text="Contest" color="lime" font-size="var(--font-large)"></InputLinkButton>
-                            </RouterLink>
-                        </div>
-                        <p style="text-align: center">
-                            The contest has started!
-                            Join our <a href="https://discord.wwppc.tech">Discord</a> server for important information during the contest!
-                        </p>
-                        <p style="text-align: center; font-size: var(--font-small);">
-                            <i>Scroll down to see contest schedule</i>
-                        </p>
-                    </CenteredContainer>
                 </CutCornerContainer>
             </AnimateInContainer>
         </div>
@@ -102,9 +77,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo"></a>
-        <CenteredContainer>
-            <GlitchText text="S-2024 Winners" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Winners" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock winnersBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=200>
                 <TitledDoubleCutCornerContainer title="Novice" height="100%" align="center" hover-animation="lift" flipped>
@@ -199,9 +172,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo2"></a>
-        <CenteredContainer>
-            <GlitchText text="Format & Prizes" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Format & Prizes" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Prizes" height="100%" align="center" hover-animation="lift">
@@ -254,9 +225,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo3"></a>
-        <CenteredContainer>
-            <GlitchText text="Schedule" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Schedule" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="scheduleBlock">
             <AnimateInContainer type="slideUp" show-on-screen>
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
@@ -431,21 +400,13 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo4"></a>
-        <SponsorList 
-            color="lime"
-            :partners="sponsors.partner" 
-            :gold="sponsors.gold" 
-            :silver="sponsors.silver" 
-            :bronze="sponsors.bronze"
-        />
+        <SponsorList color="lime" :partners="sponsors.partner" :gold="sponsors.gold" :silver="sponsors.silver" :bronze="sponsors.bronze" />
         <div class="spacer"></div>
         <ScrollIndicator anchor="a[name=pageContestScrollTo5]"></ScrollIndicator>
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
-        <CenteredContainer>
-            <GlitchText text="FAQ" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="FAQ" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
                 <TitledCollapsible title="When is it?" startCollapsed>
@@ -516,13 +477,6 @@ const sponsors = {
 </template>
 
 <style scoped>
-.contestTitle {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-    text-align: center;
-}
-
 .stretchBlock {
     display: flex;
     flex-direction: column;
