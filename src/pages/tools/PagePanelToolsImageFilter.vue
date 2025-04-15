@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TitledCutCornerContainer } from '#/containers';
 import { InputFileUpload } from '#/inputs';
-import { watch, ref } from 'vue';
+import { ref } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
 import InputSlider from '#/inputs/InputSlider.vue';
@@ -60,22 +60,24 @@ const upload = (event: any) => {
     reader.readAsDataURL(file);
 };
 
-const reset_filters = () => {
+const resetFilters = () => {
 
-   return rotate.value = 0, 
-   hue.value = 0,
-   saturation.value = 100,
-   contrast.value = 100,
-   brightness.value = 100,
-   blur.value = 0,
-   opacity.value = 100;
+    draw();
+    
+    return rotate.value = 0, 
+    hue.value = 0,
+    saturation.value = 100,
+    contrast.value = 100,
+    brightness.value = 100,
+    blur.value = 0,
+    opacity.value = 100;
 
 }
 
-watch([brightness, contrast, saturation, hue, blur, opacity], () => {
-    draw(); // watches the filters
-  },
-);
+const applyFilter = () => {
+    draw();
+}
+
 </script>
 
 <template>
@@ -84,7 +86,6 @@ watch([brightness, contrast, saturation, hue, blur, opacity], () => {
             <img :src="converted" class="uploadImg">
             <br>
             <InputFileUpload class="align" accept="image/png+xml" @change=upload></InputFileUpload>
-            <br>
         </TitledCutCornerContainer>
         <TitledCutCornerContainer title="Filters">
             <div class="flexbox">
@@ -100,7 +101,8 @@ watch([brightness, contrast, saturation, hue, blur, opacity], () => {
                 <InputSlider v-model="opacity" :min="0" :max="100" ></InputSlider>
                 <p>Blur: {{ blur }}</p>
                 <InputSlider v-model="blur" :min="0" :max="10" :step="0.1" ></InputSlider>
-                <InputButton class="buttonpad" text="Reset Filters" color="Red" @click="reset_filters"></InputButton>
+                <InputButton text="Apply Filters" color="Green" @click="applyFilter"></InputButton>
+                <InputButton class="buttonpad" text="Reset Filters" color="Red" @click="resetFilters"></InputButton>
             </div>
         </TitledCutCornerContainer> 
     </div>
