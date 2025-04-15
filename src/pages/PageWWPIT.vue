@@ -30,7 +30,7 @@ loginEnforcer.exclude.add('/contest/archive');
 loginEnforcer.exclude.add('/contest/upsolve');
 
 const problem = computed(() => contestManager.contests.WWPIT?.data.contest?.rounds[parseInt(route.params.problemRound.toString())].problems[parseInt(route.params.problemNumber.toString())] ?? "buh");
-const submissions = computed(() =>  contestManager.contests.WWPIT?.data.submissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id));
+const submissions = computed(() => contestManager.contests.WWPIT?.data.submissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id));
 </script>
 
 <template>
@@ -40,9 +40,11 @@ const submissions = computed(() =>  contestManager.contests.WWPIT?.data.submissi
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest" is-default></PanelNavButton>
-                <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
-                <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
-                <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
+                <div v-if="contestManager.contests.WWPIT == null || ignoreServer" style="display: contents;">
+                    <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
+                    <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
+                </div>
+                <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: contents;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
                     <PanelNavButton text="Leaderboard" for="/contest/leaderboard"></PanelNavButton>
