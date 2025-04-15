@@ -28,18 +28,6 @@ loginEnforcer.excludeExact.add('/contest/home');
 loginEnforcer.excludeExact.add('/contest');
 loginEnforcer.exclude.add('/contest/archive');
 loginEnforcer.exclude.add('/contest/upsolve');
-
-const problem = computed(() => {
-    const contest = contestManager.contests.WWPIT?.data.contest;
-    if (contest === undefined) return 'Loading...';
-    if (route.params.problemRound === undefined || route.params.problemNumber === undefined) return 'Loading...';
-    return contest.rounds[parseInt(route.params.problemRound.toString())].problems[parseInt(route.params.problemNumber.toString())];
-});
-const submissions = computed(() => {
-    const allSubmissions = contestManager.contests.WWPIT?.data.submissions;
-    if (allSubmissions === undefined) return [];
-    return allSubmissions.get(typeof problem.value == 'string' ? problem.value : problem.value.id);
-});
 </script>
 
 <template>
@@ -78,13 +66,13 @@ const submissions = computed(() => {
                 <PagePanelUpsolveList></PagePanelUpsolveList>
             </PanelBody>
             <PanelBody name="upsolveView" title="Upsolve Problem">
-                <PagePanelContestProblemView contest="WWPIT" isUpsolve :data="problem" :submissions="submissions ?? []"></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
                 <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>
             </PanelBody>
             <PanelBody name="problemView" title="Problem">
-                <PagePanelContestProblemView contest="WWPIT" :data="problem" :submissions="submissions ?? []"></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT"></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="leaderboard" title="Leaderboard">
                 <PagePanelContestLeaderboard contest="WWPIT"></PagePanelContestLeaderboard>
