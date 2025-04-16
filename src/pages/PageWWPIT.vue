@@ -3,16 +3,16 @@ import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelR
 import UserDisp from '#/common-components/UserDisp.vue';
 import ContestTimer from '#/common-components/contest/ContestTimer.vue';
 import { useRoute } from 'vue-router';
-import PagePanelContestInfo from './contest/PagePanelContestInfo.vue';
+import PagePanelContestInfo from './wwpit/PagePanelWWPITInfo.vue';
 import PagePanelContestContest from '#/common-pages/contest/PagePanelContestContest.vue';
 import PagePanelContestProblemList from '#/common-pages/contest/PagePanelContestProblemList.vue';
 import PagePanelContestProblemView from '#/common-pages/contest/PagePanelContestProblemView.vue';
 import PagePanelContestLeaderboard from '#/common-pages/contest/PagePanelContestLeaderboard.vue';
-import PagePanelContestArchive from './contest/PagePanelContestArchive.vue';
-import PagePanelUpsolveList from './archive/PagePanelUpsolveList.vue';
-import { ref, watch } from 'vue';
-import { useContestManager } from '#/scripts/ContestManager';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import PagePanelContestArchive from './wwpit/PagePanelWWPITArchive.vue';
+import PagePanelUpsolveList from '#/common-pages/upsolve/PagePanelUpsolveList.vue';
+import { computed, ref, watch } from 'vue';
+import { useContestManager, type Submission } from '#/modules/ContestManager';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 
 const route = useRoute();
 const ignoreServer = ref(route.query.ignore_server !== undefined);
@@ -20,18 +20,14 @@ watch(() => route.query.ignore_server, () => {
     ignoreServer.value = route.query.ignore_server !== undefined;
 });
 
-const connectionEnforcer = useConnectionEnforcer();
+const loginEnforcer = useLoginEnforcer();
 const contestManager = useContestManager();
 
-connectionEnforcer.connectionInclude.add('/contest');
-connectionEnforcer.loginInclude.add('/contest');
-connectionEnforcer.connectionExcludeExact.add('/contest/home');
-connectionEnforcer.loginExcludeExact.add('/contest/home');
-connectionEnforcer.connectionExcludeExact.add('/contest');
-connectionEnforcer.loginExcludeExact.add('/contest');
-connectionEnforcer.loginExclude.add('/contest/upsolve');
-connectionEnforcer.loginExclude.add('/contest/archive');
-connectionEnforcer.connectionExclude.add('/contest/archive');
+loginEnforcer.include.add('/contest');
+loginEnforcer.excludeExact.add('/contest/home');
+loginEnforcer.excludeExact.add('/contest');
+loginEnforcer.exclude.add('/contest/archive');
+loginEnforcer.exclude.add('/contest/upsolve');
 </script>
 
 <template>
@@ -41,9 +37,11 @@ connectionEnforcer.connectionExclude.add('/contest/archive');
             <PanelNavList>
                 <PanelNavButton text="Home" for="/home"></PanelNavButton>
                 <PanelNavButton text="WWPIT" for="/contest" is-default></PanelNavButton>
-                <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
-                <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
-                <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: flex;">
+                <div v-if="contestManager.contests.WWPIT == null || ignoreServer" style="display: contents;">
+                    <PanelNavButton text="Archive" for="/contest/archive"></PanelNavButton>
+                    <PanelNavButton text="Upsolve" for="/contest/upsolve"></PanelNavButton>
+                </div>
+                <div v-if="contestManager.contests.WWPIT != null || ignoreServer" style="display: contents;">
                     <PanelNavButton text="Contest" for="/contest/contest"></PanelNavButton>
                     <PanelNavButton text="Problems" for="/contest/problemList"></PanelNavButton>
                     <PanelNavButton text="Leaderboard" for="/contest/leaderboard"></PanelNavButton>
@@ -68,7 +66,7 @@ connectionEnforcer.connectionExclude.add('/contest/archive');
                 <PagePanelUpsolveList></PagePanelUpsolveList>
             </PanelBody>
             <PanelBody name="upsolveView" title="Upsolve Problem">
-                <PagePanelContestProblemView  contest="WWPIT" isUpsolve></PagePanelContestProblemView>
+                <PagePanelContestProblemView contest="WWPIT" isUpsolve></PagePanelContestProblemView>
             </PanelBody>
             <PanelBody name="problemList" title="Problem List">
                 <PagePanelContestProblemList contest="WWPIT"></PagePanelContestProblemList>

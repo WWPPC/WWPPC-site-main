@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useContestManager } from '#/modules/ContestManager';
 import { watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -7,10 +8,10 @@ const props = defineProps<{
 }>();
 
 const route = useRoute();
-const randomShow = ref(Math.random() < 0.005);
-const showAnyways = ref(route.query.battlecow !== undefined);
-watch(() => route.query.battlecow, () => {
-    showAnyways.value = route.query.battlecow !== undefined || showAnyways.value;
+const contestManager = useContestManager();
+const showAnyways = ref(route.query.battlecow !== undefined || Math.random() < 0.005);
+watch([() => route.query.battlecow, () => contestManager.runningContests], () => {
+    showAnyways.value = (route.query.battlecow !== undefined || showAnyways.value) && contestManager.runningContests.length === 0;
 });
 
 const j1 = ref(false);
@@ -26,7 +27,7 @@ const jumping2 = () => {
 </script>
 
 <template>
-    <div class="superSecretCarrier" v-if="props.show || randomShow || showAnyways">
+    <div class="superSecretCarrier" v-if="props.show || showAnyways">
         <div class="launcherWrapper">
             <img src="/assets/battlecow/red-launcher.png" :class="'launcher ' + (j1 ? 'jumping' : '')" @click="jumping1()">
         </div>

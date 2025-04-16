@@ -3,7 +3,7 @@ import { PanelBody, PanelHeader, PanelMain, PanelNavButton, PanelNavList, PanelR
 import UserDisp from '#/common-components/UserDisp.vue';
 import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
-import { useConnectionEnforcer } from '#/scripts/ConnectionEnforcer';
+import { useLoginEnforcer } from '#/modules/LoginEnforcer';
 import PagePanel2024Archive from './archive/PagePanel2024Archive.vue';
 
 const route = useRoute();
@@ -12,11 +12,9 @@ watch(() => route.query.ignore_server, () => {
     ignoreServer.value = route.query.ignore_server !== undefined;
 });
 
-const connectionEnforcer = useConnectionEnforcer();
+const loginEnforcer = useLoginEnforcer();
 
-connectionEnforcer.connectionExclude.add('/contestArchive');
-connectionEnforcer.loginExclude.add('/contestArchive');
-
+loginEnforcer.exclude.add('/contestArchive');
 </script>
 
 <template>

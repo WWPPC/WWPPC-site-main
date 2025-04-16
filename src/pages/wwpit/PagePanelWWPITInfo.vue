@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MultipaneSelectorContainer, MultipaneSelector, MultipanePaneContainer, MultipanePane } from '#/multipane';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, HeaderedTable } from '#/containers';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsibleContainer, HeaderedTable } from '#/containers';
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
 import { InputLinkButton, InputIconButton } from '#/inputs';
@@ -8,6 +8,7 @@ import { GlitchText } from '#/text';
 import TimerDisplay from '#/common/TimerDisplay.vue';
 import SponsorList from '#/common-components/SponsorList.vue';
 import { nextContestPractice, nextContest, nextContestEnd } from '@/scripts/contestInfo';
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 
 const sponsors = {
     partner: [
@@ -32,7 +33,7 @@ const sponsors = {
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText :text="'WWPIT ' + nextContest.getFullYear()" class="contestTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchSectionTitle :text="'WWPIT ' + nextContest.getFullYear()" parallax font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="General Information" height="100%" align="center" hover-animation="lift" flipped>
@@ -98,9 +99,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo2"></a>
-        <CenteredContainer>
-            <GlitchText text="Format & Prizes" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Format & Prizes" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="contestInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Prizes (tentative)" height="100%" align="center" hover-animation="lift">
@@ -162,9 +161,7 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo3"></a>
-        <CenteredContainer>
-            <GlitchText text="Schedule" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="Schedule" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="scheduleBlock">
             <AnimateInContainer type="slideUp" show-on-screen>
                 <CutCornerContainer height="100%" flipped no-padding hover-animation="lift">
@@ -307,73 +304,71 @@ const sponsors = {
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageContestScrollTo5"></a>
-        <CenteredContainer>
-            <GlitchText text="FAQ" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="FAQ" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="When is it?" startCollapsed>
+                <TitledCollapsibleContainer title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         WWPIT {{ nextContest.getFullYear() }} will be on <b>{{ nextContest.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' }) }}</b>, from {{ nextContest.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }} to {{ nextContestEnd.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }) }} ({{ new Intl.DateTimeFormat(undefined, { timeZoneName: 'long'}).formatToParts(new Date()).find(part => part.type === 'timeZoneName')!.value }}).
                         <br><br>
                         <i>Scroll up to see contest schedule</i>
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How do I compete?" startCollapsed>
+                <TitledCollapsibleContainer title="How do I compete?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         You can sign up by <b>creating an account and registering <a href="/account/registrations" target="_blank">HERE</a></b>, NO prerequisites needed!
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Who is eligible for prizes?" startCollapsed>
+                <TitledCollapsibleContainer title="Who is eligible for prizes?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         Currently, we can only guarantee prizes to pre-college students in the United States.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Where will it be held?" startCollapsed>
+                <TitledCollapsibleContainer title="Where will it be held?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         WWPIT will be held on this website!
                         <br><br>
                         You can register <a href="/account/registrations" target="_blank">here</a> at any time before the contest starts.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What resources are allowed?" startCollapsed>
+                <TitledCollapsibleContainer title="What resources are allowed?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         You may use any resource that was published before the beginning of the contest. Note that this means generative AIs like ChatGPT is disallowed.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What languages can I use?" startCollapsed>
+                <TitledCollapsibleContainer title="What languages can I use?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         Allowed languages include Java 8, Java 11, Java 17, Java 21, C11, C++11, C++17, C++20, C++23, and Python3.12.3.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How can I prepare?" startCollapsed>
+                <TitledCollapsibleContainer title="How can I prepare?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         For those experienced in programming, helpful resources include <a href="https://usaco.guide" target="_blank">USACO Guide</a> and <a href="https://codeforces.com" target="_blank">Codeforces</a>.
                         <br><br>
                         To learn C++, see <a href="https://cplusplus.com/doc/tutorial/" target="_blank">CPlusPlus.com</a>. To learn Python, a more beginner-friendly language, the <a href="https://runestone.academy/ns/books/published/thinkcspy/index.html" target="_blank">thinkcspy textbook</a> is useful.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="What is the expected difficulty?" startCollapsed>
+                <TitledCollapsibleContainer title="What is the expected difficulty?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         For the Novice division, expect problems between AP CSA - <a href="https://usaco.org" target="_blank">USACO</a> Gold level.
                         <br><br>
                         For the Advanced division, expect problems between USACO Silver - USACO Platinum level.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
         </div>
         <div class="spacer"></div>
@@ -382,13 +377,6 @@ const sponsors = {
 </template>
 
 <style scoped>
-.contestTitle {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-    text-align: center;
-}
-
 .stretchBlock {
     display: flex;
     flex-direction: column;

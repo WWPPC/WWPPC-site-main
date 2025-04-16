@@ -6,11 +6,12 @@ import { InputLinkButton, InputIconButton } from '#/inputs';
 import LineDivider from '#/common/LineDivider.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 </script>
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPPC 2025" class="homeTitle" font-size="var(--font-huge-title)" color="lime" glow shadow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchSectionTitle text="WWPPC 2025" parallax font-size="var(--font-huge-title)"></GlitchSectionTitle>
         <div class="homeColumns">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100>
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
@@ -72,7 +73,7 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
     <div class="fullBlock stretchBlock">
         <a name="pageHomeScrollTo"></a>
         <div class="centered">
-            <GlitchText text="About WWPPC" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
+            <GlitchSectionTitle text="About WWPPC" font-size="var(--font-title)"></GlitchSectionTitle>
         </div>
         <div class="homeGeneralInfoColumns" style="font-size: var(--font-medium);">
             <AnimateInContainer type="slideUp" show-on-screen style="grid-row: span 2;">
@@ -104,11 +105,11 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
                 <DoubleCutCornerContainer height="100%" hover-animation="lift">
                     <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPPC</span>:
-                        West Windsor-Plainsboro Programming Competitions
+                        West Windsor Plainsboro Programming Competitions
                     </p>
                     <p style="text-wrap: balance; font-size: var(--font-20); margin-top: 0px;">
                         <span style="color: lime;">WWPIT</span>:
-                        West Windsor-Plainsboro Informatics Tournament
+                        West Windsor Plainsboro Informatics Tournament
                     </p>
                     <p style="text-wrap: balance; font-size: var(--font-20); margin: 0px 8px;">
                         <span style="color: lime;">WWPHacks</span>:
@@ -137,13 +138,6 @@ import { nextContest, nextContestEnd } from '@/scripts/contestInfo';
 </template>
 
 <style scoped>
-.homeTitle {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-    text-align: center;
-}
-
 .homeColumns {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

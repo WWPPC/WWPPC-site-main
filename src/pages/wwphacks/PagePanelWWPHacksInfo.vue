@@ -1,19 +1,20 @@
 <script setup lang="ts">
+import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 import ContactFooter from '#/common/ContactFooter.vue';
 import ScrollIndicator from '#/common/ScrollIndicator.vue';
-import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsible, AngledTitledContainer } from '#/containers';
+import { AnimateInContainer, CenteredContainer, TitledDoubleCutCornerContainer, CutCornerContainer, TitledCollapsibleContainer, AngledTitledContainer } from '#/containers';
 import { InputLinkButton } from '#/inputs';
 import { GlitchText } from '#/text';
 </script>
 
 <template>
     <div class="fullBlock stretchBlock">
-        <GlitchText text="WWPHacks" class="hackathonTitle" font-size="var(--font-title)" color="lime" shadow glow :steps=2 :delay=10 random on-visible></GlitchText>
+        <GlitchSectionTitle text="WWPHacks" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="hacksInfoBlock">
             <AnimateInContainer type="slideUp" show-on-screen :delay=100 style="grid-row: span 2;">
                 <TitledDoubleCutCornerContainer title="Come hack with us!" height="100%" align="center" hover-animation="lift">
                     <p>
-                        Join us for 24 hours of hackathon-ing at Princeton High School
+                        Join us for 24 hours of hackathon-ing
                     </p>
                     <!-- insert image here lol -->
                 </TitledDoubleCutCornerContainer>
@@ -78,9 +79,7 @@ import { GlitchText } from '#/text';
             </div>
             <div>
                 <div class="hacksStickyBox">
-                    <CenteredContainer>
-                        <GlitchText text="idk lol" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-                    </CenteredContainer>
+                    <GlitchSectionTitle text="idk lol" font-size="var(--font-title)"></GlitchSectionTitle>
                     <AnimateInContainer type="fade" show-on-screen>
                         <AngledTitledContainer title="Title" hover-animation="lift">
                             content content content content content content content content content content content content content content content content content content content content content content content
@@ -96,43 +95,39 @@ import { GlitchText } from '#/text';
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageHackathonScrollTo2"></a>
-        <CenteredContainer>
-            <GlitchText text="idk" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="idk" font-size="var(--font-title)"></GlitchSectionTitle>
         <ScrollIndicator anchor="a[name=pageHackathonScrollTo3]"></ScrollIndicator>
     </div>
     <div class="fullBlock stretchBlock">
         <a name="pageHackathonScrollTo3"></a>
-        <CenteredContainer>
-            <GlitchText text="FAQ" font-size="var(--font-title)" color="lime" glow shadow random :steps=2 :delay=10 on-visible></GlitchText>
-        </CenteredContainer>
+        <GlitchSectionTitle text="FAQ" font-size="var(--font-title)"></GlitchSectionTitle>
         <div class="faq">
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="When is it?" startCollapsed>
+                <TitledCollapsibleContainer title="When is it?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         WWPHacks is expected to happen towards of the start of the 2024-2025 school year.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="Where will it be held?" startCollapsed>
+                <TitledCollapsibleContainer title="Where will it be held?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         We can't say anything about possible venues yet.
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
             <AnimateInContainer type="slideUp" show-on-screen>
-                <TitledCollapsible title="How many people can be on a team?" startCollapsed>
+                <TitledCollapsibleContainer title="How many people can be on a team?" startCollapsed>
                     <p style="font-size: var(--font-20)">
                         <i>All information is tentative as of now.</i>
                         <br>
                         Expect to have teams of 3-4 people
                     </p>
-                </TitledCollapsible>
+                </TitledCollapsibleContainer>
             </AnimateInContainer>
         </div>
         <div class="spacer"></div>
@@ -141,13 +136,6 @@ import { GlitchText } from '#/text';
 </template>
 
 <style scoped>
-.hackathonTitle {
-    transform-origin: top;
-    transform: translate3D(0px, -20vh, -50px) scale(150%);
-    z-index: -1;
-    text-align: center;
-}
-
 .hacksInfoBlock {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

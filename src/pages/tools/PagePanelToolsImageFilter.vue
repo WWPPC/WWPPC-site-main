@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { TitledCutCornerContainer } from '#/containers';
 import { InputFileUpload } from '#/inputs';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { globalModal } from '#/modal';
 import InputButton from '#/inputs/InputButton.vue';
 import InputSlider from '#/inputs/InputSlider.vue';
+import { throttle } from '#/util/inputLimiting';
 
 const modal = globalModal();
 
@@ -73,6 +74,8 @@ const resetFilters = () => {
     opacity.value = 100;
 
 }
+watch([brightness, contrast, saturation, hue, blur, opacity], throttle(() => draw(), 1000));
+
 
 const applyFilter = () => {
     draw();
