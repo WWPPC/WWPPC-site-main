@@ -151,8 +151,8 @@ const sponsors = {
                     <ul style="font-size: var(--font-medium);">
                         <li>Two separate timed rounds of eight problems each</li>
                         <li>Instant feedback on submissions</li>
-                        <li>Scores based on problems solved, with subtasks</li>
-                        <li>Subtask scores are weighted by solve count</li>
+                        <li>Scores based on number of problems solved</li>
+                        <li>Penalty based on number of wrong submissions and last correct submission</li>
                     </ul>
                 </TitledDoubleCutCornerContainer>
             </AnimateInContainer>
