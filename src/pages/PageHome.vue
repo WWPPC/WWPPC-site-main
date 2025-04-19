@@ -25,7 +25,7 @@ import PagePanelHomeHome from '@/pages/home/PagePanelHomeHome.vue';
             <PanelBody name="home" title="Home" is-default scroll-snap>
                 <PagePanelHomeHome></PagePanelHomeHome>
             </PanelBody>
-            <PanelBody name="about" title="About">
+            <PanelBody name="about" title="About" scroll-snap>
                 <PagePanelHomeAbout></PagePanelHomeAbout>
             </PanelBody>
         </PanelMain>
