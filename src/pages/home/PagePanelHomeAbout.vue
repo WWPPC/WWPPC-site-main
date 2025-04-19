@@ -16,37 +16,30 @@ import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
             <HomeAboutCreditsCard name="Vikram Karamsetty" username="vikramk" roles="Logistics" img="/img/vikram-karamsetty.jpeg" grade="Junior (HSS)" github="VikramKaramsetty" discord="660497297074814976" youtube="@Mangovvk" linkedin="vikram-karamsetty" bio="avid programmer (usaco silver), dedicated roboticist (First Tech Challenge #14481), track runner, problem solver, and engineer!"></HomeAboutCreditsCard>
         </div>
         <div class="spacer"></div>
-        <ScrollIndicator anchor="a[name=pageAboutScrollTo1]"></ScrollIndicator>
+        <ScrollIndicator anchor="a[name=pageAboutScrollTo]"></ScrollIndicator>
     </div>
-    <div class="fullBlock stretchBlock">
-        <a name="pageAboutScrollTo1"></a>
+    <div>
+        <a name="pageAboutScrollTo"></a>
         <GlitchSectionTitle text="Junior Organizers" font-size="var(--font-small-title)"></GlitchSectionTitle>
-        <div class="organizerTableSmall">
+        <div class="organizerTable organizerTableSmall">
             <HomeAboutCreditsCard name="Chris Ren" username="chrispyhackerace" roles="Logistics & Outreach<br>Website Developer" img="/img/chris-ren.jpg" grade="Freshman (HSS)" github="chrispyhackingace" discord="706203796774322278" linkedin="christopher-ren-67a967314" website="instagram.com/chrispyhackingace/" bio="already has his ED to MIT." width="273px" height="350px"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Siddharth Goli" username="rawbill" roles="Junior Dev" img="/img/internet-icon.svg" grade="Freshman (HSS)" codeforces="siddharthgoli" github="rawbill" discord="1238666673884500024" bio="USACO Bronze<br></br>First Tech Challenge #23490" width="273px" height="350px"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Prahalad Setty" username="toazty" roles="Website Developer" img="/img/setty.png" grade="Freshman (HSS)" codeforces="toazty" github="prahaladsetty" discord="751894068266795118" bio="FRC + coding" width="273px" height="350px"></HomeAboutCreditsCard>
             <HomeAboutCreditsCard name="Syam Paladugu" username="reverseflash" roles="Logistics & Outreach" img="/img/internet-icon.svg" grade="Freshman (HSS)" codeforces="reverseFlash123" discord="751894068266795118" bio="FTC #23490<br></br> FRC #1923" width="273px" height="350px"></HomeAboutCreditsCard>
         </div>
-        <div class="spacer"></div>
-        <ScrollIndicator anchor="a[name=pageAboutScrollTo2]"></ScrollIndicator>
     </div>
-    <div class="fullBlock stretchBlock">
-        <a name="pageAboutScrollTo2"></a>
+    <div>
         <GlitchSectionTitle text="Problem Testers" font-size="var(--font-small-title)"></GlitchSectionTitle>
-        <div class="problemTesterTable">
+        <div class="organizerTable problemTesterTable">
             <h3>William Yuan</h3>
             <h3>Advik Vermani</h3>
         </div>
-        <div class="spacer"></div>
-        <ScrollIndicator anchor="a[name=pageAboutScrollTo3]"></ScrollIndicator>
     </div>
-    <div class="fullBlock stretchBlock">
-        <a name="pageAboutScrollTo3"></a>
+    <div>
         <GlitchSectionTitle text="Alumni" font-size="var(--font-small-title)"></GlitchSectionTitle>
-        <div class="organizerTableSmall">
+        <div class="organizerTable organizerTableSmall">
             <HomeAboutCreditsCard name="Maitian Sha" username="sp" roles="Problemsetter" img="/img/maitian-sha.jpg" grade="Junior (HSS)" codeforces="spuh" aops="452171" github="SampleProvider" discord="706967946198777867" website="youtube.com/watch?v=dQw4w9WgXcQ" bio="USACO Plat, USAMO, 6x AIME, 2x WRO Future Engineers Internationals Top 4, Battlecode 2025 HS 1st place, also Block Pushing Game." width="273px" height="350px"></HomeAboutCreditsCard>
         </div>
-        <div class="spacer"></div>
         <ContactFooter></ContactFooter>
     </div>
 </template>
@@ -54,7 +47,8 @@ import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 <style scoped>
 .organizerTable {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    --table-size: 320px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--table-size), 1fr));
     width: 100%;
     justify-items: center;
     row-gap: 24px;
@@ -62,21 +56,11 @@ import GlitchSectionTitle from '#/common-components/GlitchSectionTitle.vue';
 }
 
 .organizerTableSmall {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
-    width: 100%;
-    justify-items: center;
-    row-gap: 24px;
-    column-gap: 24px;
+    --table-size: 273px;
 }
 
 .problemTesterTable {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    width: 100%;
-    justify-items: center;
-    row-gap: 24px;
-    column-gap: 24px;
+    --table-size: 200px;
 }
 
 .spacer {

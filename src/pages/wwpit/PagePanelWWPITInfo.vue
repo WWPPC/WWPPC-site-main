@@ -18,8 +18,8 @@ const sponsors = {
         
     ],
     silver: [
-        { name: "Hudson River Trading Logo", src: "/img/hrt-logo.png", url: "https://hudsonrivertrading.com/", height: "10vh" },
-        { name: "Jane Street Logo", src: "/img/jane-street-logo.png", url: "https://janestreet.com/", height: "9vh" },
+        { name: "Hudson River Trading Logo", src: "/img/hrt-logo.svg", url: "https://hudsonrivertrading.com/", height: "10vh" },
+        { name: "Jane Street Logo", src: "/img/jane-street-logo.svg", url: "https://janestreet.com/", height: "10vh" },
         { name: "X-Camp Logo", src: "/img/x-camp-logo.png", url: "https://x-camp.academy/", height: "10vh" },
         { name: "Recursive Dragon", src: "/img/recursive-dragon-logo.png", url:"https://recursivedragon.com", height: "10vh"}
     

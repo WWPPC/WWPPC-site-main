@@ -18,8 +18,8 @@ const draw = () => {
     img.src = original.value;
     img.onload = () => {
         const canvas = document.createElement('canvas');
-        width.value = img.width;
-        height.value = img.height;
+        width.value = Math.max(img.width, 1);
+        height.value = Math.max(img.height, 1);
         canvas.width = img.width * scale.value;
         canvas.height = img.height * scale.value;
         const ctx = canvas.getContext('2d');
@@ -36,7 +36,6 @@ const upload = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         if (/^data:image\/svg\+xml/.test(reader.result)) {
             original.value = reader.result;
-            draw();
         } else {
             modal.showModal({ title: 'Unsupported file type', content: 'Only .svg images are allowed.', color: 'red' });
         }
@@ -44,7 +43,7 @@ const upload = (event: any) => {
     reader.readAsDataURL(file);
 };
 
-watch(scale, draw);
+watch([scale, original], draw);
 </script>
 
 <template>
