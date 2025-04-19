@@ -36,7 +36,6 @@ const upload = (event: any) => {
         if (typeof reader.result != 'string') return; // idk should never happen
         if (/^data:image\/svg\+xml/.test(reader.result)) {
             original.value = reader.result;
-            draw();
         } else {
             modal.showModal({ title: 'Unsupported file type', content: 'Only .svg images are allowed.', color: 'red' });
         }
@@ -44,7 +43,7 @@ const upload = (event: any) => {
     reader.readAsDataURL(file);
 };
 
-watch(scale, draw);
+watch([scale, original], draw);
 </script>
 
 <template>
