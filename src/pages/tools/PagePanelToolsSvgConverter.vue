@@ -18,8 +18,8 @@ const draw = () => {
     img.src = original.value;
     img.onload = () => {
         const canvas = document.createElement('canvas');
-        width.value = img.width;
-        height.value = img.height;
+        width.value = Math.max(img.width, 1);
+        height.value = Math.max(img.height, 1);
         canvas.width = img.width * scale.value;
         canvas.height = img.height * scale.value;
         const ctx = canvas.getContext('2d');
